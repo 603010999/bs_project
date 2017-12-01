@@ -1,0 +1,12 @@
+
+framework/Assembly-CSharp-Editor.csproj
+framework/Assembly-CSharp.csproj
+framework/Library
+framework/obj
+framework/Temp
+framework/framework.CSharp.csproj
+framework/framework.CSharp.Editor.csproj
+framework/framework.sln
+framework/framework.userprefs
+framework/framework.v12.suo
+
