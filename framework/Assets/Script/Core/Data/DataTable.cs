@@ -534,7 +534,7 @@ public class DataTable : Dictionary<string, SingleData>
     public void SetData(SingleData data)
     {
         //主键
-        string mainKey = TableKeys[0];
+        var mainKey = TableKeys[0];
 
         if (data.ContainsKey(mainKey))
         {
@@ -546,7 +546,21 @@ public class DataTable : Dictionary<string, SingleData>
             else
             {
                 Add(key, data);
+            }
+
+            if(!TableIDs.Contains(key))
+            {
                 TableIDs.Add(key);
+            }
+
+            foreach (var k in data.Keys)
+            {
+                if(TableKeys.Contains(k))
+                {
+                    continue;
+                }
+
+                TableKeys.Add(k);
             }
         }
         else
