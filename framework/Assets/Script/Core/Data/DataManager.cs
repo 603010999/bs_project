@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 using System.Collections.Generic;
 using System;
 
@@ -19,6 +20,14 @@ public class DataManager
     public static bool GetIsExistData(string DataName)
     {
         return ResourcesConfigManager.GetIsExitRes(DataName);
+    }
+
+    //文件是否存在
+    public static bool IsDataFileExist(string dataName)
+    {
+        var path = PathTool.GetRelativelyPath(c_directoryName, dataName, c_expandName);
+
+        return File.Exists(path);
     }
 
     public static DataTable GetData(string DataName)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -198,15 +199,35 @@ public class StoryLineEditor : EditorWindow
     //载入角色数据
     private void LoadPlayerData(string Id)
     {
+        if(playerId == Id)
+        {
+            return;
+        }
+
         playerId = Id;
         playerContent = m_curPlayerDatas[playerId];
-        playerName = playerContent["player_name"];
-        startTalkId = playerContent["start_talk_id"];
+
+        playerContent.TryGetValue("player_name", out playerName);
+        playerContent.TryGetValue("start_talk_id", out startTalkId);
+
+        PrepareTalk(playerId);
     }
 
     #endregion
 
     #region 对话部分
+
+    //章节列表  章节编辑器中进行编辑
+    private List<string> m_chapterList = new List<string>();
+
+    //当前选中章节下标
+    private int m_curChapterIndex = 0;
+
+    //当前章节ID
+    private string m_curChapterId;
+
+    //章节数据
+    private DataTable m_chapterData;
 
     //当前角色对应的对话
     private List<string> m_talkList = new List<string>();
@@ -214,17 +235,55 @@ public class StoryLineEditor : EditorWindow
     //当前选中的对话下标
     private int m_curTalkIndex = 0;
 
-    //获取对话文件名
+    //当前角色的全部对话信息
+    private DataTable m_playerTalkDatas;
+
+    //获取对话文件名 角色ID+对话ID+talk
     private string GetTalkConfigName()
     {
-        return string.Empty;
+        return playerId + m_curChapterId + "talk";
     }
 
     //初始化对话，当人物信息确定后，开始
-    private void PrepareTalk()
+    private void PrepareTalk(string _playerId)
     {
+        //查找所有角色对应的对话
+        AssetDatabase.Refresh();
+
+        m_talkList.Clear();
+
+        m_talkList.Add("none");
+
+        var dataName = GetTalkConfigName();
+
+        //加载章节信息
+        m_chapterList.Clear();
+        m_chapterList.Add("none");
+        m_chapterData = DataManager.GetData("chapter");
+        foreach (var cha in m_chapterData.Keys)
+        {
+            m_chapterList.Add(cha);
+        }
+
+        //加载人物对话信息
+        m_talkList.Clear();
+        m_talkList.Add("none");
+        if (!DataManager.IsDataFileExist(dataName))
+        {
+            m_playerTalkDatas = new DataTable();
+            return;
+        }
+
+        m_playerTalkDatas = DataManager.GetData(dataName);
         
+        foreach (var talk in m_playerTalkDatas.Keys)
+        {
+            m_talkList.Add(talk);
+        }
     }
+
+    //对话ID
+    private string talkId;
 
     #endregion
 
