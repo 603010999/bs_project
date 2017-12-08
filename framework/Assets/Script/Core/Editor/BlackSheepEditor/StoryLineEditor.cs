@@ -38,7 +38,11 @@ public class StoryLineEditor : EditorWindow
 
         EditorGUILayout.BeginVertical(GUILayout.Width(120));
 
+        ShowSelectTalkListGUI();
 
+        AddTalkGUI();
+
+        EditorTalkGUI();
 
         EditorGUILayout.EndVertical();
 
@@ -232,9 +236,6 @@ public class StoryLineEditor : EditorWindow
     //当前角色对应的对话
     private List<string> m_talkList = new List<string>();
 
-    //当前选中的对话下标
-    private int m_curTalkIndex = 0;
-
     //当前角色的全部对话信息
     private DataTable m_playerTalkDatas;
 
@@ -284,6 +285,86 @@ public class StoryLineEditor : EditorWindow
 
     //对话ID
     private string talkId;
+
+    //当前选中的对话下标
+    private int m_curTalkIndex = 0;
+
+    //对话选择列表
+    private void ShowSelectTalkListGUI()
+    {
+        var mask = m_talkList.ToArray();
+
+        if (m_talkList.Count <= 1)
+        {
+            return;
+        }
+
+        m_curTalkIndex = EditorGUILayout.Popup("当前对话：", m_curTalkIndex, mask);
+        if (mask.Length != 0 && m_curTalkIndex != 0)
+        {
+            LoadTalkData(mask[m_curTalkIndex]);
+        }
+    }
+
+    private bool newTalkIsFfold;
+
+    //创建对话部分
+    private void AddTalkGUI()
+    {
+        //当前没有选中对话时，才显示
+        if (m_curTalkIndex != 0)
+        {
+            return;
+        }
+
+        newTalkIsFfold = EditorGUILayout.Foldout(newTalkIsFfold, "创建角色");
+        if (newTalkIsFfold)
+        {
+            EditorGUI.indentLevel++;
+
+            var fieldData = new SingleField(FieldType.String, playerId, null);
+            playerId = EditorUtilGUI.FieldGUI_Type(fieldData, "角色ID");
+
+            if (string.IsNullOrEmpty(playerId))
+            {
+                EditorGUILayout.LabelField("输入要添加的ID（角色id从1001开始）=,,=");
+            }
+            else if (m_curPlayerDatas.ContainsKey(playerId))
+            {
+                EditorGUILayout.LabelField("重复啦=..=", EditorGUIStyleData.WarnMessageLabel);
+            }
+
+            EditorGUILayout.Space();
+
+            if (!m_curPlayerDatas.ContainsKey(playerId) && !string.IsNullOrEmpty(playerId))
+            {
+                EditorGUILayout.Space();
+                if (GUILayout.Button("创建"))
+                {
+                    playerContent = new SingleData();
+                    playerContent.Add("player_id", playerId);
+                    m_curPlayerDatas.AddData(playerContent);
+                    DataEditorWindow.SaveData(m_playerCfgName, m_curPlayerDatas);
+                    PreparePlayerData();
+                }
+                EditorGUILayout.Space();
+            }
+
+            EditorGUILayout.Space();
+        }
+    }
+
+    //对话编辑和跳转
+    private void EditorTalkGUI()
+    {
+
+    }
+
+    //载入对话数据
+    private void LoadTalkData(string talkId)
+    {
+
+    }
 
     #endregion
 
