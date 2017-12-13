@@ -335,7 +335,7 @@ public class StoryLineEditor : EditorWindow
     }
 
     //对话ID
-    private string talkId;
+    private string talkId = string.Empty;
 
     //当前选中的对话下标
     private int m_curTalkIndex = 0;
@@ -408,6 +408,10 @@ public class StoryLineEditor : EditorWindow
                 {
                     talkContent = new SingleData();
                     talkContent.Add("talk_id", talkId);
+                    if(m_playerTalkDatas.TableKeys.Count == 0)
+                    {
+                        m_playerTalkDatas.TableKeys.Add("talk_id");
+                    }
                     m_playerTalkDatas.AddData(talkContent);
                     DataEditorWindow.SaveData(GetTalkConfigName(), m_playerTalkDatas);
                     PrepareTalk(playerId);
@@ -422,7 +426,7 @@ public class StoryLineEditor : EditorWindow
     //对话编辑和跳转
     private void EditorTalkGUI()
     {
-
+        
     }
 
     //载入对话数据

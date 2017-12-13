@@ -27,7 +27,9 @@ public class DataManager
     {
         var path = PathTool.GetRelativelyPath(c_directoryName, dataName, c_expandName);
 
-        return File.Exists(path);
+        var fullPath = PathTool.GetAbsolutePath(ResLoadLocation.Resource, path);
+
+        return File.Exists(fullPath);
     }
 
     public static DataTable GetData(string DataName)
