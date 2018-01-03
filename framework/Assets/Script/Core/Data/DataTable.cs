@@ -414,7 +414,7 @@ public class DataTable : Dictionary<string, SingleData>
         }
     }
 
-    public void SetFieldType(string key,FieldType type ,string enumType)
+    public void SetFieldType(string key,FieldType type ,string enumType = null)
     {
         //主键只能是String类型
         if (key == TableKeys[0])
@@ -432,7 +432,7 @@ public class DataTable : Dictionary<string, SingleData>
         }
 
         //存储二级类型
-        if (enumType != null)
+        if (!string.IsNullOrEmpty(enumType))
         {
             if (m_tableEnumTypes.ContainsKey(key))
             {

@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class StoryLineEditor : EditorWindow
 {
+    //每个对话中对话内容分支的最大数量
+    private const int m_maxTalkContentCnt = 4;
+
     #region open
 
     [MenuItem("Tools/剧情编辑器", priority = 100)]
@@ -46,7 +49,7 @@ public class StoryLineEditor : EditorWindow
 
         #region talk
 
-        EditorGUILayout.BeginVertical(GUILayout.Width(120));
+        EditorGUILayout.BeginVertical(GUILayout.Width(520));
 
         ShowSelectTalkListGUI();
 
@@ -197,6 +200,12 @@ public class StoryLineEditor : EditorWindow
             playerContent["player_id"] = playerId;
             playerContent["player_name"] = playerName;
             playerContent["start_talk_id"] = startTalkId;
+
+            //设置字段类型
+            m_curPlayerDatas.SetFieldType("player_id", FieldType.String);
+            m_curPlayerDatas.SetFieldType("player_name", FieldType.String);
+            m_curPlayerDatas.SetFieldType("start_talk_id", FieldType.String);
+
             m_curPlayerDatas.SetData(playerContent);
             DataEditorWindow.SaveData(m_playerCfgName, m_curPlayerDatas);
         }
@@ -270,6 +279,13 @@ public class StoryLineEditor : EditorWindow
             chapterId = mask[m_curChapterIndex];
         }
 
+        if (!string.IsNullOrEmpty(m_curChapterId) && m_chapterList.Contains(m_curChapterId))
+        {
+            var curName = string.Empty;
+            m_chapterData[m_curChapterId].TryGetValue("chapter_name", out curName);
+            EditorGUILayout.LabelField(curName);
+        }
+
         if(chapterId == m_curChapterId)
         {
             return;
@@ -282,11 +298,7 @@ public class StoryLineEditor : EditorWindow
             return;
         }
 
-        var curName = string.Empty;
-        m_chapterData[m_curChapterId].TryGetValue("chapter_name", out curName);
-        EditorGUILayout.LabelField(curName);
-
-        PrepareTalk(playerId);
+        PrepareTalk();
     }
 
     #endregion
@@ -306,7 +318,7 @@ public class StoryLineEditor : EditorWindow
     }
 
     //初始化对话，当人物信息确定后，开始
-    private void PrepareTalk(string _playerId)
+    private void PrepareTalk()
     {
         //查找所有角色对应的对话
         AssetDatabase.Refresh();
@@ -332,33 +344,51 @@ public class StoryLineEditor : EditorWindow
         {
             m_talkList.Add(talk);
         }
+
+        m_curTalkIndex = 0;
     }
 
+    //创建对话ID
+    private string m_inputTalkId = string.Empty;
+
     //对话ID
-    private string talkId = string.Empty;
+    private string m_talkId = string.Empty;
 
     //当前选中的对话下标
     private int m_curTalkIndex = 0;
 
-    private SingleData talkContent;
+    private SingleData m_talkContent;
 
     //对话选择列表
     private void ShowSelectTalkListGUI()
     {
-        var mask = m_talkList.ToArray();
-
         if (m_talkList.Count <= 1)
         {
             return;
         }
 
+        if(string.IsNullOrEmpty(playerId))
+        {
+            return;
+        }
+
+        if(string.IsNullOrEmpty(m_curChapterId))
+        {
+            return;
+        }
+
+        var mask = m_talkList.ToArray();
+
         m_curTalkIndex = EditorGUILayout.Popup("当前对话：", m_curTalkIndex, mask);
+        if(m_curTalkIndex ==  0)
+        {
+            m_talkId = string.Empty;
+        }
+
         if (mask.Length != 0 && m_curTalkIndex != 0)
         {
             LoadTalkData(mask[m_curTalkIndex]);
         }
-
-        EditorGUILayout.LabelField("输入要添加的ID（对话id从1001开始）=,,=");
     }
 
     private bool newTalkIsFfold;
@@ -366,6 +396,11 @@ public class StoryLineEditor : EditorWindow
     //创建对话部分
     private void AddTalkGUI()
     {
+        if(string.IsNullOrEmpty(playerId))
+        {
+            return;
+        }
+
         if(string.IsNullOrEmpty(m_curChapterId))
         {
             return;
@@ -382,39 +417,34 @@ public class StoryLineEditor : EditorWindow
             return;
         }
 
+        EditorGUILayout.Space();
+
         newTalkIsFfold = EditorGUILayout.Foldout(newTalkIsFfold, "创建对话");
         if (newTalkIsFfold)
         {
             EditorGUI.indentLevel++;
 
-            var fieldData = new SingleField(FieldType.String, talkId, null);
-            talkId = EditorUtilGUI.FieldGUI_Type(fieldData, "对话ID");
+            var fieldData = new SingleField(FieldType.String, m_inputTalkId, null);
+            m_inputTalkId = EditorUtilGUI.FieldGUI_Type(fieldData, "对话ID");
 
-            if (string.IsNullOrEmpty(talkId))
+            if (string.IsNullOrEmpty(m_inputTalkId))
             {
                 EditorGUILayout.LabelField("输入要添加的ID（对话id从1001开始）=,,=");
             }
-            else if (m_playerTalkDatas.ContainsKey(talkId))
+            else if (m_playerTalkDatas.ContainsKey(m_inputTalkId))
             {
                 EditorGUILayout.LabelField("重复啦=..=", EditorGUIStyleData.WarnMessageLabel);
             }
 
             EditorGUILayout.Space();
 
-            if (!m_playerTalkDatas.ContainsKey(talkId) && !string.IsNullOrEmpty(talkId))
+            if (!m_playerTalkDatas.ContainsKey(m_inputTalkId) && !string.IsNullOrEmpty(m_inputTalkId))
             {
                 EditorGUILayout.Space();
                 if (GUILayout.Button("创建"))
                 {
-                    talkContent = new SingleData();
-                    talkContent.Add("talk_id", talkId);
-                    if(m_playerTalkDatas.TableKeys.Count == 0)
-                    {
-                        m_playerTalkDatas.TableKeys.Add("talk_id");
-                    }
-                    m_playerTalkDatas.AddData(talkContent);
-                    DataEditorWindow.SaveData(GetTalkConfigName(), m_playerTalkDatas);
-                    PrepareTalk(playerId);
+                    CreateNewTalk(m_inputTalkId);
+                    m_inputTalkId = string.Empty;
                 }
                 EditorGUILayout.Space();
             }
@@ -423,22 +453,150 @@ public class StoryLineEditor : EditorWindow
         }
     }
 
+    //创建对话
+    private void CreateNewTalk(string _talkId)
+    {
+        m_talkContent = new SingleData();
+        m_talkContent.Add("talk_id", _talkId);
+        if (m_playerTalkDatas.TableKeys.Count == 0)
+        {
+            m_playerTalkDatas.TableKeys.Add("talk_id");
+        }
+        m_playerTalkDatas.AddData(m_talkContent);
+        DataEditorWindow.SaveData(GetTalkConfigName(), m_playerTalkDatas);
+        PrepareTalk();
+    }
+
+    //当前对话玩家文本
+    private string[] m_pTalkText = new string[m_maxTalkContentCnt];
+
+    //当前对话npc文本
+    private string[] m_nTalkText = new string[m_maxTalkContentCnt];
+
+    //下一个对话ID
+    private string[] m_nextTalkId = new string[m_maxTalkContentCnt];
+
     //对话编辑和跳转
     private void EditorTalkGUI()
     {
-        
+        if(string.IsNullOrEmpty(m_talkId))
+        {
+            return;
+        }
+
+        //todo 向上一个跳转  如果没上一个对话，则不显示跳转按钮
+        //遍历所有对话，找到
+
+        EditorGUILayout.Space();
+
+        EditorTalkContentGUI();
+
+        EditorGUILayout.Space();
+
+        if (GUILayout.Button("保存对话"))
+        {
+            for(var i = 0; i < m_maxTalkContentCnt; ++i)
+            {
+                var pTalkKey = string.Format("p_talk_text_{0}", i + 1);
+                m_talkContent[pTalkKey] = m_pTalkText[i];
+                m_playerTalkDatas.SetFieldType(pTalkKey, FieldType.String);
+
+                var nTalkKey = string.Format("n_talk_text_{0}", i + 1);
+                m_talkContent[nTalkKey] = m_nTalkText[i];
+                m_playerTalkDatas.SetFieldType(nTalkKey, FieldType.String);
+
+                var nextTalkIdKey = string.Format("next_talk_id_{0}", i + 1);
+                m_talkContent[nextTalkIdKey] = m_nextTalkId[i];
+                m_playerTalkDatas.SetFieldType(nextTalkIdKey, FieldType.String);
+            }
+
+            m_playerTalkDatas.SetData(m_talkContent);
+            DataEditorWindow.SaveData(GetTalkConfigName(), m_playerTalkDatas);
+        }
+    }
+
+    //预设4个位置
+    private bool[] m_talkFold = new bool[m_maxTalkContentCnt];
+
+    //对话编辑部分
+    private void EditorTalkContentGUI()
+    {
+        EditorGUI.indentLevel++;
+
+        for (var j = 0; j < m_maxTalkContentCnt; ++j)
+        {
+            var foldName = string.Format("分支对话{0}", j + 1);
+            m_talkFold[j] = EditorGUILayout.Foldout(m_talkFold[j], foldName);
+
+            if (m_talkFold[j])
+            {
+                EditorGUILayout.Space();
+
+                //当前玩家对话内容编辑
+                var fieldData = new SingleField(FieldType.String, m_pTalkText[j], null);
+                m_pTalkText[j] = EditorUtilGUI.FieldGUI_Type(fieldData, string.Format("玩家对话内容"));
+
+                //当前npc回答对话内容编辑
+                fieldData = new SingleField(FieldType.String, m_nTalkText[j], null);
+                m_nTalkText[j] = EditorUtilGUI.FieldGUI_Type(fieldData, string.Format("NPC对话内容"));
+
+                //下一个对话
+                fieldData = new SingleField(FieldType.String, m_nextTalkId[j], null);
+                m_nextTalkId[j] = EditorUtilGUI.FieldGUI_Type(fieldData, string.Format("下个对话ID"));
+
+                EditorGUILayout.Space();
+
+                //todo 向下一个对话跳转
+                if (!string.IsNullOrEmpty(m_nextTalkId[j]))
+                {
+                    if (GUILayout.Button(string.Format("跳转到:{0}", m_nextTalkId[j])))
+                    {
+                        if (!m_playerTalkDatas.ContainsKey(m_nextTalkId[j]))
+                        {
+                            CreateNewTalk(m_nextTalkId[j]);
+                            return;
+                        }
+
+                        for (var i = 0; i < m_talkList.Count; ++i)
+                        {
+                            if (m_nextTalkId[j] == m_talkList[i])
+                            {
+                                m_curTalkIndex = i;
+                            }
+                        }
+
+                        LoadTalkData(m_nextTalkId[j]);
+                    }
+                }
+            }
+        }
     }
 
     //载入对话数据
-    private void LoadTalkData(string talkId)
+    private void LoadTalkData(string _talkId)
     {
+        //没有变化，不做赋值
+        if (string.IsNullOrEmpty(_talkId) || m_talkId == _talkId)
+        {
+            return;
+        }
 
+        m_talkId = _talkId;
+
+        for(var i = 0; i < m_talkFold.Length;++i)
+        {
+            m_talkFold[i] = false;
+        }
+
+        m_talkContent = m_playerTalkDatas[m_talkId];
+
+        for (var i = 0; i < m_maxTalkContentCnt; ++i)
+        {
+            m_talkContent.TryGetValue(string.Format("p_talk_text_{0}]", i + 1), out m_pTalkText[i]);
+            m_talkContent.TryGetValue(string.Format("n_talk_text_{0}", i + 1), out m_nTalkText[i]);
+            m_talkContent.TryGetValue(string.Format("next_talk_id_{0}", i + 1), out m_nextTalkId[i]);
+        }
     }
-
-    #endregion
-
-
-    #region 语句部分
 
     #endregion
 }
