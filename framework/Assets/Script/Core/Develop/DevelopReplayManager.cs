@@ -33,7 +33,6 @@ public class DevelopReplayManager
 
     public static bool s_isProfile = true;
 
-    //static List<Dictionary<string, string>> s_eventStreamSerialize;
     static List<IInputEventBase> s_eventStream;
 
     static List<int> s_randomList;
@@ -56,7 +55,7 @@ public class DevelopReplayManager
         if (isQuickLunch)
         {
             //复盘模式可以手动开关
-            if (!RecordManager.GetData(c_recordName).GetRecord(c_qucikLunchKey, true))
+            if (!RecordManager.Instance.GetData(c_recordName).GetRecord(c_qucikLunchKey, true))
             {
                 isQuickLunch = false;
             }
@@ -69,18 +68,18 @@ public class DevelopReplayManager
         else
         {
             Time.timeScale = 0;
-            ApplicationManager.s_OnApplicationOnGUI += ReplayMenuGUI;
+            ApplicationManager.m_onApplicationOnGUI += ReplayMenuGUI;
         }
     }
 
-    static void ChoseReplayMode(bool isReplay,string replayFileName = null)
+    private static void ChoseReplayMode(bool isReplay,string replayFileName = null)
     {
         s_isReplay = isReplay;
 
         if (s_isReplay)
         {
             LoadReplayFile(replayFileName);
-            ApplicationManager.s_OnApplicationUpdate += OnReplayUpdate;
+            ApplicationManager.m_onApplicationUpdate += OnReplayUpdate;
             GUIConsole.onGUICallback += ReplayModeGUI;
             GUIConsole.onGUICloseCallback += ProfileGUI;
 
@@ -96,7 +95,7 @@ public class DevelopReplayManager
         {
             Log.Init(true); //日志记录启动
 
-            ApplicationManager.s_OnApplicationUpdate += OnRecordUpdate;
+            ApplicationManager.m_onApplicationUpdate += OnRecordUpdate;
             //InputManager.OnEveryEventDispatch += OnEveryEventCallBack;
             GUIConsole.onGUICallback += RecordModeGUI;
             GUIConsole.onGUICloseCallback += ProfileGUI;
@@ -107,7 +106,7 @@ public class DevelopReplayManager
             OpenWriteFileStream(GetLogFileName());
         }
 
-        ApplicationManager.s_OnApplicationOnGUI -= ReplayMenuGUI;
+        ApplicationManager.m_onApplicationOnGUI -= ReplayMenuGUI;
 
         Time.timeScale = 1;
 
@@ -160,13 +159,6 @@ public class DevelopReplayManager
 
             if (!Directory.Exists(dirPath))
                 Directory.CreateDirectory(dirPath);
-
-
-            //Debug.Log("EventStream Name: " + PathTool.GetAbsolutePath(ResLoadLocation.Persistent,
-            //                             PathTool.GetRelativelyPath(
-            //                                            c_directoryName,
-            //                                            fileName,
-            //                                            c_randomExpandName)));
 
             m_RandomWriter = new StreamWriter(PathTool.GetAbsolutePath(ResLoadLocation.Persistent,
                                          PathTool.GetRelativelyPath(
@@ -567,18 +559,18 @@ public class DevelopReplayManager
     {
         SwitchProfileGUI();
 
-        if (RecordManager.GetData(c_recordName).GetRecord(c_qucikLunchKey, true))
+        if (RecordManager.Instance.GetData(c_recordName).GetRecord(c_qucikLunchKey, true))
         {
             if (GUILayout.Button("开启后台", GUILayout.ExpandHeight(true)))
             {
-                RecordManager.SaveRecord(c_recordName, c_qucikLunchKey, false);
+                RecordManager.Instance.SaveRecord(c_recordName, c_qucikLunchKey, false);
             }
         }
         else
         {
             if (GUILayout.Button("关闭后台", GUILayout.ExpandHeight(true)))
             {
-                RecordManager.SaveRecord(c_recordName, c_qucikLunchKey, true);
+                RecordManager.Instance.SaveRecord(c_recordName, c_qucikLunchKey, true);
             }
         }
     }

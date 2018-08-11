@@ -2,19 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class testWindow : UIWindowBase 
+public class testWindow : UIWindowBase
 {
+    public ReusingScrollRect m_resuingScrollRect;
 
     //UI的初始化请放在这里
-    public override void OnInit()
+    protected override void OnInit()
     {
-        AddOnClickListener("Button", onCLick);
-
-        AddOnClickListener("Button_open", open);
-        AddOnClickListener("Button_close", close);
-
-        GetReusingScrollRect("ScrollRect").Init(UIEventKey,"Image_item");
-
         List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
         for (int i = 0; i < 100; i++)
@@ -22,7 +16,7 @@ public class testWindow : UIWindowBase
             data.Add(new Dictionary<string, object>());
         }
 
-        GetReusingScrollRect("ScrollRect").SetData(data);
+        m_resuingScrollRect.SetData(data);
     }
 
     //请在这里写UI的更新逻辑，当该UI监听的事件触发时，该函数会被调用

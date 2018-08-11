@@ -168,10 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvas: {fileID: 0}
-  m_objectList:
-  - {fileID: 1582889742031826}
-  - {fileID: 1038981307635446}
   m_index: 0
+  m_nameText: {fileID: 114480009465611460}
+  m_costText: {fileID: 114800323215011670}
 --- !u!222 &222745973559852130
 CanvasRenderer:
   m_ObjectHideFlags: 1

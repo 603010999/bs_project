@@ -32,6 +32,7 @@ public class DataManager
         return File.Exists(fullPath);
     }
 
+    //获取某个配置的数据  参数为配置名称
     public static DataTable GetData(string DataName)
     {
         try
@@ -53,10 +54,8 @@ public class DataManager
             }
             else
             {
-                dataJson = ResourceIOTool.ReadStringByResource(
-                        PathTool.GetRelativelyPath(c_directoryName,
-                                                    DataName,
-                                                    c_expandName));
+                var path = PathTool.GetRelativelyPath(c_directoryName, DataName, c_expandName);
+                dataJson = ResourceIOTool.ReadStringByResource(path);
             }
 #else
             dataJson = ResourceManager.ReadTextFile(DataName);
@@ -73,6 +72,7 @@ public class DataManager
             s_dataCache.Add(DataName, data);
             return data;
         }
+        
         catch (Exception e)
         {
             throw new Exception("GetData Exception ->" + DataName + "<- : " + e.ToString());

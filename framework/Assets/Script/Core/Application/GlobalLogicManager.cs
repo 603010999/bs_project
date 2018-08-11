@@ -10,7 +10,7 @@ public class GlobalLogicManager
 
     public static void Init()
     {
-        ApplicationManager.s_OnApplicationUpdate += OnUpdate;
+        ApplicationManager.m_onApplicationUpdate += OnUpdate;
     }
 
     public static void InitLogic(string logicName)

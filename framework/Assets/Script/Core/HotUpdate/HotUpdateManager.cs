@@ -77,7 +77,7 @@ public class HotUpdateManager
                 (GetInt(StreamVersion[c_smallVersonKey]) > GetInt(m_versionConfig[c_smallVersonKey]))
                 )
             {
-                RecordManager.CleanRecord(c_HotUpdateRecordName);
+                RecordManager.Instance.CleanRecord(c_HotUpdateRecordName);
                 Init();
             }
         }
@@ -229,7 +229,7 @@ public class HotUpdateManager
 
         UpdateDateCallBack(HotUpdateStatusEnum.Updating, GetHotUpdateProgress(true, true,  GetDownLoadFileProgress(0)));
 
-        RecordTable hotupdateData = RecordManager.GetData(c_HotUpdateRecordName);
+        RecordTable hotupdateData = RecordManager.Instance.GetData(c_HotUpdateRecordName);
         
         for (int i = 0; i < s_downLoadList.Count; i++)
         {
@@ -259,7 +259,7 @@ public class HotUpdateManager
                     Debug.Log("下载成功！ " + downloadPath);
 
                     ResourceIOTool.CreateFile(Application.persistentDataPath + "/" + s_downLoadList[i].path +"." + AssetsBundleManager.c_AssetsBundlesExpandName, www.bytes);
-                    RecordManager.SaveRecord(c_HotUpdateRecordName, s_downLoadList[i].name, s_downLoadList[i].md5);
+                    RecordManager.Instance.SaveRecord(c_HotUpdateRecordName, s_downLoadList[i].name, s_downLoadList[i].md5);
 
                     UpdateDateCallBack(HotUpdateStatusEnum.Updating, GetHotUpdateProgress(true, true, GetDownLoadFileProgress(i)));
                 }
@@ -272,7 +272,7 @@ public class HotUpdateManager
         ResourceIOTool.WriteStringByFile(PathTool.GetAbsolutePath(ResLoadLocation.Persistent, ResourcesConfigManager.c_ManifestFileName + "." + ConfigManager.c_expandName), m_Md5FileCache);
 
         //从stream读取配置
-        RecordManager.SaveRecord(c_HotUpdateRecordName, c_useHotUpdateRecordKey, true);
+        RecordManager.Instance.SaveRecord(c_HotUpdateRecordName, c_useHotUpdateRecordKey, true);
 
         UpdateDateCallBack(HotUpdateStatusEnum.UpdateSuccess, 1);
 
@@ -373,9 +373,9 @@ public class HotUpdateManager
         }
         else
         {
-            ResLoadLocation type = ResLoadLocation.Streaming;
+            var type = ResLoadLocation.Streaming;
 
-            if (RecordManager.GetData(c_HotUpdateRecordName).GetRecord(c_useHotUpdateRecordKey, false))
+            if (RecordManager.Instance.GetData(c_HotUpdateRecordName).GetRecord(c_useHotUpdateRecordKey, false))
             {
                 type = ResLoadLocation.Persistent;
                 dataJson = ResourceIOTool.ReadStringByFile(

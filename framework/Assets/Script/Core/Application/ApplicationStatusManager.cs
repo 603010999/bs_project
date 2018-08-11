@@ -8,25 +8,36 @@ public class ApplicationStatusManager
     /// <summary>
     /// 当前程序在哪个状态
     /// </summary>
-    public static IApplicationStatus s_currentAppStatus;
+    public static IApplicationStatus m_currentAppStatus;
 
     //可切换状态
     static Dictionary<string,IApplicationStatus> s_status = new Dictionary<string,IApplicationStatus>();
 
     public static void Init()
     {
-        ApplicationManager.s_OnApplicationUpdate += AppUpdate;
-        ApplicationManager.s_OnApplicationOnGUI += AppOnGUI;
+        ApplicationManager.m_onApplicationUpdate += AppUpdate;
+        ApplicationManager.m_onApplicationOnGUI += AppOnGUI;
     }
 
     private static void AppOnGUI()
     {
-        if (s_currentAppStatus != null)
-            s_currentAppStatus.OnGUI();
+        if (m_currentAppStatus != null)
+            m_currentAppStatus.OnGUI();
+    }
+    
+    /// <summary>
+    /// 应用程序每帧调用
+    /// </summary>
+    private static void AppUpdate()
+    {
+        if(m_currentAppStatus != null)
+        {
+            m_currentAppStatus.OnUpdate();
+        }
     }
 
     /// <summary>
-    /// 切换游戏状态
+    /// 切换游戏正常状态
     /// </summary>
     /// <param name="l_appStatus"></param>
     public static void EnterStatus<T>() where T:IApplicationStatus
@@ -36,17 +47,17 @@ public class ApplicationStatusManager
 
     public static void EnterStatus(string statusName)
     {
-        if (s_currentAppStatus != null)
+        if (m_currentAppStatus != null)
         {
-            s_currentAppStatus.CloseAllUI();
-            s_currentAppStatus.OnExitStatus();
+            m_currentAppStatus.CloseAllUI();
+            m_currentAppStatus.OnExitStatus();
         }
 
-        s_currentAppStatus = GetStatus(statusName);
+        m_currentAppStatus = GetStatus(statusName);
 
-        ApplicationManager.Instance.StartCoroutine(s_currentAppStatus.InChangeScene(() =>
+        ApplicationManager.Instance.StartCoroutine(m_currentAppStatus.InChangeScene(() =>
         {
-            s_currentAppStatus.OnEnterStatus();
+            m_currentAppStatus.OnEnterStatus();
         }));
     }
 
@@ -55,7 +66,7 @@ public class ApplicationStatusManager
         return (T)GetStatus(typeof(T).Name);
     }
 
-    public static IApplicationStatus GetStatus(string statusName)
+    private static IApplicationStatus GetStatus(string statusName)
     {
         if (s_status.ContainsKey(statusName))
         {
@@ -68,18 +79,7 @@ public class ApplicationStatusManager
 
             return statusTmp;
         }
-    }
-
-    /// <summary>
-    /// 应用程序每帧调用
-    /// </summary>
-    public static void AppUpdate()
-    {
-        if(s_currentAppStatus != null)
-        {
-            s_currentAppStatus.OnUpdate();
-        }
-    }
+    }    
 
     /// <summary>
     /// 测试模式，流程入口
@@ -92,17 +92,17 @@ public class ApplicationStatusManager
 
     public static void EnterTestModel(string statusName)
     {
-        if (s_currentAppStatus != null)
+        if (m_currentAppStatus != null)
         {
-            s_currentAppStatus.CloseAllUI();
-            s_currentAppStatus.OnExitStatus();
+            m_currentAppStatus.CloseAllUI();
+            m_currentAppStatus.OnExitStatus();
         }
 
-        s_currentAppStatus = GetStatus(statusName);
+        m_currentAppStatus = GetStatus(statusName);
 
-        ApplicationManager.Instance.StartCoroutine(s_currentAppStatus.InChangeScene(()=>{
-            s_currentAppStatus.EnterStatusTestData();
-            s_currentAppStatus.OnEnterStatus();
+        ApplicationManager.Instance.StartCoroutine(m_currentAppStatus.InChangeScene(()=>{
+            m_currentAppStatus.EnterStatusTestData();
+            m_currentAppStatus.OnEnterStatus();
         }));
     }
 }

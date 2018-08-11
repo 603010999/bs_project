@@ -10,7 +10,7 @@ public class Timer
 
     public static void Init()
     {
-        ApplicationManager.s_OnApplicationUpdate += Update;
+        ApplicationManager.m_onApplicationUpdate += Update;
     }
 
 	static void Update () 

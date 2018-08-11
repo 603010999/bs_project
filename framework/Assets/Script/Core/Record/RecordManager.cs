@@ -4,40 +4,41 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 
-public class RecordManager 
+public class RecordManager:Singleton<RecordManager>
 {
-    public const string c_directoryName = "Record";
-    public const string c_expandName    = "json";
+    //文件夹名
+    public const string m_directoryName = "Record";
+    
+    //后缀名
+    public const string m_expandName    = "json";
 
     /// <summary>
     /// 记录缓存
     /// </summary>
-    static Dictionary<string, RecordTable> s_RecordCache = new Dictionary<string, RecordTable>();
+    static Dictionary<string, RecordTable> m_recordCache = new Dictionary<string, RecordTable>();
 
-    public static RecordTable GetData(string RecordName)
+    //获取数据
+    public RecordTable GetData(string recordName)
     {
-        if (s_RecordCache.ContainsKey(RecordName))
+        if (m_recordCache.ContainsKey(recordName))
         {
-            return s_RecordCache[RecordName];
+            return m_recordCache[recordName];
         }
 
         RecordTable record = null;
 
-        string dataJson = "";
+        var dataJson = string.Empty;
 
-        string fullPath = PathTool.GetAbsolutePath(ResLoadLocation.Persistent,
-                PathTool.GetRelativelyPath(c_directoryName,
-                                            RecordName,
-                                            c_expandName));
+        var path = PathTool.GetRelativelyPath(m_directoryName, recordName, m_expandName);
+
+        var fullPath = PathTool.GetAbsolutePath(ResLoadLocation.Persistent, path);
         if (File.Exists(fullPath))
         {
             //记录永远从沙盒路径读取
             dataJson = ResourceIOTool.ReadStringByFile(fullPath);
         }
 
-        //Debug.Log(RecordName + " dataJson: " + dataJson);
-
-        if (dataJson == "")
+        if (string.IsNullOrEmpty(dataJson))
         {
             record = new RecordTable();
         }
@@ -46,20 +47,20 @@ public class RecordManager
             record = RecordTable.Analysis(dataJson);
         }
 
-        s_RecordCache.Add(RecordName, record);
+        m_recordCache.Add(recordName, record);
 
         return record;
     }
 
-    public static void SaveData(string RecordName, RecordTable data)
+    public void SaveData(string RecordName, RecordTable data)
     {
 #if !UNITY_WEBGL
 
         ResourceIOTool.WriteStringByFile(
             PathTool.GetAbsolutePath(ResLoadLocation.Persistent,
-                PathTool.GetRelativelyPath(c_directoryName,
+                PathTool.GetRelativelyPath(m_directoryName,
                                                     RecordName,
-                                                    c_expandName)),
+                                                    m_expandName)),
                 RecordTable.Serialize(data));
 
 #if UNITY_EDITOR
@@ -71,71 +72,71 @@ public class RecordManager
 #endif
     }
 
-    public static void CleanRecord(string recordName)
+    public void CleanRecord(string recordName)
     {
-        RecordTable table = GetData(recordName);
+        var table = GetData(recordName);
         table.Clear();
         SaveData(recordName, table);
     }
 
     public static void CleanAllRecord()
     {
-        FileTool.DeleteDirectory(Application.persistentDataPath + "/" + RecordManager.c_directoryName);
+        FileTool.DeleteDirectory(Application.persistentDataPath + "/" + RecordManager.m_directoryName);
         CleanCache();
     }
 
     public static void CleanCache()
     {
-        s_RecordCache.Clear();
+        m_recordCache.Clear();
     }
 
 #region 保存封装
 
-    public static void SaveRecord(string RecordName, string key, string value)
+    public void SaveRecord(string RecordName, string key, string value)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
         table.SetRecord(key,value);
         SaveData(RecordName, table);
     }
 
-    public static void SaveRecord(string RecordName, string key, int value)
+    public void SaveRecord(string RecordName, string key, int value)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
         table.SetRecord(key, value);
         SaveData(RecordName, table);
     }
 
-    public static void SaveRecord(string RecordName, string key, bool value)
+    public void SaveRecord(string RecordName, string key, bool value)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
         table.SetRecord(key, value);
         SaveData(RecordName, table);
     }
 
-    public static void SaveRecord(string RecordName, string key, float value)
+    public void SaveRecord(string RecordName, string key, float value)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
         table.SetRecord(key, value);
         SaveData(RecordName, table);
     }
 
-    public static void SaveRecord(string RecordName, string key, Vector2 value)
+    public void SaveRecord(string RecordName, string key, Vector2 value)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
         table.SetRecord(key, value);
         SaveData(RecordName, table);
     }
 
-    public static void SaveRecord(string RecordName, string key, Vector3 value)
+    public void SaveRecord(string RecordName, string key, Vector3 value)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
         table.SetRecord(key, value);
         SaveData(RecordName, table);
     }
 
-    public static void SaveRecord(string RecordName, string key, Color value)
+    public void SaveRecord(string RecordName, string key, Color value)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
         table.SetRecord(key, value);
         SaveData(RecordName, table);
     }
@@ -145,51 +146,51 @@ public class RecordManager
 
     #region 取值封装
 
-    public static int GetIntRecord(string RecordName, string key,int defaultValue)
+    public int GetIntRecord(string RecordName, string key,int defaultValue)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public static string GetStringRecord(string RecordName, string key, string defaultValue)
+    public string GetStringRecord(string RecordName, string key, string defaultValue)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public static bool GetBoolRecord(string RecordName, string key, bool defaultValue)
+    public bool GetBoolRecord(string RecordName, string key, bool defaultValue)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public static float GetFloatRecord(string RecordName, string key, float defaultValue)
+    public float GetFloatRecord(string RecordName, string key, float defaultValue)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public static Vector2 GetVector2Record(string RecordName, string key, Vector2 defaultValue)
+    public Vector2 GetVector2Record(string RecordName, string key, Vector2 defaultValue)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public static Vector3 GetVector3Record(string RecordName, string key, Vector3 defaultValue)
+    public Vector3 GetVector3Record(string RecordName, string key, Vector3 defaultValue)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public static Color GetColorRecord(string RecordName, string key, Color defaultValue)
+    public Color GetColorRecord(string RecordName, string key, Color defaultValue)
     {
-        RecordTable table = GetData(RecordName);
+        var table = GetData(RecordName);
 
         return table.GetRecord(key, defaultValue);
     }

@@ -28,7 +28,7 @@ public static class UIModelShowTool  {
         root.transform.localPosition = new Vector3(0, 0, 100);
         root.transform.eulerAngles = new Vector3(0, 180, 0);
 
-        GameObject obj = GameObjectManager.CreateGameObjectByPool(prefabName);
+        var obj = GameObjectManager.Instance.CreatePoolObject(prefabName);
         obj.transform.SetParent(root.transform);
         obj.transform.localPosition = new Vector3(0, 0, 0);
         obj.transform.localEulerAngles = Vector3.zero;

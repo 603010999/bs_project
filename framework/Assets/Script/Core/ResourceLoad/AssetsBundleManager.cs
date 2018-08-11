@@ -186,7 +186,7 @@ public static class AssetsBundleManager
         else
         {
 #if !UNITY_WEBGL
-            if (MemoryManager.s_allowDynamicLoad)
+            if (MemoryManager.m_allowDynamicLoad)
             {
                 return LoadBundle(name).mainAsset;
             }
@@ -209,7 +209,7 @@ public static class AssetsBundleManager
         else
         {
 #if !UNITY_WEBGL
-            if (MemoryManager.s_allowDynamicLoad)
+            if (MemoryManager.m_allowDynamicLoad)
             {
                 return (T)LoadBundle(name).Load<T>();
             }
@@ -446,8 +446,10 @@ public static class AssetsBundleManager
     {
 #if !UNITY_WEBGL
 
-        bool isLoadByPersistent = RecordManager.GetData(HotUpdateManager.c_HotUpdateRecordName).GetRecord(config.name, "null") =="null" ? false:true;
-        ResLoadLocation loadType = ResLoadLocation.Streaming;
+        var isLoadByPersistent = RecordManager.Instance.GetData(HotUpdateManager.c_HotUpdateRecordName)
+                                      .GetRecord(config.name, "null") != "null";
+        
+        var loadType = ResLoadLocation.Streaming;
 
         //加载路径由 加载根目录 和 相对路径 合并而成
         //加载根目录由配置决定

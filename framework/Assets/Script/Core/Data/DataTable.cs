@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System;
 using System.Text;
 
+//数据表 key,data 串
 public class DataTable : Dictionary<string, SingleData>
 {
+    //分隔符
     const char c_split   = '\t';
+    
+    //换行
     const string c_newline = "\r\n";
 
     const string c_defaultValueTableTitle = "default";
@@ -582,6 +586,8 @@ public class DataTable : Dictionary<string, SingleData>
         }
     }
 }
+
+//单条数据
 public class SingleData : Dictionary<string, string>
 {
     public DataTable data;

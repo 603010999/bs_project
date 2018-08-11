@@ -4,18 +4,14 @@ using System.Collections.Generic;
 
 public class ShopWindow : UIWindowBase 
 {
-    ReusingScrollRect m_ShopItem;
+    public ReusingScrollRect m_ShopItem;
 
     //UI的初始化请放在这里
     public override void OnOpen()
     {
-        m_ShopItem = GetReusingScrollRect("Items");
-
         m_ShopItem.Init(UIEventKey, "ShopWindow_Item");
 
         m_ShopItem.SetData(GetShopData());
-
-        AddOnClickListener("Button_Close", OnClickCLose);
     }
 
     //请在这里写UI的更新逻辑，当该UI监听的事件触发时，该函数会被调用
@@ -52,7 +48,7 @@ public class ShopWindow : UIWindowBase
 
     List<Dictionary<string,object>> GetShopData()
     {
-        List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
+        var data = new List<Dictionary<string, object>>();
 
         DataTable itemData = DataManager.GetData("item");
 
@@ -69,7 +65,7 @@ public class ShopWindow : UIWindowBase
         return data;
     }
 
-    void OnClickCLose(InputUIOnClickEvent e)
+    public void OnClickClose()
     {
         UIManager.CloseUIWindow(this);
     }

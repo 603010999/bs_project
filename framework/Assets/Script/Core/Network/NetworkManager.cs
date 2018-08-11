@@ -33,8 +33,8 @@ public class NetworkManager
         s_network.m_messageCallBack = ReceviceMeaasge;
         s_network.m_ConnectStatusCallback = ConnectStatusChange;
 
-        ApplicationManager.s_OnApplicationUpdate += Update;
-        ApplicationManager.s_OnApplicationQuit += DisConnect;
+        ApplicationManager.m_onApplicationUpdate += Update;
+        ApplicationManager.m_onApplicationQuit += DisConnect;
     }
 
     public static void Init(string networkInterfaceName)
@@ -50,8 +50,8 @@ public class NetworkManager
         s_network.m_messageCallBack = ReceviceMeaasge;
         s_network.m_ConnectStatusCallback = ConnectStatusChange;
 
-        ApplicationManager.s_OnApplicationUpdate += Update;
-        ApplicationManager.s_OnApplicationQuit += DisConnect;
+        ApplicationManager.m_onApplicationUpdate += Update;
+        ApplicationManager.m_onApplicationQuit += DisConnect;
     }
 
     public static void Dispose()
@@ -63,7 +63,7 @@ public class NetworkManager
         s_network.m_ConnectStatusCallback = null;
         s_network = null;
 
-        ApplicationManager.s_OnApplicationUpdate -= Update;
+        ApplicationManager.m_onApplicationUpdate -= Update;
     }
 
     public static void SetServer(string IP, int port)

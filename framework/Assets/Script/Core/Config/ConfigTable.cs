@@ -3,6 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+//配置数据类型
+public enum FieldType
+{
+    String,
+    Bool,
+    Int,
+    Float,
+    Vector2,
+    Vector3,
+    Color,
+    Enum,
+    StringArray,
+}
+
+//配置表
 public class ConfigTable :  Dictionary<string, SingleData> 
 {
 
@@ -237,17 +252,4 @@ public class SingleField
     }
 
     #endregion
-}
-
-public enum FieldType
-{
-    String,
-    Bool,
-    Int,
-    Float,
-    Vector2,
-    Vector3,
-    Color,
-    Enum,
-    StringArray,
 }

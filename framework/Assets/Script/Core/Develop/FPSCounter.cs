@@ -19,7 +19,7 @@ using System.Collections;
         {
             if (ApplicationManager.AppMode != AppMode.Release)
             {
-                ApplicationManager.s_OnApplicationUpdate += Update;
+                ApplicationManager.m_onApplicationUpdate += Update;
                 DevelopReplayManager.s_ProfileGUICallBack += OnGUI;
             }
         }

@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameWindow : UIWindowBase 
+public class GameWindow : UIWindowBase
 {
+    public GameObject m_goTextTitle;
 
+    public GameObject m_goReturnBtn;
+    
+    
     //UI的初始化请放在这里
     public override void OnOpen()
     {
-        AddOnClickListener("Button_Return", OnClickReturnMainMenu);
+        
     }
 
     //请在这里写UI的更新逻辑，当该UI监听的事件触发时，该函数会被调用
@@ -26,8 +30,8 @@ public class GameWindow : UIWindowBase
             StartCoroutine(base.EnterAnim(l_animComplete, l_callBack, objs));
         });
 
-        AnimSystem.UguiMove(GetGameObject("Text_Title"), new Vector3(0, 50, 0), new Vector3(0, -50, 0));
-        AnimSystem.UguiMove(GetGameObject("Button_Return"), new Vector3(0, -70, 0), new Vector3(0, 70, 0));
+        AnimSystem.UguiMove(m_goTextTitle, new Vector3(0, 50, 0), new Vector3(0, -50, 0));
+        AnimSystem.UguiMove(m_goReturnBtn, new Vector3(0, -70, 0), new Vector3(0, 70, 0));
 
         yield return new WaitForEndOfFrame();
     }
@@ -40,13 +44,13 @@ public class GameWindow : UIWindowBase
             StartCoroutine(base.ExitAnim(l_animComplete, l_callBack, objs));
         });
 
-        AnimSystem.UguiMove(GetGameObject("Text_Title"), new Vector3(0, -50, 0), new Vector3(0, 50, 0));
-        AnimSystem.UguiMove(GetGameObject("Button_Return"), new Vector3(0, 70, 0), new Vector3(0, -70, 0));
+        AnimSystem.UguiMove(m_goTextTitle, new Vector3(0, -50, 0), new Vector3(0, 50, 0));
+        AnimSystem.UguiMove(m_goReturnBtn, new Vector3(0, 70, 0), new Vector3(0, -70, 0));
 
         yield return new WaitForEndOfFrame();
     }
 
-    void OnClickReturnMainMenu(InputUIOnClickEvent e)
+    public void OnClickReturnMainMenu()
     {
         ApplicationStatusManager.EnterStatus<DemoStatus>();
     }

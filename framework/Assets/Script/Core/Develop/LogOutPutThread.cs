@@ -21,7 +21,7 @@ public class LogOutPutThread
 #if !(UNITY_WEBGL && !UNITY_EDITOR)
         try
         {
-            ApplicationManager.s_OnApplicationQuit += Close;
+            ApplicationManager.m_onApplicationQuit += Close;
 
             string prefix = Application.productName;
 

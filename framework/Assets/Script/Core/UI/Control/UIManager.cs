@@ -4,17 +4,91 @@ using System.Collections.Generic;
 using System;
 using System.Text.RegularExpressions;
 
+/// <summary>
+/// UI回调
+/// </summary>
+/// <param name="objs"></param>
+public delegate void UICallBack(UIWindowBase UI, params object[] objs);
+public delegate void UIAnimCallBack(UIWindowBase UIbase, UICallBack callBack, params object[] objs);
+
+//UI类型
+public enum UIType
+{
+    //游戏内部UI，最底层  一般是血条，飘字浮动UI
+    GameUI,
+    
+    //固定UI，一般是常驻的UI，例如主界面
+    Fixed,
+    
+    //普通UI，普通的逻辑UI
+    Normal,
+    
+    //略高于普通UI，一般是显示金钱的数值之类
+    TopBar,
+    
+    //最高层弹窗
+    PopUp,
+}
+
+//UI事件
+public enum UIEvent
+{
+    //开
+    OnOpen,
+    
+    //关
+    OnClose,
+    
+    //隐藏
+    OnHide,
+    
+    //显示
+    OnShow,
+
+    //初始化
+    OnInit,
+    
+    //销毁
+    OnDestroy,
+
+    //刷新
+    OnRefresh,
+
+    //开始进入动画
+    OnStartEnterAnim,
+    
+    //完成进入动画
+    OnCompleteEnterAnim,
+    
+    //开始退出动画
+    OnStartExitAnim,
+    
+    //完成退出动画
+    OnCompleteExitAnim,
+}
+
+
 [RequireComponent(typeof(UILayerManager))]
 [RequireComponent(typeof(UIAnimManager))]
 public class UIManager : MonoBehaviour
 {
-    public static GameObject s_UIManagerGo;
-    public static UILayerManager s_UILayerManager; //UI层级管理器
-    public static UIAnimManager s_UIAnimManager;   //UI动画管理器
-    public static Camera s_UIcamera;               //UICamera
+    //管理器实例
+    public static GameObject m_instance;
+    
+    //UI层级管理器
+    public static UILayerManager m_uiLayerManager; 
+    
+    //UI动画管理器
+    public static UIAnimManager m_uiAnimManager;   
+    
+    //UICamera
+    public static Camera m_uiCamera;              
 
-    static public Dictionary<string, List<UIWindowBase>> s_UIs     = new Dictionary<string, List<UIWindowBase>>(); //打开的UI
-    static public Dictionary<string, List<UIWindowBase>> s_hideUIs = new Dictionary<string, List<UIWindowBase>>(); //隐藏的UI
+    //打开的UI
+    static public Dictionary<string, List<UIWindowBase>> m_curShowUIs = new Dictionary<string, List<UIWindowBase>>();
+    
+    //隐藏的UI
+    static public Dictionary<string, List<UIWindowBase>> m_hideUIs = new Dictionary<string, List<UIWindowBase>>();
 
     #region 初始化
 
@@ -24,14 +98,14 @@ public class UIManager : MonoBehaviour
 
         if (instance == null)
         {
-            instance = GameObjectManager.CreateGameObject("UIManager");
+            instance = GameObjectManager.Instance.CreatePoolObject("UIManager");
         }
 
-        s_UIManagerGo = instance;
+        m_instance = instance;
 
-        s_UILayerManager = instance.GetComponent<UILayerManager>();
-        s_UIAnimManager  = instance.GetComponent<UIAnimManager>();
-        s_UIcamera       = instance.GetComponentInChildren<Camera>();
+        m_uiLayerManager = instance.GetComponent<UILayerManager>();
+        m_uiAnimManager  = instance.GetComponent<UIAnimManager>();
+        m_uiCamera       = instance.GetComponentInChildren<Camera>();
 
         DontDestroyOnLoad(instance);
     }
@@ -43,9 +117,7 @@ public class UIManager : MonoBehaviour
 
         if (instance == null)
         {
-            GameObjectManager.CreateGameObjectByPoolAsync("UIManager",(obj)=> {
-                SetUIManager(obj);
-            });
+            GameObjectManager.Instance.CreatePoolObjectAsync("UIManager", SetUIManager);
         }
         else
         {
@@ -55,11 +127,11 @@ public class UIManager : MonoBehaviour
 
     static void SetUIManager(GameObject instance)
     {
-        s_UIManagerGo = instance;
+        m_instance = instance;
 
-        s_UILayerManager = instance.GetComponent<UILayerManager>();
-        s_UIAnimManager = instance.GetComponent<UIAnimManager>();
-        s_UIcamera = instance.GetComponentInChildren<Camera>();
+        m_uiLayerManager = instance.GetComponent<UILayerManager>();
+        m_uiAnimManager = instance.GetComponent<UIAnimManager>();
+        m_uiCamera = instance.GetComponentInChildren<Camera>();
 
         DontDestroyOnLoad(instance);
     }
@@ -69,7 +141,7 @@ public class UIManager : MonoBehaviour
 #region UI的打开与关闭方法
 
     /// <summary>
-    /// 创建UI,如果不打开则存放在Hide列表中
+    /// 创建UI,存放在Hide列表中
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
@@ -77,25 +149,46 @@ public class UIManager : MonoBehaviour
     {
         return (T)CreateUIWindow(typeof(T).Name);
     }
+    
+    /// <summary>
+    /// 创建UI,存放在Hide列表中
+    /// </summary>
+    /// <param name="UIName"></param>
+    /// <returns></returns>
     public static UIWindowBase CreateUIWindow(string UIName)
     {
-        GameObject UItmp = GameObjectManager.CreateGameObject(UIName, s_UIManagerGo);
-        UIWindowBase UIbase = UItmp.GetComponent<UIWindowBase>();
-        UISystemEvent.Dispatch(UIbase, UIEvent.OnInit);  //派发OnInit事件
-        try{
-            UIbase.Init(GetUIID(UIName));
+        var uiTmp = GameObjectManager.Instance.CreatePoolObject(UIName, m_instance);
+        var uiBase = uiTmp.GetComponent<UIWindowBase>();
+        
+        //派发OnInit事件
+        UISystemEvent.Dispatch(uiBase, UIEvent.OnInit);
+        
+        try
+        {
+            uiBase.Init(GetUIID(UIName));
         }
         catch(Exception e)
         {
-            Debug.LogError("OnInit Exception: " + e.ToString());}
+            Debug.LogError("OnInit Exception: " + e.ToString());
+        }
 
-        AddHideUI(UIbase);
+        AddHideUI(uiBase);
 
-        s_UILayerManager.SetLayer(UIbase);      //设置层级
+        m_uiLayerManager.SetLayer(uiBase);      //设置层级
 
-        return UIbase;
+        return uiBase;
     }
 
+    /// <summary>
+    /// 打开UI
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T OpenUIWindow<T>() where T : UIWindowBase
+    {
+        return (T)OpenUIWindow(typeof(T).Name);
+    }
+    
     /// <summary>
     /// 打开UI
     /// </summary>
@@ -105,33 +198,38 @@ public class UIManager : MonoBehaviour
     /// <returns>返回打开的UI</returns>
     public static UIWindowBase OpenUIWindow(string UIName, UICallBack callback = null, params object[] objs)
     {
-        UIWindowBase UIbase = GetHideUI(UIName);
+        //从隐藏UI中取出
+        var uiBase = GetHideUI(UIName);
 
-        if (UIbase == null)
+        if (uiBase == null)
         {
-            UIbase = CreateUIWindow(UIName);
+            uiBase = CreateUIWindow(UIName);
         }
 
-        RemoveHideUI(UIbase);
-        AddUI(UIbase);
+        //从隐藏UI中删除
+        RemoveHideUI(uiBase);
+        
+        //加入显示中UI
+        AddUI(uiBase);
 
-        UISystemEvent.Dispatch(UIbase, UIEvent.OnOpen);  //派发OnOpen事件
+        //派发OnOpen事件
+        UISystemEvent.Dispatch(uiBase, UIEvent.OnOpen);  
         try
         {
-            UIbase.OnOpen();
+            uiBase.OnOpen();
         }
         catch (Exception e)
         {
             Debug.LogError(UIName + " OnOpen Exception: " + e.ToString());
         }
 
-        s_UILayerManager.SetLayer(UIbase);      //设置层级
-        s_UIAnimManager.StartEnterAnim(UIbase, callback, objs); //播放动画
-        return UIbase;
-    }
-    public static T OpenUIWindow<T>() where T : UIWindowBase
-    {
-        return (T)OpenUIWindow(typeof(T).Name);
+        //设置层级
+        m_uiLayerManager.SetLayer(uiBase);
+        
+        //播放动画
+        m_uiAnimManager.StartEnterAnim(uiBase, callback, objs); 
+        
+        return uiBase;
     }
 
     /// <summary>
@@ -143,10 +241,13 @@ public class UIManager : MonoBehaviour
     /// <param name="objs">回调传参</param>
     public static void CloseUIWindow(UIWindowBase UI,bool isPlayAnim = true ,UICallBack callback = null, params object[] objs)
     {
-        RemoveUI(UI);        //移除UI引用
-        UI.RemoveAllListener();
-        s_UILayerManager.RemoveUI(UI);
+        //从显示UI中移除UI
+        RemoveUI(UI); 
+        
+        //层级管理
+        m_uiLayerManager.RemoveUI(UI);
 
+        //是否有退出动画
         if (isPlayAnim)
         {
             //动画播放完毕删除UI
@@ -159,16 +260,24 @@ public class UIManager : MonoBehaviour
                 callback = CloseUIWindowCallBack;
             }
 
-            s_UIAnimManager.StartExitAnim(UI, callback, objs);
+            m_uiAnimManager.StartExitAnim(UI, callback, objs);
         }
         else
         {
             CloseUIWindowCallBack(UI, objs);
         }
     }
-    static void CloseUIWindowCallBack(UIWindowBase UI, params object[] objs)
+    
+    /// <summary>
+    /// 关闭UI回调，最终加入隐藏UI中
+    /// </summary>
+    /// <param name="UI"></param>
+    /// <param name="objs"></param>
+    private static void CloseUIWindowCallBack(UIWindowBase UI, params object[] objs)
     {
-        UISystemEvent.Dispatch(UI, UIEvent.OnClose);  //派发OnClose事件
+        //派发OnClose事件
+        UISystemEvent.Dispatch(UI, UIEvent.OnClose);
+        
         try
         {
             UI.OnClose();
@@ -180,9 +289,11 @@ public class UIManager : MonoBehaviour
 
         AddHideUI(UI);
     }
+    
+    //关闭UI
     public static void CloseUIWindow(string UIname, bool isPlayAnim = true, UICallBack callback = null, params object[] objs)
     {
-        UIWindowBase ui = GetUI(UIname);
+        var ui = GetUI(UIname);
 
         if (ui == null)
         {
@@ -194,17 +305,28 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //关闭UI窗口
     public static void CloseUIWindow<T>(bool isPlayAnim = true, UICallBack callback = null, params object[] objs) where T : UIWindowBase
     {
         CloseUIWindow(typeof(T).Name, isPlayAnim,callback, objs);
     }
 
+    /// <summary>
+    /// 显示某个UI
+    /// </summary>
+    /// <param name="UIname"></param>
+    /// <returns></returns>
     public static UIWindowBase ShowUI(string UIname)
     {
         UIWindowBase ui = GetUI(UIname);
         return ShowUI(ui);
     }
 
+    /// <summary>
+    /// 显示某个UI
+    /// </summary>
+    /// <param name="ui"></param>
+    /// <returns></returns>
     public static UIWindowBase ShowUI(UIWindowBase ui)
     {
         UISystemEvent.Dispatch(ui, UIEvent.OnShow);  //派发OnShow事件
@@ -221,12 +343,22 @@ public class UIManager : MonoBehaviour
         return ui;
     }
 
+    /// <summary>
+    /// 隐藏某个UI
+    /// </summary>
+    /// <param name="UIname"></param>
+    /// <returns></returns>
     public static UIWindowBase HideUI(string UIname)
     {
-        UIWindowBase ui = GetUI(UIname);
+        var ui = GetUI(UIname);
         return HideUI(ui);
     }
 
+    /// <summary>
+    /// 隐藏某个UI
+    /// </summary>
+    /// <param name="ui"></param>
+    /// <returns></returns>
     public static UIWindowBase HideUI(UIWindowBase ui)
     {
         UISystemEvent.Dispatch(ui, UIEvent.OnHide);  //派发OnHide事件
@@ -244,12 +376,16 @@ public class UIManager : MonoBehaviour
         return ui;
     }
 
+    /// <summary>
+    /// 隐藏除了参数UI外的其他所有显示中的UI
+    /// </summary>
+    /// <param name="UIName"></param>
     public static void HideOtherUI(string UIName)
     {
-        List<string> keys = new List<string>(s_UIs.Keys);
+        var keys = new List<string>(m_curShowUIs.Keys);
         for (int i = 0; i < keys.Count; i++)
         {
-            List<UIWindowBase> list = s_UIs[keys[i]];
+            var list = m_curShowUIs[keys[i]];
             for (int j = 0; j < list.Count; j++)
             {
                 if (list[j].UIName != UIName)
@@ -262,10 +398,10 @@ public class UIManager : MonoBehaviour
 
     public static void ShowOtherUI(string UIName)
     {
-        List<string> keys = new List<string>(s_UIs.Keys);
+        var keys = new List<string>(m_curShowUIs.Keys);
         for (int i = 0; i < keys.Count; i++)
         {
-            List<UIWindowBase> list = s_UIs[keys[i]];
+            List<UIWindowBase> list = m_curShowUIs[keys[i]];
             for (int j = 0; j < list.Count; j++)
             {
                 if (list[j].UIName != UIName)
@@ -281,10 +417,10 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public static void CloseAllUI(bool isPlayerAnim = false)
     {
-        List<string> keys = new List<string>(s_UIs.Keys);
+        List<string> keys = new List<string>(m_curShowUIs.Keys);
         for (int i = 0; i < keys.Count; i++)
         {
-            List<UIWindowBase> list = s_UIs[keys[i]];
+            List<UIWindowBase> list = m_curShowUIs[keys[i]];
             for(int j = 0;j<list.Count;j++)
             {
                 CloseUIWindow(list[i], isPlayerAnim);
@@ -357,7 +493,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public static void DestroyAllActiveUI()
     {
-        foreach (List<UIWindowBase> uis in s_UIs.Values)
+        foreach (List<UIWindowBase> uis in m_curShowUIs.Values)
         {
             for (int i = 0; i < uis.Count; i++)
             {
@@ -374,23 +510,34 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        s_UIs.Clear();
+        m_curShowUIs.Clear();
     }
-
+    
+    /// <summary>
+    /// 获取UI实例
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public static T GetUI<T>() where T : UIWindowBase
     {
         return (T)GetUI(typeof(T).Name);
     }
+    
+    /// <summary>
+    /// 获取UI实例
+    /// </summary>
+    /// <param name="UIname"></param>
+    /// <returns></returns>
     public static UIWindowBase GetUI(string UIname)
     {
-        if (!s_UIs.ContainsKey(UIname))
+        if (!m_curShowUIs.ContainsKey(UIname))
         {
             //Debug.Log("!ContainsKey " + l_UIname);
             return null;
         }
         else
         {
-            if (s_UIs[UIname].Count == 0)
+            if (m_curShowUIs[UIname].Count == 0)
             {
                 //Debug.Log("s_UIs[UIname].Count == 0");
                 return null;
@@ -398,119 +545,89 @@ public class UIManager : MonoBehaviour
             else
             {
                 //默认返回最后创建的那一个
-                return s_UIs[UIname][s_UIs[UIname].Count - 1];
+                return m_curShowUIs[UIname][m_curShowUIs[UIname].Count - 1];
             }
         }
     }
 
-    public static UIBase GetUIBaseByEventKey(string eventKey)
+    /// <summary>
+    /// 是否存在UI
+    /// </summary>
+    /// <param name="UI"></param>
+    /// <returns></returns>
+    private static bool GetIsExits(UIWindowBase UI)
     {
-        string UIkey = eventKey.Split('.')[0];
-        string[] keyArray = UIkey.Split('_');
-
-        string uiEventKey = "";
-
-        UIBase uiTmp = null;
-        for (int i = 0; i < keyArray.Length; i++)
-        {
-            if(i == 0)
-            {
-                uiEventKey = keyArray[0];
-                uiTmp = GetUIWindowByEventKey(uiEventKey);
-            }
-            else
-            {
-                uiEventKey += "_" + keyArray[i];
-                uiTmp = uiTmp.GetItemByKey(uiEventKey);
-            }
-
-            Debug.Log("uiEventKey " + uiEventKey);
-        }
-
-        return uiTmp;
-    }
-
-    static Regex uiKey = new Regex(@"(\S+)\d+");
-    static UIWindowBase GetUIWindowByEventKey(string eventKey)
-    {
-        string UIname = uiKey.Match(eventKey).Groups[1].Value;
-
-        if (!s_UIs.ContainsKey(UIname))
-        {
-            throw new Exception("UIManager: GetUIWindowByEventKey error dont find UI name: ->" + eventKey + "<-  " + UIname);
-        }
-
-        List<UIWindowBase> list = s_UIs[UIname];
-        for (int i = 0; i < list.Count; i++)
-        {
-            if(list[i].UIEventKey == eventKey)
-            {
-                return list[i];
-            }
-        }
-
-        throw new Exception("UIManager: GetUIWindowByEventKey error dont find UI name: ->" + eventKey + "<-  " + UIname);
-    }
-
-    static bool GetIsExits(UIWindowBase UI)
-    {
-        if (!s_UIs.ContainsKey(UI.name))
+        if (!m_curShowUIs.ContainsKey(UI.name))
         {
             return false;
         }
         else
         {
-            return s_UIs[UI.name].Contains(UI);
+            return m_curShowUIs[UI.name].Contains(UI);
         }
     }
 
-    static void AddUI(UIWindowBase UI)
+    /// <summary>
+    /// 添加UI
+    /// </summary>
+    /// <param name="UI"></param>
+    private static void AddUI(UIWindowBase UI)
     {
-        if (!s_UIs.ContainsKey(UI.name))
+        if (!m_curShowUIs.ContainsKey(UI.name))
         {
-            s_UIs.Add(UI.name, new List<UIWindowBase>());
+            m_curShowUIs.Add(UI.name, new List<UIWindowBase>());
         }
 
-        s_UIs[UI.name].Add(UI);
+        m_curShowUIs[UI.name].Add(UI);
 
         UI.Show();
     }
 
-    static void RemoveUI(UIWindowBase UI)
+    /// <summary>
+    /// 移除UI
+    /// </summary>
+    /// <param name="UI"></param>
+    /// <exception cref="Exception"></exception>
+    private static void RemoveUI(UIWindowBase UI)
     {
         if (UI == null)
         {
             throw new Exception("UIManager: RemoveUI error l_UI is null: !");
         }
 
-        if (!s_UIs.ContainsKey(UI.name))
+        if (!m_curShowUIs.ContainsKey(UI.name))
         {
             throw new Exception("UIManager: RemoveUI error dont find UI name: ->" + UI.name + "<-  " + UI);
         }
 
-        if (!s_UIs[UI.name].Contains(UI))
+        if (!m_curShowUIs[UI.name].Contains(UI))
         {
             throw new Exception("UIManager: RemoveUI error dont find UI: ->" + UI.name + "<-  " + UI);
         }
         else
         {
-            s_UIs[UI.name].Remove(UI);
+            m_curShowUIs[UI.name].Remove(UI);
         }
     }
 
+    /// <summary>
+    /// 获取UI ID
+    /// </summary>
+    /// <param name="UIname"></param>
+    /// <returns></returns>
     static int GetUIID(string UIname)
     {
-        if (!s_UIs.ContainsKey(UIname))
+        if (!m_curShowUIs.ContainsKey(UIname))
         {
             return 0;
         }
         else
         {
-            int id = s_UIs[UIname].Count;
+            int id = m_curShowUIs[UIname].Count;
 
-            for (int i = 0; i < s_UIs[UIname].Count; i++)
+            for (int i = 0; i < m_curShowUIs[UIname].Count; i++)
 			{
-			    if(s_UIs[UIname][i].UIID == id)
+			    if(m_curShowUIs[UIname][i].UIID == id)
                 {
                     id++;
                     i = 0;
@@ -519,11 +636,6 @@ public class UIManager : MonoBehaviour
 
             return id;
         }
-    }
-
-    public static int GetNormalUICount()
-    {
-        return s_UILayerManager.normalUIList.Count;
     }
 
 #endregion
@@ -535,7 +647,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public static void DestroyAllHideUI()
     {
-        foreach (List<UIWindowBase> uis in s_hideUIs.Values)
+        foreach (List<UIWindowBase> uis in m_hideUIs.Values)
         {
             for (int i = 0; i < uis.Count; i++)
             {
@@ -552,7 +664,7 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        s_hideUIs.Clear();
+        m_hideUIs.Clear();
     }
 
     /// <summary>
@@ -560,111 +672,86 @@ public class UIManager : MonoBehaviour
     /// </summary>
     /// <param name="UIname">UI名</param>
     /// <returns></returns>
-    public static UIWindowBase GetHideUI(string UIname)
+    private static UIWindowBase GetHideUI(string UIname)
     {
-        if (!s_hideUIs.ContainsKey(UIname))
+        if (!m_hideUIs.ContainsKey(UIname))
         {
             return null;
         }
         else
         {
-            if (s_hideUIs[UIname].Count == 0)
+            if (m_hideUIs[UIname].Count == 0)
             {
                 return null;
             }
             else
             {
-                UIWindowBase ui = s_hideUIs[UIname][s_hideUIs[UIname].Count - 1];
+                UIWindowBase ui = m_hideUIs[UIname][m_hideUIs[UIname].Count - 1];
                 //默认返回最后创建的那一个
                 return ui;
             }
         }
     }
 
-    static bool GetIsExitsHide(UIWindowBase UI)
+    /// <summary>
+    /// 某个UI是否在隐藏中
+    /// </summary>
+    /// <param name="UI"></param>
+    /// <returns></returns>
+    private static bool GetIsExitsHide(UIWindowBase UI)
     {
-        if (!s_hideUIs.ContainsKey(UI.name))
+        if (!m_hideUIs.ContainsKey(UI.name))
         {
             return false;
         }
         else
         {
-            return s_hideUIs[UI.name].Contains(UI);
+            return m_hideUIs[UI.name].Contains(UI);
         }
     }
 
-    static void AddHideUI(UIWindowBase UI)
+    /// <summary>
+    /// 加入隐藏列表，并且隐藏
+    /// </summary>
+    /// <param name="UI"></param>
+    private static void AddHideUI(UIWindowBase UI)
     {
-        if (!s_hideUIs.ContainsKey(UI.name))
+        if (!m_hideUIs.ContainsKey(UI.name))
         {
-            s_hideUIs.Add(UI.name, new List<UIWindowBase>());
+            m_hideUIs.Add(UI.name, new List<UIWindowBase>());
         }
 
-        s_hideUIs[UI.name].Add(UI);
+        m_hideUIs[UI.name].Add(UI);
 
         UI.Hide();
     }
 
-
-    static void RemoveHideUI(UIWindowBase UI)
+    /// <summary>
+    /// 从隐藏列表中去掉
+    /// </summary>
+    /// <param name="UI"></param>
+    /// <exception cref="Exception"></exception>
+    private static void RemoveHideUI(UIWindowBase UI)
     {
         if (UI == null)
         {
             throw new Exception("UIManager: RemoveUI error l_UI is null: !");
         }
 
-        if (!s_hideUIs.ContainsKey(UI.name))
+        if (!m_hideUIs.ContainsKey(UI.name))
         {
             throw new Exception("UIManager: RemoveUI error dont find: " + UI.name + "  " + UI);
         }
 
-        if (!s_hideUIs[UI.name].Contains(UI))
+        if (!m_hideUIs[UI.name].Contains(UI))
         {
             throw new Exception("UIManager: RemoveUI error dont find: " + UI.name + "  " + UI);
         }
         else
         {
-            s_hideUIs[UI.name].Remove(UI);
+            m_hideUIs[UI.name].Remove(UI);
         }
     }
 
 #endregion
 }
-#region UI事件 代理 枚举
-
-    /// <summary>
-    /// UI回调
-    /// </summary>
-    /// <param name="objs"></param>
-    public delegate void UICallBack(UIWindowBase UI, params object[] objs);
-    public delegate void UIAnimCallBack(UIWindowBase UIbase, UICallBack callBack, params object[] objs);
-
-    public enum UIType
-    {
-        GameUI,
-
-        Fixed,
-        Normal,
-        TopBar,
-        PopUp
-    }
-
-    public enum UIEvent
-    {
-        OnOpen,
-        OnClose,
-        OnHide,
-        OnShow,
-
-        OnInit,
-        OnDestroy,
-
-        OnRefresh,
-
-        OnStartEnterAnim,
-        OnCompleteEnterAnim,
-
-        OnStartExitAnim,
-        OnCompleteExitAnim,
-    }
-#endregion

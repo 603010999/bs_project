@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Administrator\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_framework.-1443980779.00" t="ExcludeRecursive" />
+    <e p="F:\git\bs_project\framework" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets\Editor" t="Include">
+        <e p="Application" t="Include">
+          <e p="ApplicationManagerComponentEditor.cs" t="Include" />
+        </e>
+        <e p="BlackSheepEditor" t="Include">
+          <e p="StoryLineEditor.cs" t="Include" />
+        </e>
+        <e p="Config" t="Include">
+          <e p="ConfigEditorWindow.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="DataEditorWindow.cs" t="Include" />
+        </e>
+        <e p="Font" t="Include">
+          <e p="BFImporter.cs" t="Include" />
+          <e p="BFMenuTool.cs" t="Include" />
+          <e p="FntParse.cs" t="Include" />
+        </e>
+        <e p="NetWork" t="Include">
+          <e p="Protocol" t="Include">
+            <e p="ProtocolHelper.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Record" t="Include">
+          <e p="RecordEditorWindow.cs" t="Include" />
+        </e>
+        <e p="res" t="Include">
+          <e p="EditorWindow" t="Include">
+            <e p="FindTexture获取.txt" t="Include" />
+            <e p="IconContent获取.txt" t="Include" />
+            <e p="LoadIcon获取.txt" t="Include" />
+            <e p="内置窗口图标.txt" t="Include" />
+          </e>
+          <e p="GuideSyetemTemplate.txt" t="Include" />
+          <e p="LuaExportListTemplate.txt" t="Include" />
+          <e p="LuaLib" t="Include">
+            <e p="framework" t="Include">
+              <e p="Data" t="Include">
+                <e p="LuaDataHelper.txt" t="Include" />
+              </e>
+              <e p="LuaFrameWorkEventName.txt" t="Include" />
+              <e p="Status" t="Include">
+                <e p="LuaStatusManager.txt" t="Include" />
+                <e p="LuaStatusMetaTable.txt" t="Include" />
+              </e>
+              <e p="UI" t="Include">
+                <e p="LuaUIManager.txt" t="Include" />
+                <e p="LuaUIWindowMetatable.txt" t="Include" />
+              </e>
+              <e p="Update" t="Include">
+                <e p="LuaUpdate.txt" t="Include" />
+              </e>
+            </e>
+            <e p="LuaDataHelper.txt" t="Include" />
+            <e p="LuaEventDispatcher.txt" t="Include" />
+            <e p="LuaFormatTools.txt" t="Include" />
+            <e p="luaJson.txt" t="Include" />
+            <e p="LuaPrintTable.txt" t="Include" />
+            <e p="LuaStringHelper.txt" t="Include" />
+            <e p="Unity" t="Include">
+              <e p="LuaUnityDefine.txt" t="Include" />
+            </e>
+          </e>
+          <e p="readme" t="Include">
+            <e p="SDKCacheReadme.txt" t="Include" />
+          </e>
+          <e p="ScriptTemplates" t="Include">
+            <e p="87-C# Script-NewGameStatusScript.cs.txt" t="Include" />
+          </e>
+          <e p="UIGuideWindowClassTemplate.txt" t="Include" />
+          <e p="UILuaScriptTemplate.txt" t="Include" />
+          <e p="UIWindowClassTemplate.txt" t="Include" />
+        </e>
+        <e p="Test" t="Include">
+          <e p="Application" t="Include">
+            <e p="ApplicationLunchTest.cs" t="Include" />
+          </e>
+          <e p="Protocol" t="Include">
+            <e p="ProtocolMsgTest.cs" t="Include" />
+          </e>
+          <e p="ResourcesLoad" t="Include">
+            <e p="ResourcesTest.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="UItest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Utils" t="Include">
+          <e p="AppyPrefabs.cs" t="Include" />
+          <e p="BatchReplaceNameTool.cs" t="Include" />
+          <e p="EditorCoroutineRunner.cs" t="Include" />
+          <e p="EditorExpand.cs" t="Include" />
+          <e p="EditorUtil.cs" t="Include" />
+          <e p="EditorUtilGUI.cs" t="Include" />
+          <e p="ImportTool.cs" t="Include" />
+        </e>
+        <e p="XUPorter" t="Include">
+          <e p="MiniJSON" t="Include">
+            <e p="MiniJSON.cs" t="Include" />
+          </e>
+          <e p="PBX Editor" t="Include">
+            <e p="PBXBuildFile.cs" t="Include" />
+            <e p="PBXBuildPhase.cs" t="Include" />
+            <e p="PBXDictionary.cs" t="Include" />
+            <e p="PBXFileReference.cs" t="Include" />
+            <e p="PBXGroup.cs" t="Include" />
+            <e p="PBXList.cs" t="Include" />
+            <e p="PBXObject.cs" t="Include" />
+            <e p="PBXParser.cs" t="Include" />
+            <e p="PBXProject.cs" t="Include" />
+            <e p="PBXSortedDictionary.cs" t="Include" />
+            <e p="PBXVariantGroup.cs" t="Include" />
+          </e>
+          <e p="Plist" t="Include">
+            <e p="Plist.cs" t="Include" />
+          </e>
+          <e p="XCBuildConfiguration.cs" t="Include" />
+          <e p="XCConfigurationList.cs" t="Include" />
+          <e p="XClass.cs" t="Include" />
+          <e p="XCMod.cs" t="Include" />
+          <e p="XCodePostProcess.cs" t="Include" />
+          <e p="XCPlist.cs" t="Include" />
+          <e p="XCProject.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Assets\Resources" t="Include">
+        <e p="Data" t="Include">
+          <e p="1001101talk.txt" t="Include" />
+          <e p="1001102talk.txt" t="Include" />
+          <e p="chapter.txt" t="Include" />
+          <e p="item.txt" t="Include" />
+          <e p="Language" t="Include">
+            <e p="LangData_Afrikaans.txt" t="Include" />
+            <e p="LangData_Arabic.txt" t="Include" />
+            <e p="LangData_ChineseSimplified.txt" t="Include" />
+          </e>
+          <e p="player.txt" t="Include" />
+        </e>
+      </e>
+      <e p="Assets\Script" t="Include">
+        <e p="Core" t="Include">
+          <e p="AnimSystem" t="Include">
+            <e p="AnimData.cs" t="Include" />
+            <e p="AnimSystem.cs" t="Include" />
+          </e>
+          <e p="Application" t="Include">
+            <e p="ApplicationManager.cs" t="Include" />
+            <e p="ApplicationStatusManager.cs" t="Include" />
+            <e p="GlobalLogicManager.cs" t="Include" />
+            <e p="IApplicationGlobalLogic.cs" t="Include" />
+            <e p="IApplicationStatus.cs" t="Include" />
+          </e>
+          <e p="Audio" t="Include">
+            <e p="AudioManager.cs" t="Include" />
+          </e>
+          <e p="Base" t="Include">
+            <e p="BehaviourSingleton.cs" t="Include" />
+            <e p="Singleton.cs" t="Include" />
+          </e>
+          <e p="Config" t="Include">
+            <e p="ConfigManager.cs" t="Include" />
+            <e p="ConfigTable.cs" t="Include" />
+          </e>
+          <e p="Data" t="Include">
+            <e p="DataGenerateManager.cs" t="Include" />
+            <e p="DataManager.cs" t="Include" />
+            <e p="DataTable.cs" t="Include" />
+          </e>
+          <e p="Develop" t="Include">
+            <e p="Attribute" t="Include">
+              <e p="ResourcesFieldAttribute.cs" t="Include" />
+            </e>
+            <e p="DevelopReplayManager.cs" t="Include" />
+            <e p="FPSCounter.cs" t="Include" />
+            <e p="GUIConsole.cs" t="Include" />
+            <e p="GUIUtil.cs" t="Include" />
+            <e p="Log.cs" t="Include" />
+            <e p="LogOutPutThread.cs" t="Include" />
+            <e p="MemoryDetector.cs" t="Include" />
+          </e>
+          <e p="Effect" t="Include">
+            <e p="CameraFade.cs" t="Include" />
+            <e p="CameraShoke.cs" t="Include" />
+          </e>
+          <e p="GameObject" t="Include">
+            <e p="GameObjectManager.cs" t="Include" />
+          </e>
+          <e p="GlobalEvent" t="Include">
+            <e p="GlobalEvent.cs" t="Include" />
+          </e>
+          <e p="HotUpdate" t="Include">
+            <e p="HotUpdateManager.cs" t="Include" />
+          </e>
+          <e p="Input" t="Include">
+            <e p="Events" t="Include">
+              <e p="IInputOperationEventBase.cs" t="Include" />
+              <e p="NetWork" t="Include">
+                <e p="InputNetworkEvent.cs" t="Include" />
+              </e>
+              <e p="UI" t="Include">
+                <e p="InputUILongPressEvent.cs" t="Include" />
+                <e p="InputUIOnBeginDragEvent.cs" t="Include" />
+                <e p="InputUIOnClickEvent.cs" t="Include" />
+                <e p="InputUIOnDragEvent.cs" t="Include" />
+                <e p="InputUIOnEndDragEvent.cs" t="Include" />
+                <e p="InputUIOnScrollEvent.cs" t="Include" />
+              </e>
+            </e>
+            <e p="InputDispatcher.cs" t="Include" />
+            <e p="InputEventProxy" t="Include">
+              <e p="InputNetworkEventProxy.cs" t="Include" />
+              <e p="InputOperationEventProxy.cs" t="Include" />
+              <e p="InputUIEventProxy.cs" t="Include" />
+            </e>
+            <e p="InputManager.cs" t="Include" />
+            <e p="Interface" t="Include">
+              <e p="IInputDispatcher.cs" t="Include" />
+              <e p="IInputEventBase.cs" t="Include" />
+              <e p="IInputOperationEventCreater.cs" t="Include" />
+              <e p="IInputProxyBase.cs" t="Include" />
+              <e p="InputUIEventBase.cs" t="Include" />
+            </e>
+            <e p="RandomService.cs" t="Include" />
+          </e>
+          <e p="NetWork" t="Include">
+            <e p="CallBackFunctions.cs" t="Include" />
+            <e p="INetworkInterface.cs" t="Include" />
+            <e p="JsonNetworkService.cs" t="Include" />
+            <e p="NetworkManager.cs" t="Include" />
+            <e p="Protocol" t="Include">
+              <e p="ByteArray.cs" t="Include" />
+              <e p="ProtocolService.cs" t="Include" />
+            </e>
+            <e p="URLManager.cs" t="Include" />
+          </e>
+          <e p="Record" t="Include">
+            <e p="RecordManager.cs" t="Include" />
+            <e p="RecordTable.cs" t="Include" />
+          </e>
+          <e p="ResourceLoad" t="Include">
+            <e p="AssetsBundleManager.cs" t="Include" />
+            <e p="MemoryManager.cs" t="Include" />
+            <e p="ResourceManager.cs" t="Include" />
+            <e p="ResourcesConfigManager.cs" t="Include" />
+          </e>
+          <e p="SDKManager" t="Include">
+            <e p="Interface" t="Include">
+              <e p="ADInterface.cs" t="Include" />
+              <e p="LoginInterface.cs" t="Include" />
+              <e p="LogInterface.cs" t="Include" />
+              <e p="OtherSDKInterface.cs" t="Include" />
+              <e p="PayInterface.cs" t="Include" />
+              <e p="SDKInterfaceBase.cs" t="Include" />
+            </e>
+            <e p="NullSDKInterfaceClass" t="Include">
+              <e p="NullADSSDKClass.cs" t="Include" />
+              <e p="NullLoginClass.cs" t="Include" />
+              <e p="NullLogSDKClass.cs" t="Include" />
+              <e p="NullOtherSDKClass.cs" t="Include" />
+              <e p="NullPaySDKClass.cs" t="Include" />
+              <e p="NullSDKInterface.cs" t="Include" />
+            </e>
+            <e p="SDKManager.cs" t="Include" />
+          </e>
+          <e p="Timer" t="Include">
+            <e p="Timer.cs" t="Include" />
+            <e p="TimerEvent.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="Components" t="Include">
+              <e p="DragAcceptor" t="Include">
+                <e p="DragAcceptor.cs" t="Include" />
+              </e>
+              <e p="JoyStick" t="Include">
+                <e p="UGUIJoyStick.cs" t="Include" />
+                <e p="UGUIJoyStick_BgMove.cs" t="Include" />
+                <e p="UGUIJoyStick_Ro.cs" t="Include" />
+                <e p="UGUIJoyStickBase.cs" t="Include" />
+              </e>
+              <e p="LanguageComponent" t="Include">
+                <e p="FontChooserComponent.cs" t="Include" />
+                <e p="LanguageComponent.cs" t="Include" />
+              </e>
+              <e p="LongPressAcceptor" t="Include">
+                <e p="LongPressAcceptor.cs" t="Include" />
+              </e>
+              <e p="ReusingScrollRect" t="Include">
+                <e p="ReusingScrollItemBase.cs" t="Include" />
+                <e p="ReusingScrollItemData.cs" t="Include" />
+                <e p="ReusingScrollRect.cs" t="Include" />
+                <e p="ScrollRectInput.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Control" t="Include">
+              <e p="UIAnimManager.cs" t="Include" />
+              <e p="UILayerManager.cs" t="Include" />
+              <e p="UIManager.cs" t="Include" />
+              <e p="UISystemEvent.cs" t="Include" />
+            </e>
+            <e p="Model" t="Include">
+              <e p="UIBase.cs" t="Include" />
+              <e p="UIStyleComponent.cs" t="Include" />
+              <e p="UIWindowBase.cs" t="Include" />
+            </e>
+            <e p="Style" t="Include">
+              <e p="LanguageManager.cs" t="Include" />
+            </e>
+            <e p="Utils" t="Include">
+              <e p="LayerSort.cs" t="Include" />
+              <e p="ModelRotate.cs" t="Include" />
+              <e p="UIModelShowTool.cs" t="Include" />
+              <e p="UITools.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Utils" t="Include">
+            <e p="ByteTool.cs" t="Include" />
+            <e p="CameraTool.cs" t="Include" />
+            <e p="DeJson.cs" t="Include" />
+            <e p="EditorTool.cs" t="Include" />
+            <e p="ExpandMethod.cs" t="Include" />
+            <e p="FileTool.cs" t="Include" />
+            <e p="HeapObjectPool.cs" t="Include" />
+            <e p="HTTPTool.cs" t="Include" />
+            <e p="JsonTool.cs" t="Include" />
+            <e p="MD5Tool.cs" t="Include" />
+            <e p="MiniJSON.cs" t="Include" />
+            <e p="ParseTool.cs" t="Include" />
+            <e p="PathTool.cs" t="Include" />
+            <e p="ResourceIOTool.cs" t="Include" />
+            <e p="SystemInfoTool.cs" t="Include" />
+            <e p="UGUITool.cs" t="Include" />
+          </e>
+        </e>
+        <e p="DataClassGenerate" t="Include">
+          <e p="itemGenerate.cs" t="Include" />
+        </e>
+        <e p="GameStatus" t="Include">
+          <e p="DemoStatus.cs" t="Include" />
+          <e p="FirstStatus.cs" t="Include" />
+          <e p="GameStatus.cs" t="Include" />
+          <e p="GameStatus_two.cs" t="Include" />
+          <e p="UItest.cs" t="Include" />
+        </e>
+        <e p="InputEvent" t="Include">
+          <e p="CustomEvent.cs" t="Include" />
+        </e>
+        <e p="Logic" t="Include">
+          <e p="Config" t="Include">
+            <e p="ChapterConfig.cs" t="Include" />
+            <e p="PlayerConfig.cs" t="Include" />
+            <e p="TalkConfig.cs" t="Include" />
+          </e>
+          <e p="ConfigMgr" t="Include">
+            <e p="PlayerConfigMgr.cs" t="Include" />
+            <e p="TalkConfigMgr.cs" t="Include" />
+          </e>
+        </e>
+        <e p="SDK" t="Include">
+          <e p="GoogleLogin.cs" t="Include" />
+        </e>
+        <e p="Test" t="Include">
+          <e p="Editor" t="Include">
+            <e p="NewEditorTest.cs" t="Include" />
+          </e>
+          <e p="RuntimeTest.cs" t="Include" />
+        </e>
+        <e p="UI" t="Include">
+          <e p="AAAWindow" t="Include">
+            <e p="AAAWindow.cs" t="Include" />
+          </e>
+          <e p="ChatInfoWindow" t="Include">
+            <e p="ChatInfoWindow.cs" t="Include" />
+          </e>
+          <e p="Common" t="Include">
+            <e p="DataGrid" t="Include">
+              <e p="DataGrid.cs" t="Include" />
+              <e p="IDataRender.cs" t="Include" />
+              <e p="ItemRender.cs" t="Include" />
+              <e p="UGUIClickHandler.cs" t="Include" />
+            </e>
+          </e>
+          <e p="GameWindow" t="Include">
+            <e p="GameWindow.cs" t="Include" />
+          </e>
+          <e p="heiheiheiWindow" t="Include">
+            <e p="heiheiheiWindow.cs" t="Include" />
+          </e>
+          <e p="MainWindow" t="Include">
+            <e p="MainWindow.cs" t="Include" />
+          </e>
+          <e p="ShopWindow" t="Include">
+            <e p="ShopWindow.cs" t="Include" />
+            <e p="ShopWindowItem.cs" t="Include" />
+          </e>
+          <e p="test01Window" t="Include">
+            <e p="test01Window.cs" t="Include" />
+          </e>
+          <e p="test02Window" t="Include">
+            <e p="test02Window.cs" t="Include" />
+          </e>
+          <e p="testWindow" t="Include">
+            <e p="ItemTest.cs" t="Include" />
+            <e p="testWindow.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Assets\test.cs" t="Include" />
+      <e p="framework.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

@@ -2,6 +2,8 @@
 using System.Collections;
 using System;
 
+//运行时调试
+
 public class RuntimeTest : MonoBehaviour 
 {
 	// Use this for initialization

@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ItemTest :ReusingScrollItemBase
 {
-    public override void OnInit()
+    public Text m_nameText;
+    
+    protected override void OnInit()
     {
         base.OnInit();
-
-        AddOnClickListener("Image_item", OnClick);
     }
 
     public override void SetContent(int index, Dictionary<string, object> data)
     {
-        GetText("Text").text = index.ToString() + RandomService.Range(0,100);
+        m_nameText.text = index.ToString() + RandomService.Range(0, 100);
     }
 
     public void OnClick(InputUIOnClickEvent e)

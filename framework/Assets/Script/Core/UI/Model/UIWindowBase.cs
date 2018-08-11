@@ -78,31 +78,8 @@ public class UIWindowBase : UIBase
     //刷新是主动调用
     public void Refresh(params object[] args)
     {
-        UISystemEvent.Dispatch(this, UIEvent.OnRefresh);
         OnRefresh();
     }
-
-    public void AddEventListener(Enum l_Event)
-    {
-        if (!m_EventNames.Contains(l_Event))
-        {
-            m_EventNames.Add(l_Event);
-            GlobalEvent.AddEvent(l_Event, Refresh);
-        }
-    }
-
-    public override void RemoveAllListener()
-    {
-        base.RemoveAllListener();
-
-        for (int i = 0; i < m_EventNames.Count; i++)
-        {
-            GlobalEvent.RemoveEvent(m_EventNames[i], Refresh);
-        }
-
-        m_EventNames.Clear();
-    }
-
 
     #endregion
 }

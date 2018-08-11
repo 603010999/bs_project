@@ -7,9 +7,7 @@ public class MainWindow : UIWindowBase
     //UI的初始化请放在这里
     public override void OnOpen()
     {
-        AddOnClickListener("Button_Setting", OnClickSetting);
-        AddOnClickListener("Button_Shop", OnClickShop);
-        AddOnClickListener("Button_Start", OnGameStart);
+        
     }
 
     //请在这里写UI的更新逻辑，当该UI监听的事件触发时，该函数会被调用
@@ -40,18 +38,18 @@ public class MainWindow : UIWindowBase
         yield return new WaitForEndOfFrame();
     }
 
-    public void OnGameStart(InputUIOnClickEvent e)
+    public void OnClickGameStart()
     {
         ApplicationStatusManager.EnterStatus<GameStatus>();
     }
 
-    public void OnClickShop(InputUIOnClickEvent e)
+    public void OnClickShop()
     {
         UIManager.OpenUIWindow<ShopWindow>();
     }
 
-    public void OnClickSetting(InputUIOnClickEvent e)
+    public void OnClickSetting()
     {
-
+        
     }
 }

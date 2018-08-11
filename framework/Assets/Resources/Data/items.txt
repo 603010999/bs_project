@@ -1,6 +1,0 @@
-itemId	itemName
-type	String
-note	
-default	none
-1001	
-1002	

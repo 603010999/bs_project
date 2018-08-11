@@ -69,8 +69,8 @@ public class GUIConsole
         //memoryDetector = new MemoryDetector();
         //memoryDetector.Init();
 
-        ApplicationManager.s_OnApplicationUpdate += Update;
-        ApplicationManager.s_OnApplicationOnGUI += OnGUI;
+        ApplicationManager.m_onApplicationUpdate += Update;
+        ApplicationManager.m_onApplicationOnGUI += OnGUI;
         Application.logMessageReceived += HandleLog;
     }
 

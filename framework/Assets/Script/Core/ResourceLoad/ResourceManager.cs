@@ -6,28 +6,27 @@ using System;
  * gameLoadType 为 Resource 时 ，所有资源从Resource读取
  * gameLoadType 不为 Resource时，资源读取方式从配置中读取
  * */
+
+public enum ResLoadLocation
+{
+    Resource,
+    Streaming,
+    Persistent,
+    Catch,
+}
+
 public static class ResourceManager 
 {
     /// <summary>
     /// 游戏内资源读取类型
+    /// //默认从resourcePath中读取
     /// </summary>
-    public static ResLoadLocation m_gameLoadType = ResLoadLocation.Resource; //默认从resourcePath中读取
-
-    public static ResLoadLocation GetLoadType(ResLoadLocation loadType)
-    {
-        //如果设置从Resource中加载则忽略打包设置
-        if (m_gameLoadType == ResLoadLocation.Resource)
-        {
-            return ResLoadLocation.Resource;
-        }
-
-        return loadType;
-    }
+    public static ResLoadLocation m_gameLoadType = ResLoadLocation.Resource; 
 
     //读取一个文本
     public static string ReadTextFile(string textName)
     {
-        TextAsset text = Load<TextAsset>(textName);
+        var text = Load<TextAsset>(textName);
 
         if (text == null)
         {
@@ -39,19 +38,9 @@ public static class ResourceManager
         }
     }
 
-    ////保存一个文本
-    //public static void WriteTextFile(string path,string content ,ResLoadLocation type)
-    //{
-    //    #if UNITY_EDITOR
-    //        ResourceIOTool.WriteStringByFile(PathTool.GetAbsolutePath(type, path), content);
-    //    #else
-            
-    //    #endif
-    //}
-
     public static object Load(string name)
     {
-        ResourcesConfig packData  = ResourcesConfigManager.GetBundleConfig(name);
+        var packData  = ResourcesConfigManager.GetBundleConfig(name);
 
         if(packData == null)
         {
@@ -70,7 +59,7 @@ public static class ResourceManager
 
     public static T Load<T>(string name) where T: UnityEngine.Object
     {
-        ResourcesConfig packData = ResourcesConfigManager.GetBundleConfig(name);
+        var packData = ResourcesConfigManager.GetBundleConfig(name);
 
         if (packData == null)
         {
@@ -89,7 +78,7 @@ public static class ResourceManager
 
     public static void LoadAsync(string name,LoadCallBack callBack)
     {
-        ResourcesConfig packData  = ResourcesConfigManager.GetBundleConfig(name);
+        var packData  = ResourcesConfigManager.GetBundleConfig(name);
 
         if (packData == null)
         {
@@ -117,21 +106,6 @@ public static class ResourceManager
             AssetsBundleManager.UnLoadBundle(name);
         }
     }
-
-    //public static T GetResource<T>(string path)
-    //{
-    //    T resouce = new T();
-
-    //    return resouce;
-    //}
-}
-
-public enum ResLoadLocation
-{
-    Resource,
-    Streaming,
-    Persistent,
-    Catch,
 }
 
 

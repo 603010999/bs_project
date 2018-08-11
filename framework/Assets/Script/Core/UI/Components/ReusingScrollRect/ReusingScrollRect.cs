@@ -54,13 +54,13 @@ public class ReusingScrollRect : ScrollRectInput
 
         for (int i = 0; i < m_items.Count; i++)
         {
-            GameObjectManager.DestroyGameObjectByPool(m_items[i].gameObject);
+            GameObjectManager.Instance.DestroyPoolObject(m_items[i].gameObject);
         }
         m_items.Clear();
 
         for (int i = 0; i < m_itemCaches.Count; i++)
         {
-            GameObjectManager.DestroyGameObjectByPool(m_itemCaches[i].gameObject);
+            GameObjectManager.Instance.DestroyPoolObject(m_itemCaches[i].gameObject);
         }
         m_itemCaches.Clear();
     }
@@ -323,7 +323,7 @@ public class ReusingScrollRect : ScrollRectInput
             return result;
         }
 
-        result = GameObjectManager.CreateGameObjectByPool(m_itemPrefab).GetComponent<ReusingScrollItemBase>();
+        result = GameObjectManager.Instance.CreatePoolObject(m_ItemName).GetComponent<ReusingScrollItemBase>();
         result.Init(m_items.Count);
         m_items.Add(result);
 

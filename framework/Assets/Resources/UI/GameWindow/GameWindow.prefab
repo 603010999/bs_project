@@ -149,7 +149,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114669002471299314}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114630427987245254}
+        m_MethodName: OnClickReturnMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114285206721332166
@@ -246,12 +257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvas: {fileID: 0}
-  m_objectList:
-  - {fileID: 1811451205471932}
-  - {fileID: 1775346682901926}
   m_UIType: 1
   m_bgMask: {fileID: 1750621726604486}
   m_uiRoot: {fileID: 1398938318977370}
+  m_goTextTitle: {fileID: 1775346682901926}
+  m_goReturnBtn: {fileID: 1811451205471932}
 --- !u!114 &114669002471299314
 MonoBehaviour:
   m_ObjectHideFlags: 1

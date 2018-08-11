@@ -3,103 +3,111 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-//[RequireComponent(typeof(AudioListener))]
-public class AudioManager : MonoBehaviour
+public class AudioManager : BehaviourSingleton<AudioManager>
 {
-    private static AudioManager s_instance;
-    public static AudioManager Instance
-    {
-        get {if (s_instance == null) Init();
-            return s_instance;}
-    }
-
-    static float s_globalVolume = 1;
+    private static float _mGlobalVolume = 1;
     /// <summary>
     /// 全局音量，范围从0到1，与音效音量和音乐音量是相乘关系
     /// </summary>
-    public static float s_GlobalVolume
+    public static float m_globalVolume
     {
-        get { return s_globalVolume; }
-        set { s_globalVolume = Mathf.Clamp01(value);
-              OnMusicVolumeChange();
-              OnSoundVolumeChange();
+        get { return _mGlobalVolume; }
+        set
+        {
+            _mGlobalVolume = Mathf.Clamp01(value);
+            OnMusicVolumeChange();
+            OnSoundVolumeChange();
         }
     }
 
-    private static float s_musicVolume = 1;
+    private static float _musicVolume = 1;
     /// <summary>
     /// 音乐音量，范围从0到1
     /// </summary>
-    public static float s_MusicVolume
+    public static float m_musicVolume
     {
-        get { return s_musicVolume * s_GlobalVolume; }
-        set { s_musicVolume = Mathf.Clamp01(value);
-              OnMusicVolumeChange();
+        get { return _musicVolume * m_globalVolume; }
+        set
+        {
+            _musicVolume = Mathf.Clamp01(value);
+            OnMusicVolumeChange();
         }
     }
    
-    private static float s_soundVolume = 1;
+    private static float _soundVolume = 1;
     /// <summary>
     /// 音效音量，范围从0到1
     /// </summary>
-    public static float s_SoundVolume
+    public static float m_soundVolume
     {
-        get { return s_soundVolume * s_GlobalVolume; }
-        set { s_soundVolume = Mathf.Clamp01(value);
-              OnSoundVolumeChange();
-        }
-    }
-
-    public static AudioSource s_2Dmusic;
-    public static bool s_MusicIsPlaying = false;
-    static List<AudioSource> s_2Dplayers = new List<AudioSource>();
-    static List<AudioSource> s_3Dplayers = new List<AudioSource>();
-
-    public static AudioCallBack s_OnMusicComplete;
-    public static AudioCallBack s_OnMusicVolumeChange;
-    public static AudioCallBack s_OnSoundVolumeChange;
-
-    public static void Init()
-    {
-        if (s_instance == null)
+        get { return _soundVolume * m_globalVolume; }
+        set
         {
-            s_instance = new GameObject("AudioManager").AddComponent<AudioManager>();
-            DontDestroyOnLoad(s_instance.gameObject);
-
-            Init2DpPlayer(10);
+            _soundVolume = Mathf.Clamp01(value);
+            OnSoundVolumeChange();
         }
-
     }
 
-    static void Init2DpPlayer(int count)
+    //2D 音乐  背景音等
+    public static AudioSource m_2Dmusic;
+    
+    //是否在播放
+    public static bool m_musicIsPlaying = false;
+    
+    //2D音效列表
+    private static List<AudioSource> m_2Dplayers = new List<AudioSource>();
+    
+    //3D音效列表
+    private static List<AudioSource> m_3Dplayers = new List<AudioSource>();
+
+    //音效播放事件回调
+    //音乐播放结束
+    public static AudioCallBack m_onMusicComplete;
+    
+    //音乐音量变化
+    public static AudioCallBack m_onMusicVolumeChange;
+    
+    //音效音量变化
+    public static AudioCallBack m_onSoundVolumeChange;
+
+    public AudioManager()
+    {
+        Init2DPlayer(5);
+    }
+    
+
+    //初始化2D音效播放    
+    private static void Init2DPlayer(int count)
     {
         AudioSource AudioSourceTmp = null;
         for (int i = 0; i < count; i++)
         {
-            AudioSourceTmp = s_instance.gameObject.AddComponent<AudioSource>();
-            s_2Dplayers.Add(AudioSourceTmp);
+            AudioSourceTmp = Instance.gameObject.AddComponent<AudioSource>();
+            m_2Dplayers.Add(AudioSourceTmp);
         }
     }
 
     public void Update()
     {
-        if (s_2Dmusic != null && s_MusicIsPlaying == true)
+        if (m_2Dmusic == null || !m_musicIsPlaying)
         {
-            if (s_2Dmusic.isPlaying == false)
+            return;
+        }
+       
+        if (!m_2Dmusic.isPlaying)
+        {
+            m_musicIsPlaying = false;
+            
+            try
             {
-                s_MusicIsPlaying = false;
-
-                try
+                if (m_onMusicComplete != null)
                 {
-                    if (s_OnMusicComplete != null)
-                    {
-                        s_OnMusicComplete(SoundType.Music);
-                    }
+                    m_onMusicComplete(SoundType.Music);
                 }
-                catch(Exception e)
-                {
-                    Debug.LogError(e.ToString());
-                }
+            }
+            catch(Exception e)
+            {
+                Debug.LogError(e.ToString());
             }
         }
     }
@@ -111,12 +119,12 @@ public class AudioManager : MonoBehaviour
     /// <param name="l_isLoop">是否循环</param>
     public static AudioSource PlayMusic2D(string l_musicName, bool l_isLoop)
     {
-        s_MusicIsPlaying = true;
+        m_musicIsPlaying = true;
 
         AudioSource audioTmp = GetAudioSource2D(SoundType.Music);
         audioTmp.clip = GetAudioClip(l_musicName);
         audioTmp.loop = l_isLoop;
-        audioTmp.volume = s_MusicVolume;
+        audioTmp.volume = m_musicVolume;
         if (l_isLoop)
         {
             audioTmp.Play();
@@ -150,7 +158,7 @@ public class AudioManager : MonoBehaviour
         AudioSource audioTmp = GetAudioSource2D(SoundType.Sound);
         audioTmp.clip = GetAudioClip(l_soundName);
         audioTmp.loop = l_isLoop;
-        audioTmp.volume = s_SoundVolume;
+        audioTmp.volume = m_soundVolume;
         audioTmp.PlayOneShot(audioTmp.clip);
         audioTmp.pitch = l_pitch;
         return audioTmp;
@@ -189,7 +197,7 @@ public class AudioManager : MonoBehaviour
         AudioSource audioTmp = GetAudioSource3D(l_gameObject);
         audioTmp.clip = GetAudioClip(l_soundName);
         audioTmp.loop = false;
-        audioTmp.volume = s_SoundVolume;
+        audioTmp.volume = m_soundVolume;
         return audioTmp;
     }
 
@@ -197,19 +205,19 @@ public class AudioManager : MonoBehaviour
     {
         if (l_SoundType == SoundType.Music)
         {
-            if(s_2Dmusic == null)
+            if(m_2Dmusic == null)
             {
-                s_2Dmusic = Instance.gameObject.AddComponent<AudioSource>();
+                m_2Dmusic = Instance.gameObject.AddComponent<AudioSource>();
             }
 
-            return s_2Dmusic;
+            return m_2Dmusic;
         }
         else
         {
             AudioSource AudioSourceTmp = null;
-            for (int i = 0; i < s_2Dplayers.Count;i++ )
+            for (int i = 0; i < m_2Dplayers.Count;i++ )
             {
-                AudioSourceTmp = s_2Dplayers[i];
+                AudioSourceTmp = m_2Dplayers[i];
                 if(AudioSourceTmp.isPlaying == false)
                 {
                     return AudioSourceTmp;
@@ -218,7 +226,7 @@ public class AudioManager : MonoBehaviour
 
             AudioSourceTmp = Instance.gameObject.AddComponent<AudioSource>();
 
-            s_2Dplayers.Add(AudioSourceTmp);
+            m_2Dplayers.Add(AudioSourceTmp);
 
             return AudioSourceTmp;
         }
@@ -257,16 +265,16 @@ public class AudioManager : MonoBehaviour
 
     static void OnMusicVolumeChange()
     {
-        if(s_2Dmusic != null)
+        if(m_2Dmusic != null)
         {
-            s_2Dmusic.volume = s_MusicVolume;
+            m_2Dmusic.volume = m_musicVolume;
         }
 
         try
         {
-            if (s_OnMusicVolumeChange != null)
+            if (m_onMusicVolumeChange != null)
             {
-                s_OnMusicVolumeChange(SoundType.Music);
+                m_onMusicVolumeChange(SoundType.Music);
             }
         }
         catch (Exception e)
@@ -277,37 +285,37 @@ public class AudioManager : MonoBehaviour
 
     static void OnSoundVolumeChange()
     {
-        for (int i = 0; i < s_2Dplayers.Count; i++)
+        for (int i = 0; i < m_2Dplayers.Count; i++)
         {
-            if (s_2Dplayers[i].isPlaying)
+            if (m_2Dplayers[i].isPlaying)
             {
-                s_2Dplayers[i].volume = s_SoundVolume;
+                m_2Dplayers[i].volume = m_soundVolume;
             }
             else
             {
-                s_2Dplayers.RemoveAt(i);
+                m_2Dplayers.RemoveAt(i);
                 i--;
             }
         }
 
-        for (int i = 0; i < s_3Dplayers.Count; i++)
+        for (int i = 0; i < m_3Dplayers.Count; i++)
         {
-            if (s_3Dplayers[i] != null && s_3Dplayers[i].isPlaying)
+            if (m_3Dplayers[i] != null && m_3Dplayers[i].isPlaying)
             {
-                s_3Dplayers[i].volume = s_SoundVolume;
+                m_3Dplayers[i].volume = m_soundVolume;
             }
             else
             {
-                s_3Dplayers.RemoveAt(i);
+                m_3Dplayers.RemoveAt(i);
                 i--;
             }
         }
 
         try
         {
-            if (s_OnSoundVolumeChange != null)
+            if (m_onSoundVolumeChange != null)
             {
-                s_OnSoundVolumeChange(SoundType.Sound);
+                m_onSoundVolumeChange(SoundType.Sound);
             }
         }
         catch(Exception e)

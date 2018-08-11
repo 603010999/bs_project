@@ -14,7 +14,7 @@ public static class ResourcesConfigManager
 
     public static void Initialize()
     {
-        ResourcesConfigStruct result = GetResourcesConfig();
+        var result = GetResourcesConfig();
 
         m_relyBundleConfigs = result.relyList;
         m_bundleConfigs = result.bundleList;
@@ -67,7 +67,7 @@ public static class ResourcesConfigManager
     //资源路径数据不依赖任何其他数据
     public static ResourcesConfigStruct GetResourcesConfig()
     {
-        string dataJson = "";
+        var dataJson = "";
 
         dataJson = ReadResourceConfigContent();
 
@@ -95,7 +95,7 @@ public static class ResourcesConfigManager
         {
             ResLoadLocation type = ResLoadLocation.Streaming;
 
-            if (RecordManager.GetData(HotUpdateManager.c_HotUpdateRecordName).GetRecord(HotUpdateManager.c_useHotUpdateRecordKey, false))
+            if (RecordManager.Instance.GetData(HotUpdateManager.c_HotUpdateRecordName).GetRecord(HotUpdateManager.c_useHotUpdateRecordKey, false))
             {
                 type = ResLoadLocation.Persistent;
 

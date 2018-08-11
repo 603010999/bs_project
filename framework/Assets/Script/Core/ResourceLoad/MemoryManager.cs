@@ -12,24 +12,26 @@ public class MemoryManager
     /// <summary>
     /// 是否允许动态加载
     /// </summary>
-    public static bool s_allowDynamicLoad = true;
+    public static bool m_allowDynamicLoad = true;
 
     /// <summary>
     /// 最大允许的内存使用量
     /// </summary>
-    public static int s_MaxMemoryUse = 170;
+    public static int m_maxMemoryUse = 170;
 
     /// <summary>
     /// 最大允许的堆内存使用量
     /// </summary>
-    public static int s_MaxHeapMemoryUse = 50;
+    public static int m_maxHeapMemoryUse = 50;
 
     public static void Init()
     {
-        ApplicationManager.s_OnApplicationUpdate += Update;
+        ApplicationManager.m_onApplicationUpdate += Update;
 
         if (ApplicationManager.AppMode != AppMode.Release)
+        {
             DevelopReplayManager.s_ProfileGUICallBack += GUI;
+        }
     }
 
     static void Update()
@@ -63,20 +65,16 @@ public class MemoryManager
     /// </summary>
     public static void FreeMemory()
     {
+        //释放内存事件
         GlobalEvent.DispatchEvent(MemoryEvent.FreeMemory);
-
-        //清空对象池
-        GameObjectManager.CleanPool();
-
-        GameObjectManager.CleanPool_New();
 
         //清空缓存的UI
         UIManager.DestroyAllHideUI();
 
+        GameObjectManager.Instance.CleanPool();
+        
+        //释放堆内存
         FreeHeapMemory();
-
-        //GC
-        //GC.Collect();
     }
 
     /// <summary>
@@ -192,7 +190,7 @@ public class MemoryManager
     /// <param name="tag"></param>
     static void MonitorMemorySize()
     {
-        if(ByteToM(Profiler.GetTotalReservedMemory() ) > s_MaxMemoryUse * 0.7f)
+        if(ByteToM(Profiler.GetTotalReservedMemory() ) > m_maxMemoryUse * 0.7f)
         {
             if (!s_isFreeMemory)
             {
@@ -200,7 +198,7 @@ public class MemoryManager
                 FreeMemory();
             }
 
-            if (ByteToM(Profiler.GetMonoHeapSize()) > s_MaxMemoryUse)
+            if (ByteToM(Profiler.GetMonoHeapSize()) > m_maxMemoryUse)
             {
                 if (!s_isFreeMemory2)
                 {
@@ -219,14 +217,14 @@ public class MemoryManager
             s_isFreeMemory = false;
         }
 
-        if (ByteToM( Profiler.GetMonoUsedSize() ) > s_MaxHeapMemoryUse * 0.7f)
+        if (ByteToM( Profiler.GetMonoUsedSize() ) > m_maxHeapMemoryUse * 0.7f)
         {
             if (!s_isFreeHeapMemory)
             {
                 s_isFreeHeapMemory = true;
             }
 
-            if (ByteToM( Profiler.GetMonoUsedSize()) > s_MaxHeapMemoryUse)
+            if (ByteToM( Profiler.GetMonoUsedSize()) > m_maxHeapMemoryUse)
             {
                 if (!s_isFreeHeapMemory2)
                 {
