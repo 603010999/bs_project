@@ -250,25 +250,6 @@
             <e p="ResourceManager.cs" t="Include" />
             <e p="ResourcesConfigManager.cs" t="Include" />
           </e>
-          <e p="SDKManager" t="Include">
-            <e p="Interface" t="Include">
-              <e p="ADInterface.cs" t="Include" />
-              <e p="LoginInterface.cs" t="Include" />
-              <e p="LogInterface.cs" t="Include" />
-              <e p="OtherSDKInterface.cs" t="Include" />
-              <e p="PayInterface.cs" t="Include" />
-              <e p="SDKInterfaceBase.cs" t="Include" />
-            </e>
-            <e p="NullSDKInterfaceClass" t="Include">
-              <e p="NullADSSDKClass.cs" t="Include" />
-              <e p="NullLoginClass.cs" t="Include" />
-              <e p="NullLogSDKClass.cs" t="Include" />
-              <e p="NullOtherSDKClass.cs" t="Include" />
-              <e p="NullPaySDKClass.cs" t="Include" />
-              <e p="NullSDKInterface.cs" t="Include" />
-            </e>
-            <e p="SDKManager.cs" t="Include" />
-          </e>
           <e p="Timer" t="Include">
             <e p="Timer.cs" t="Include" />
             <e p="TimerEvent.cs" t="Include" />
@@ -361,9 +342,6 @@
             <e p="PlayerConfigMgr.cs" t="Include" />
             <e p="TalkConfigMgr.cs" t="Include" />
           </e>
-        </e>
-        <e p="SDK" t="Include">
-          <e p="GoogleLogin.cs" t="Include" />
         </e>
         <e p="Test" t="Include">
           <e p="Editor" t="Include">

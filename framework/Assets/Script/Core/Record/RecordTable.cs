@@ -8,17 +8,12 @@ public class RecordTable : Dictionary<string, SingleField>
     #region 解析
     public static RecordTable Analysis(string data)
     {
-        RecordTable result = new RecordTable();
-        Dictionary<string, SingleField> tmp = JsonTool.Json2Dictionary<SingleField>(data);
-
-        
-
-        List<string> keys = new List<string>(tmp.Keys);
+        var result = new RecordTable();
+        var tmp = JsonTool.Json2Dictionary<SingleField>(data);
+        var keys = new List<string>(tmp.Keys);
 
         for (int i = 0; i < keys.Count; i++)
         {
-            //Debug.Log("Key: " + keys[i]);
-
             result.Add(keys[i],tmp[keys[i]]);
         }
 

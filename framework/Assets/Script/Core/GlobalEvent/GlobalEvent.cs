@@ -6,6 +6,8 @@ using System;
 public delegate void EventHandle(params object[] args);
 public delegate void EventHandle<T>(T e, params object[] args);
 
+//全局回调  这里改成只接受数据层的方法，不接受UI层方法
+
 public class GlobalEvent
 {
     #region 以Enum为Key的事件派发

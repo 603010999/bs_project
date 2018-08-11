@@ -6,35 +6,38 @@ using System;
 
 public class ReusingScrollRect : ScrollRectInput
 {
-    public string m_ItemName = "";
+    //对象名称
+    public string m_ItemName = string.Empty;
 
     //默认是从上到下，从左到右，勾上此选项则反向
     public bool m_isInversion = false;
+    
     //是否接受操作
     public bool m_isReceiveControl = true;
-
+    
+    //
     public List<Dictionary<string, object>> m_datas = new List<Dictionary<string, object>>();
     public List<ReusingScrollItemBase> m_items = new List<ReusingScrollItemBase>();
     public List<ReusingScrollItemBase> m_itemCaches = new List<ReusingScrollItemBase>();
 
-    RectTransform m_rectTransform;
+    //
+    private RectTransform m_rectTransform;
 
+    //
     private Bounds m_viewBounds;
-    public GameObject m_itemPrefab;
 
     public Vector3 m_itemSize;
 
     #region 公共方法
 
-    public  void Init(string UIEventKey,string itemName)
+    public  void Init(string uiEventKey,string itemName)
     {
         if (content == null)
         {
             throw new Exception("SetItemDisplay Exception: content is null !");
         }
 
-
-        base.Init(UIEventKey);
+        base.Init(uiEventKey);
 
         m_ItemName = itemName;
         m_rectTransform = GetComponent<RectTransform>();
@@ -44,21 +47,21 @@ public class ReusingScrollRect : ScrollRectInput
         UpdateBound();
         SetLayout();
 
-        m_itemPrefab = ResourceManager.Load<GameObject>(m_ItemName);
-        m_itemSize = m_itemPrefab.GetComponent<RectTransform>().sizeDelta;
+        var prefab = ResourceManager.Load<GameObject>(m_ItemName);
+        m_itemSize = prefab.GetComponent<RectTransform>().sizeDelta;
     }
 
     public override void Dispose()
     {
         base.Dispose();
 
-        for (int i = 0; i < m_items.Count; i++)
+        for (var i = 0; i < m_items.Count; i++)
         {
             GameObjectManager.Instance.DestroyPoolObject(m_items[i].gameObject);
         }
         m_items.Clear();
 
-        for (int i = 0; i < m_itemCaches.Count; i++)
+        for (var i = 0; i < m_itemCaches.Count; i++)
         {
             GameObjectManager.Instance.DestroyPoolObject(m_itemCaches[i].gameObject);
         }
@@ -491,27 +494,6 @@ public class ReusingScrollRect : ScrollRectInput
         }
         return size;
     }
-
-    //void OnDrawGizmos()
-    //{
-    //    return;
-
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawCube(m_viewBounds.center, m_viewBounds.size);
-
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawCube(GetItemBounds(0).center, GetItemBounds(0).size);
-
-    //    Gizmos.color = new Color(1, 1, 0, 0.5f);
-
-    //    for (int i = 0; i < 100; i++)
-    //    {
-    //        Gizmos.color -= new Color(0.01f, 0, 0, 0);
-    //        Gizmos.DrawCube(GetItemBounds(i).center, GetItemBounds(i).size);
-
-    //    }
-
-    //}
 
     #endregion
 

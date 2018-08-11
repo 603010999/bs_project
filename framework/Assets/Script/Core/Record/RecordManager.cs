@@ -52,23 +52,18 @@ public class RecordManager:Singleton<RecordManager>
         return record;
     }
 
-    public void SaveData(string RecordName, RecordTable data)
+    public void SaveData(string recordName, RecordTable data)
     {
-#if !UNITY_WEBGL
+        var path = PathTool.GetRelativelyPath(m_directoryName, recordName, m_expandName);
 
-        ResourceIOTool.WriteStringByFile(
-            PathTool.GetAbsolutePath(ResLoadLocation.Persistent,
-                PathTool.GetRelativelyPath(m_directoryName,
-                                                    RecordName,
-                                                    m_expandName)),
-                RecordTable.Serialize(data));
+        ResourceIOTool.WriteStringByFile(PathTool.GetAbsolutePath(ResLoadLocation.Persistent, path),
+            RecordTable.Serialize(data));
 
 #if UNITY_EDITOR
         if (!Application.isPlaying)
         {
             UnityEditor.AssetDatabase.Refresh();
         }
-        #endif
 #endif
     }
 
@@ -92,109 +87,108 @@ public class RecordManager:Singleton<RecordManager>
 
 #region 保存封装
 
-    public void SaveRecord(string RecordName, string key, string value)
+    public void SaveRecord(string recordName, string key, string value)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
         table.SetRecord(key,value);
-        SaveData(RecordName, table);
+        SaveData(recordName, table);
     }
 
-    public void SaveRecord(string RecordName, string key, int value)
+    public void SaveRecord(string recordName, string key, int value)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
         table.SetRecord(key, value);
-        SaveData(RecordName, table);
+        SaveData(recordName, table);
     }
 
-    public void SaveRecord(string RecordName, string key, bool value)
+    public void SaveRecord(string recordName, string key, bool value)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
         table.SetRecord(key, value);
-        SaveData(RecordName, table);
+        SaveData(recordName, table);
     }
 
-    public void SaveRecord(string RecordName, string key, float value)
+    public void SaveRecord(string recordName, string key, float value)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
         table.SetRecord(key, value);
-        SaveData(RecordName, table);
+        SaveData(recordName, table);
     }
 
-    public void SaveRecord(string RecordName, string key, Vector2 value)
+    public void SaveRecord(string recordName, string key, Vector2 value)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
         table.SetRecord(key, value);
-        SaveData(RecordName, table);
+        SaveData(recordName, table);
     }
 
-    public void SaveRecord(string RecordName, string key, Vector3 value)
+    public void SaveRecord(string recordName, string key, Vector3 value)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
         table.SetRecord(key, value);
-        SaveData(RecordName, table);
+        SaveData(recordName, table);
     }
 
-    public void SaveRecord(string RecordName, string key, Color value)
+    public void SaveRecord(string recordName, string key, Color value)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
         table.SetRecord(key, value);
-        SaveData(RecordName, table);
+        SaveData(recordName, table);
     }
 
+#endregion
 
-    #endregion
+#region 取值封装
 
-    #region 取值封装
-
-    public int GetIntRecord(string RecordName, string key,int defaultValue)
+    public int GetIntRecord(string recordName, string key,int defaultValue)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public string GetStringRecord(string RecordName, string key, string defaultValue)
+    public string GetStringRecord(string recordName, string key, string defaultValue)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public bool GetBoolRecord(string RecordName, string key, bool defaultValue)
+    public bool GetBoolRecord(string recordName, string key, bool defaultValue)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public float GetFloatRecord(string RecordName, string key, float defaultValue)
+    public float GetFloatRecord(string recordName, string key, float defaultValue)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public Vector2 GetVector2Record(string RecordName, string key, Vector2 defaultValue)
+    public Vector2 GetVector2Record(string recordName, string key, Vector2 defaultValue)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public Vector3 GetVector3Record(string RecordName, string key, Vector3 defaultValue)
+    public Vector3 GetVector3Record(string recordName, string key, Vector3 defaultValue)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
 
         return table.GetRecord(key, defaultValue);
     }
 
-    public Color GetColorRecord(string RecordName, string key, Color defaultValue)
+    public Color GetColorRecord(string recordName, string key, Color defaultValue)
     {
-        var table = GetData(RecordName);
+        var table = GetData(recordName);
 
         return table.GetRecord(key, defaultValue);
     }
-
-    #endregion
-
+    
+#endregion
+    
 }

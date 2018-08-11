@@ -4,13 +4,16 @@ using UnityEngine.UI;
 
 public class ScrollRectInput : ScrollRect
 {
-    public string m_UIEventKey;
-    InputEventRegisterInfo<InputUIOnScrollEvent> m_register;
+    //事件key
+    public string m_uiEventKey;
+    
+    //事件注册
+    private InputEventRegisterInfo<InputUIOnScrollEvent> m_register;
 
-    public virtual void Init(string UIEventKey)
+    public virtual void Init(string uiEventKey)
     {
-        m_UIEventKey = UIEventKey;
-        m_register = InputUIEventProxy.GetOnScrollListener(m_UIEventKey, name, OnSetContentAnchoredPosition);
+        m_uiEventKey = uiEventKey;
+        m_register = InputUIEventProxy.GetOnScrollListener(m_uiEventKey, name, OnSetContentAnchoredPosition);
     }
 
     public virtual void Dispose()
@@ -20,7 +23,7 @@ public class ScrollRectInput : ScrollRect
 
     protected override void SetContentAnchoredPosition(Vector2 position)
     {
-        InputUIEventProxy.DispatchScrollEvent(m_UIEventKey, name,"", position);
+        InputUIEventProxy.DispatchScrollEvent(m_uiEventKey, name,"", position);
     }
 
     protected virtual void OnSetContentAnchoredPosition(InputUIOnScrollEvent e)
