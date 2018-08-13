@@ -2,20 +2,23 @@
 using System.Collections;
 using System.Text;
 using System;
-/*
- * gameLoadType 为 Resource 时 ，所有资源从Resource读取
- * gameLoadType 不为 Resource时，资源读取方式从配置中读取
- * */
 
 public enum ResLoadLocation
 {
+    //从游戏资源中读取
     Resource,
+    
+    //对应streamingAssetsPath，使用ab时，ab数据会解压到这里，只有读权限
     Streaming,
+    
+    //persistentDataPath，可读写，一些游戏时生存的资源，或者热更新资源，从这里读写
     Persistent,
+    
+    //对应temporaryCachePath，临时存取位置，可读写
     Catch,
 }
 
-public static class ResourceManager 
+public static class ResourceManager
 {
     /// <summary>
     /// 游戏内资源读取类型
@@ -40,7 +43,7 @@ public static class ResourceManager
 
     public static object Load(string name)
     {
-        var packData  = ResourcesConfigManager.GetBundleConfig(name);
+        var packData  = ResourcesConfigManager.Instance.GetBundleConfig(name);
 
         if(packData == null)
         {
@@ -57,9 +60,10 @@ public static class ResourceManager
         }
     }
 
+    //按照某个类型加载数据
     public static T Load<T>(string name) where T: UnityEngine.Object
     {
-        var packData = ResourcesConfigManager.GetBundleConfig(name);
+        var packData = ResourcesConfigManager.Instance.GetBundleConfig(name);
 
         if (packData == null)
         {
@@ -78,7 +82,7 @@ public static class ResourceManager
 
     public static void LoadAsync(string name,LoadCallBack callBack)
     {
-        var packData  = ResourcesConfigManager.GetBundleConfig(name);
+        var packData  = ResourcesConfigManager.Instance.GetBundleConfig(name);
 
         if (packData == null)
         {

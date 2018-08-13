@@ -21,7 +21,7 @@ public static class AssetsBundleManager
     /// <param name="name">bundle名</param>
     public static Bundle LoadBundle(string bundleName)
     {
-        ResourcesConfig configTmp = ResourcesConfigManager.GetBundleConfig(bundleName);
+        ResourcesConfig configTmp = ResourcesConfigManager.Instance.GetBundleConfig(bundleName);
 
         string path = GetBundlePath(configTmp);
 
@@ -51,7 +51,7 @@ public static class AssetsBundleManager
         }
         else
         {
-            ResourcesConfig configTmp = ResourcesConfigManager.GetRelyBundleConfig(relyBundleName);
+            ResourcesConfig configTmp = ResourcesConfigManager.Instance.GetRelyBundleConfig(relyBundleName);
             string path = GetBundlePath(configTmp);
             tmp = AddRelyBundle(relyBundleName, AssetBundle.LoadFromFile(path));
         }
@@ -66,7 +66,7 @@ public static class AssetsBundleManager
     /// <param name="bundleName">bundle名</param>
     public static void LoadBundleAsync(string bundleName, BundleLoadCallBack callBack)
     {
-        ResourcesConfig configTmp = ResourcesConfigManager.GetBundleConfig(bundleName);
+        ResourcesConfig configTmp = ResourcesConfigManager.Instance.GetBundleConfig(bundleName);
 
         if (configTmp == null)
         {
@@ -155,7 +155,7 @@ public static class AssetsBundleManager
             //先占位，避免重复加载
             s_relyBundle.Add(relyBundleName, null);
 
-            ResourcesConfig configTmp = ResourcesConfigManager.GetRelyBundleConfig(relyBundleName);
+            ResourcesConfig configTmp = ResourcesConfigManager.Instance.GetRelyBundleConfig(relyBundleName);
             string path = GetBundlePath(configTmp);
 
             ResourceIOTool.AssetsBundleLoadAsync(path, (LoadState state,AssetBundle bundle)=>
@@ -185,8 +185,7 @@ public static class AssetsBundleManager
         }
         else
         {
-#if !UNITY_WEBGL
-            if (MemoryManager.m_allowDynamicLoad)
+            if (MemoryManager.Instance.m_allowDynamicLoad)
             {
                 return LoadBundle(name).mainAsset;
             }
@@ -194,9 +193,6 @@ public static class AssetsBundleManager
             {
                 throw new Exception("已禁止资源动态加载，请检查静态资源加载列表 ->" + name + "<-");
             }
-#else
-            throw new Exception("WEBGL 不能同步加载Bundle，请先异步加载对应资源！ ->" + name + "<-");
-#endif
         }
     }
 
@@ -209,7 +205,7 @@ public static class AssetsBundleManager
         else
         {
 #if !UNITY_WEBGL
-            if (MemoryManager.m_allowDynamicLoad)
+            if (MemoryManager.Instance.m_allowDynamicLoad)
             {
                 return (T)LoadBundle(name).Load<T>();
             }
@@ -365,10 +361,8 @@ public static class AssetsBundleManager
 
     static Bundle AddBundle(string bundleName, AssetBundle asset)
     {
-        //Debug.Log("AddBundle " + bundleName);
-
-        Bundle bundleTmp = new Bundle();
-        ResourcesConfig configTmp = ResourcesConfigManager.GetBundleConfig(bundleName);
+        var bundleTmp = new Bundle();
+        var configTmp = ResourcesConfigManager.Instance.GetBundleConfig(bundleName);
 
         if (s_bundles.ContainsKey(bundleName))
         {

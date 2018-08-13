@@ -16,17 +16,17 @@ public delegate void ApplicationVoidCallback();
 public class ApplicationManager : MonoBehaviour 
 {
     //管理器实例
-    private static ApplicationManager instance;
+    private static ApplicationManager _instance;
     public static ApplicationManager Instance
     {
-        get { return ApplicationManager.instance; }
-        set { ApplicationManager.instance = value; }
+        get { return _instance; }
+        private set { _instance = value; }
     }
 
-    public AppMode m_AppMode = AppMode.Developing;    
-    public static AppMode AppMode
+    public AppMode _appMode = AppMode.Developing;
+    public AppMode AppMode
     {
-        get { return instance.m_AppMode; }
+        get { return _appMode; }
     }
 
     //是否是ab模式
@@ -52,7 +52,7 @@ public class ApplicationManager : MonoBehaviour
     public void Awake()
     {
         m_Status = "DemoStatus";
-        instance = this;
+        Instance = this;
         AppLaunch();
     }
 
@@ -65,13 +65,7 @@ public class ApplicationManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         //设置资源加载类型
-        SetResourceLoadType();
-        
-        //资源路径管理器启动  载入配置
-        ResourcesConfigManager.Initialize(); 
-
-        //内存管理初始化
-        MemoryManager.Init();           
+        SetResourceLoadType();        
         
         //计时器启动
         Timer.Init();           
@@ -85,10 +79,7 @@ public class ApplicationManager : MonoBehaviour
 #else
         //异步加载UIManager
         UIManager.InitAsync();               
-#endif
-
-        //游戏流程状态机初始化
-        ApplicationStatusManager.Init();     
+#endif  
         
         //初始化全局逻辑
         GlobalLogicManager.Init();           
@@ -103,7 +94,7 @@ public class ApplicationManager : MonoBehaviour
                 InitGlobalLogic();          
                 
                 //可以从此处进入测试流程
-                ApplicationStatusManager.EnterTestModel(m_Status);
+                ApplicationStatusManager.Instance.EnterTestModel(m_Status);
             };
 
             //开发者复盘管理器 
@@ -117,7 +108,7 @@ public class ApplicationManager : MonoBehaviour
             InitGlobalLogic();
             
             //游戏流程状态机，开始第一个状态
-            ApplicationStatusManager.EnterStatus(m_Status);
+            ApplicationStatusManager.Instance.EnterStatus(m_Status);
         }
     }
 

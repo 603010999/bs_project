@@ -27,7 +27,7 @@ public class SystemInfoTool
         if (isall || name == "processortype") str = isall ? str + SystemInfo.processorType + "\n" : SystemInfo.processorType;
         if (isall || name == "systemmemorysize") str = isall ? str + SystemInfo.systemMemorySize.ToString() + "\n" : SystemInfo.systemMemorySize.ToString();
         if (isall || name == "developerbuild") str = isall ? str + Application.installMode.ToString() + "\n" : Application.installMode.ToString();
-        if (isall || name == "rsmodel") str = isall ? str + ApplicationManager.AppMode.ToString() + "\n" : ApplicationManager.AppMode.ToString();
+        if (isall || name == "rsmodel") str = isall ? str + ApplicationManager.Instance.AppMode.ToString() + "\n" : ApplicationManager.Instance.AppMode.ToString();
         return str;
     }
 }

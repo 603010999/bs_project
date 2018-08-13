@@ -187,13 +187,13 @@ public class HotUpdateManager
 
         UpdateDateCallBack(HotUpdateStatusEnum.DownLoadingMd5File, GetHotUpdateProgress(true, false, 1));
 
-        ResourcesConfigStruct serviceFileConfig = ResourcesConfigManager.AnalysisResourcesConfig2Struct(m_Md5FileCache);
-        ResourcesConfigStruct localFileConfig   = ResourcesConfigManager.AnalysisResourcesConfig2Struct(ResourcesConfigManager.ReadResourceConfigContent());
+        var serviceFileConfig = ResourcesConfigManager.Instance.AnalysisResourcesConfig2Struct(m_Md5FileCache);
+        var localFileConfig = ResourcesConfigManager.Instance.GetResourcesConfig();
 
         s_downLoadList = new List<ResourcesConfig>();
 
-        CheckBundleList(serviceFileConfig.relyList, localFileConfig.relyList);
-        CheckBundleList(serviceFileConfig.bundleList, localFileConfig.bundleList);
+        CheckBundleList(serviceFileConfig.m_relyCfgDic, localFileConfig.m_relyCfgDic);
+        CheckBundleList(serviceFileConfig.m_bundleCfgDic, localFileConfig.m_bundleCfgDic);
 
         yield return StartDownLoad();
     }
@@ -229,11 +229,11 @@ public class HotUpdateManager
 
         UpdateDateCallBack(HotUpdateStatusEnum.Updating, GetHotUpdateProgress(true, true,  GetDownLoadFileProgress(0)));
 
-        RecordTable hotupdateData = RecordManager.Instance.GetData(c_HotUpdateRecordName);
+        var hotupdateData = RecordManager.Instance.GetData(c_HotUpdateRecordName);
         
         for (int i = 0; i < s_downLoadList.Count; i++)
         {
-            string md5Tmp = hotupdateData.GetRecord(s_downLoadList[i].name, "null");
+            var md5Tmp = hotupdateData.GetRecord(s_downLoadList[i].name, "null");
 
             if (md5Tmp == s_downLoadList[i].md5)
             {
@@ -242,12 +242,12 @@ public class HotUpdateManager
             }
             else
             {
-                string downloadPath = s_resourcesFileDownLoadPath + s_downLoadList[i].path + "." + AssetsBundleManager.c_AssetsBundlesExpandName;
+                var downloadPath = s_resourcesFileDownLoadPath + s_downLoadList[i].path + "." + AssetsBundleManager.c_AssetsBundlesExpandName;
 
-                WWW www = new WWW(downloadPath);
+                var www = new WWW(downloadPath);
                 yield return www;
 
-                if (www.error != null && www.error != "")
+                if (!string.IsNullOrEmpty(www.error))
                 {
                     Debug.LogError("下载出错！ " + downloadPath + " " + www.error);
                     UpdateDateCallBack(HotUpdateStatusEnum.UpdateFail, GetHotUpdateProgress(true, true, GetDownLoadFileProgress(i)));
@@ -269,7 +269,7 @@ public class HotUpdateManager
         //保存版本信息
         //保存文件信息
         ResourceIOTool.WriteStringByFile(PathTool.GetAbsolutePath(ResLoadLocation.Persistent, HotUpdateManager.c_versionFileName + "." + ConfigManager.c_expandName), m_versionFileCache);
-        ResourceIOTool.WriteStringByFile(PathTool.GetAbsolutePath(ResLoadLocation.Persistent, ResourcesConfigManager.c_ManifestFileName + "." + ConfigManager.c_expandName), m_Md5FileCache);
+        ResourceIOTool.WriteStringByFile(PathTool.GetAbsolutePath(ResLoadLocation.Persistent, ResourcesConfigManager.m_manifestFileName + "." + ConfigManager.c_expandName), m_Md5FileCache);
 
         //从stream读取配置
         RecordManager.Instance.SaveRecord(c_HotUpdateRecordName, c_useHotUpdateRecordKey, true);
@@ -277,7 +277,7 @@ public class HotUpdateManager
         UpdateDateCallBack(HotUpdateStatusEnum.UpdateSuccess, 1);
 
         //重新生成资源配置
-        ResourcesConfigManager.Initialize();
+        ResourcesConfigManager.Instance.Initialize();
     }
 
     static void Init()
@@ -302,7 +302,7 @@ public class HotUpdateManager
         Debug.Log("=====>"+downLoadPath);
 
         s_versionFileDownLoadPath   = downLoadPath + HotUpdateManager.c_versionFileName + "." + AssetsBundleManager.c_AssetsBundlesExpandName;
-        s_Md5FileDownLoadPath       = downLoadPath + ResourcesConfigManager.c_ManifestFileName + "." + AssetsBundleManager.c_AssetsBundlesExpandName;
+        s_Md5FileDownLoadPath       = downLoadPath + ResourcesConfigManager.m_manifestFileName + "." + AssetsBundleManager.c_AssetsBundlesExpandName;
         s_resourcesFileDownLoadPath = downLoadPath;
     }
 

@@ -9,23 +9,23 @@ using System;
  * */
 public class DataManager
 {
-    public const string c_directoryName = "Data";
-    public const string c_expandName = "txt";
+    public const string m_directoryName = "Data";
+    public const string m_expandName = "txt";
 
     /// <summary>
     /// 数据缓存
     /// </summary>
     static Dictionary<string, DataTable> s_dataCache = new Dictionary<string, DataTable>();
 
-    public static bool GetIsExistData(string DataName)
+    public static bool GetIsExistData(string dataName)
     {
-        return ResourcesConfigManager.GetIsExitRes(DataName);
+        return ResourcesConfigManager.Instance.GetIsExitRes(dataName);
     }
 
     //文件是否存在
     public static bool IsDataFileExist(string dataName)
     {
-        var path = PathTool.GetRelativelyPath(c_directoryName, dataName, c_expandName);
+        var path = PathTool.GetRelativelyPath(m_directoryName, dataName, m_expandName);
 
         var fullPath = PathTool.GetAbsolutePath(ResLoadLocation.Resource, path);
 
@@ -33,14 +33,14 @@ public class DataManager
     }
 
     //获取某个配置的数据  参数为配置名称
-    public static DataTable GetData(string DataName)
+    public static DataTable GetData(string dataName)
     {
         try
         {
             //编辑器下不处理缓存
-            if (s_dataCache.ContainsKey(DataName))
+            if (s_dataCache.ContainsKey(dataName))
             {
-                return s_dataCache[DataName];
+                return s_dataCache[dataName];
             }
 
             DataTable data = null;
@@ -50,11 +50,11 @@ public class DataManager
 
             if (Application.isPlaying)
             {
-                dataJson = ResourceManager.ReadTextFile(DataName);
+                dataJson = ResourceManager.ReadTextFile(dataName);
             }
             else
             {
-                var path = PathTool.GetRelativelyPath(c_directoryName, DataName, c_expandName);
+                var path = PathTool.GetRelativelyPath(m_directoryName, dataName, m_expandName);
                 dataJson = ResourceIOTool.ReadStringByResource(path);
             }
 #else
@@ -63,19 +63,19 @@ public class DataManager
 
             if (dataJson == "")
             {
-                throw new Exception("Dont Find ->" + DataName + "<-");
+                throw new Exception("Dont Find ->" + dataName + "<-");
             }
 
             data = DataTable.Analysis(dataJson);
-            data.m_tableName = DataName;
+            data.m_tableName = dataName;
 
-            s_dataCache.Add(DataName, data);
+            s_dataCache.Add(dataName, data);
             return data;
         }
         
         catch (Exception e)
         {
-            throw new Exception("GetData Exception ->" + DataName + "<- : " + e.ToString());
+            throw new Exception("GetData Exception ->" + dataName + "<- : " + e.ToString());
         }
     }
 

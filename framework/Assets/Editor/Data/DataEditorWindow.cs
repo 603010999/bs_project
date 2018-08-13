@@ -165,7 +165,7 @@ public class DataEditorWindow : EditorWindow
             {
                 if (EditorUtility.DisplayDialog("警告", "确定要删除该数据吗！", "是", "取消"))
                 {
-                    File.Delete(Application.dataPath + "/Resources/" + DataManager.c_directoryName + "/" + m_currentDataName + ".txt");
+                    File.Delete(Application.dataPath + "/Resources/" + DataManager.m_directoryName + "/" + m_currentDataName + ".txt");
                     AssetDatabase.Refresh();
                 }
             }
@@ -708,7 +708,7 @@ public class DataEditorWindow : EditorWindow
 
         m_dataNameList.Add("None");
 
-        m_directoryPath = Application.dataPath + "/Resources/" + DataManager.c_directoryName;
+        m_directoryPath = Application.dataPath + "/Resources/" + DataManager.m_directoryName;
 
         FindConfigName(m_directoryPath);
     }
@@ -905,7 +905,7 @@ public class DataEditorWindow : EditorWindow
 
     public static void ConvertUtf8()
     {
-        FileTool.RecursionFileExecute(Application.dataPath + "/Resources/" + DataManager.c_directoryName, "txt", (name) =>
+        FileTool.RecursionFileExecute(Application.dataPath + "/Resources/" + DataManager.m_directoryName, "txt", (name) =>
         {
             FileTool.ConvertFileEncoding(name, null, System.Text.Encoding.UTF8);
         });
@@ -918,9 +918,9 @@ public class DataEditorWindow : EditorWindow
     public static bool GetIsExistDataEditor(string DataName)
     {
         return "" != ResourceIOTool.ReadStringByResource(
-                        PathTool.GetRelativelyPath(DataManager.c_directoryName,
+                        PathTool.GetRelativelyPath(DataManager.m_directoryName,
                                                     DataName,
-                                                    DataManager.c_expandName));
+                                                    DataManager.m_expandName));
     }
 
     public static void SaveData(string ConfigName, DataTable data)
@@ -929,9 +929,9 @@ public class DataEditorWindow : EditorWindow
             PathTool.GetAbsolutePath(
                 ResLoadLocation.Resource,
                 PathTool.GetRelativelyPath(
-                    DataManager.c_directoryName,
+                    DataManager.m_directoryName,
                     ConfigName,
-                    DataManager.c_expandName)),
+                    DataManager.m_expandName)),
             DataTable.Serialize(data));
 
         UnityEditor.AssetDatabase.Refresh();
@@ -945,7 +945,7 @@ public class DataEditorWindow : EditorWindow
     {
         UnityEditor.AssetDatabase.Refresh();
 
-        string dataJson = ResourceIOTool.ReadStringByFile(PathTool.GetEditorPath(DataManager.c_directoryName, dataName, DataManager.c_expandName));
+        string dataJson = ResourceIOTool.ReadStringByFile(PathTool.GetEditorPath(DataManager.m_directoryName, dataName, DataManager.m_expandName));
 
         if (dataJson == "")
         {
@@ -967,7 +967,7 @@ public class DataEditorWindow : EditorWindow
     {
         string configDataJson = Json.Serialize(data);
 
-        EditorUtil.WriteStringByFile(PathTool.GetEditorPath(DataManager.c_directoryName, ConfigName, DataManager.c_expandName), configDataJson);
+        EditorUtil.WriteStringByFile(PathTool.GetEditorPath(DataManager.m_directoryName, ConfigName, DataManager.m_expandName), configDataJson);
 
         UnityEditor.AssetDatabase.Refresh();
     }

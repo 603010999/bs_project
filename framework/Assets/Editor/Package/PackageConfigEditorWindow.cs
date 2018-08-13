@@ -1743,8 +1743,8 @@ public class BundleConfigEditorWindow : EditorWindow
             }
         }
 
-        data.Add(ResourcesConfigManager.c_relyBundleKey, gameRelyBundles);
-        data.Add(ResourcesConfigManager.c_bundlesKey, gameAssetsBundles);
+        data.Add(ResourcesConfigManager.m_relyBundleKey, gameRelyBundles);
+        data.Add(ResourcesConfigManager.m_bundlesKey, gameAssetsBundles);
 
         //保存游戏中读取的配置文件
         //ConfigManager.SaveData(ResourcesConfigManager.c_configFileName, gameConfig);
@@ -1753,7 +1753,7 @@ public class BundleConfigEditorWindow : EditorWindow
 
         EditorUtil.WriteStringByFile(
             PathTool.GetAbsolutePath(ResLoadLocation.Resource,
-            ResourcesConfigManager.c_ManifestFileName + "." + ConfigManager.c_expandName)
+            ResourcesConfigManager.m_manifestFileName + "." + ConfigManager.c_expandName)
             , FrameWork.Json.Serialize(data));
 
         Debug.Log("保存完毕 序列化时间: " + (Time.realtimeSinceStartup - time));

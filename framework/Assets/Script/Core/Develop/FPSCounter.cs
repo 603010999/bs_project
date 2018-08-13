@@ -17,7 +17,7 @@ using System.Collections;
 
         public void Init()
         {
-            if (ApplicationManager.AppMode != AppMode.Release)
+            if (ApplicationManager.Instance.AppMode != AppMode.Release)
             {
                 ApplicationManager.m_onApplicationUpdate += Update;
                 DevelopReplayManager.s_ProfileGUICallBack += OnGUI;

@@ -40,7 +40,7 @@ public class MainWindow : UIWindowBase
 
     public void OnClickGameStart()
     {
-        ApplicationStatusManager.EnterStatus<GameStatus>();
+        ApplicationStatusManager.Instance.EnterStatus<GameStatus>();
     }
 
     public void OnClickShop()

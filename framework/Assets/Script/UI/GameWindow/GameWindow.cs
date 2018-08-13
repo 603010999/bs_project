@@ -52,6 +52,6 @@ public class GameWindow : UIWindowBase
 
     public void OnClickReturnMainMenu()
     {
-        ApplicationStatusManager.EnterStatus<DemoStatus>();
+        ApplicationStatusManager.Instance.EnterStatus<DemoStatus>();
     }
 }

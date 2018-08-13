@@ -7,34 +7,34 @@ using UnityEngine.Profiling;
 #endif
 
 #pragma warning disable
-public class MemoryManager
+public class MemoryManager:Singleton<MemoryManager>
 {
     /// <summary>
     /// 是否允许动态加载
     /// </summary>
-    public static bool m_allowDynamicLoad = true;
+    public bool m_allowDynamicLoad = true;
 
     /// <summary>
     /// 最大允许的内存使用量
     /// </summary>
-    public static int m_maxMemoryUse = 170;
+    public int m_maxMemoryUse = 170;
 
     /// <summary>
     /// 最大允许的堆内存使用量
     /// </summary>
-    public static int m_maxHeapMemoryUse = 50;
+    public int m_maxHeapMemoryUse = 50;
 
-    public static void Init()
+    public MemoryManager()
     {
         ApplicationManager.m_onApplicationUpdate += Update;
 
-        if (ApplicationManager.AppMode != AppMode.Release)
+        if (ApplicationManager.Instance.AppMode != AppMode.Release)
         {
             DevelopReplayManager.s_ProfileGUICallBack += GUI;
         }
     }
 
-    static void Update()
+    private void Update()
     {
         //资源加载
         LoadResources();
@@ -188,7 +188,7 @@ public class MemoryManager
     /// 用于监控内存
     /// </summary>
     /// <param name="tag"></param>
-    static void MonitorMemorySize()
+    private void MonitorMemorySize()
     {
         if(ByteToM(Profiler.GetTotalReservedMemory() ) > m_maxMemoryUse * 0.7f)
         {
