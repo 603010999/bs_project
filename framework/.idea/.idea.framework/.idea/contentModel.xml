@@ -6,9 +6,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets\Editor" t="Include">
-        <e p="Application" t="Include">
-          <e p="ApplicationManagerComponentEditor.cs" t="Include" />
-        </e>
         <e p="BlackSheepEditor" t="Include">
           <e p="StoryLineEditor.cs" t="Include" />
         </e>
@@ -18,11 +15,6 @@
         <e p="Data" t="Include">
           <e p="DataEditorWindow.cs" t="Include" />
         </e>
-        <e p="Font" t="Include">
-          <e p="BFImporter.cs" t="Include" />
-          <e p="BFMenuTool.cs" t="Include" />
-          <e p="FntParse.cs" t="Include" />
-        </e>
         <e p="NetWork" t="Include">
           <e p="Protocol" t="Include">
             <e p="ProtocolHelper.cs" t="Include" />
@@ -30,67 +22,6 @@
         </e>
         <e p="Record" t="Include">
           <e p="RecordEditorWindow.cs" t="Include" />
-        </e>
-        <e p="res" t="Include">
-          <e p="EditorWindow" t="Include">
-            <e p="FindTexture获取.txt" t="Include" />
-            <e p="IconContent获取.txt" t="Include" />
-            <e p="LoadIcon获取.txt" t="Include" />
-            <e p="内置窗口图标.txt" t="Include" />
-          </e>
-          <e p="GuideSyetemTemplate.txt" t="Include" />
-          <e p="LuaExportListTemplate.txt" t="Include" />
-          <e p="LuaLib" t="Include">
-            <e p="framework" t="Include">
-              <e p="Data" t="Include">
-                <e p="LuaDataHelper.txt" t="Include" />
-              </e>
-              <e p="LuaFrameWorkEventName.txt" t="Include" />
-              <e p="Status" t="Include">
-                <e p="LuaStatusManager.txt" t="Include" />
-                <e p="LuaStatusMetaTable.txt" t="Include" />
-              </e>
-              <e p="UI" t="Include">
-                <e p="LuaUIManager.txt" t="Include" />
-                <e p="LuaUIWindowMetatable.txt" t="Include" />
-              </e>
-              <e p="Update" t="Include">
-                <e p="LuaUpdate.txt" t="Include" />
-              </e>
-            </e>
-            <e p="LuaDataHelper.txt" t="Include" />
-            <e p="LuaEventDispatcher.txt" t="Include" />
-            <e p="LuaFormatTools.txt" t="Include" />
-            <e p="luaJson.txt" t="Include" />
-            <e p="LuaPrintTable.txt" t="Include" />
-            <e p="LuaStringHelper.txt" t="Include" />
-            <e p="Unity" t="Include">
-              <e p="LuaUnityDefine.txt" t="Include" />
-            </e>
-          </e>
-          <e p="readme" t="Include">
-            <e p="SDKCacheReadme.txt" t="Include" />
-          </e>
-          <e p="ScriptTemplates" t="Include">
-            <e p="87-C# Script-NewGameStatusScript.cs.txt" t="Include" />
-          </e>
-          <e p="UIGuideWindowClassTemplate.txt" t="Include" />
-          <e p="UILuaScriptTemplate.txt" t="Include" />
-          <e p="UIWindowClassTemplate.txt" t="Include" />
-        </e>
-        <e p="Test" t="Include">
-          <e p="Application" t="Include">
-            <e p="ApplicationLunchTest.cs" t="Include" />
-          </e>
-          <e p="Protocol" t="Include">
-            <e p="ProtocolMsgTest.cs" t="Include" />
-          </e>
-          <e p="ResourcesLoad" t="Include">
-            <e p="ResourcesTest.cs" t="Include" />
-          </e>
-          <e p="UI" t="Include">
-            <e p="UItest.cs" t="Include" />
-          </e>
         </e>
         <e p="Utils" t="Include">
           <e p="AppyPrefabs.cs" t="Include" />
@@ -101,47 +32,10 @@
           <e p="EditorUtilGUI.cs" t="Include" />
           <e p="ImportTool.cs" t="Include" />
         </e>
-        <e p="XUPorter" t="Include">
-          <e p="MiniJSON" t="Include">
-            <e p="MiniJSON.cs" t="Include" />
-          </e>
-          <e p="PBX Editor" t="Include">
-            <e p="PBXBuildFile.cs" t="Include" />
-            <e p="PBXBuildPhase.cs" t="Include" />
-            <e p="PBXDictionary.cs" t="Include" />
-            <e p="PBXFileReference.cs" t="Include" />
-            <e p="PBXGroup.cs" t="Include" />
-            <e p="PBXList.cs" t="Include" />
-            <e p="PBXObject.cs" t="Include" />
-            <e p="PBXParser.cs" t="Include" />
-            <e p="PBXProject.cs" t="Include" />
-            <e p="PBXSortedDictionary.cs" t="Include" />
-            <e p="PBXVariantGroup.cs" t="Include" />
-          </e>
-          <e p="Plist" t="Include">
-            <e p="Plist.cs" t="Include" />
-          </e>
-          <e p="XCBuildConfiguration.cs" t="Include" />
-          <e p="XCConfigurationList.cs" t="Include" />
-          <e p="XClass.cs" t="Include" />
-          <e p="XCMod.cs" t="Include" />
-          <e p="XCodePostProcess.cs" t="Include" />
-          <e p="XCPlist.cs" t="Include" />
-          <e p="XCProject.cs" t="Include" />
-        </e>
       </e>
       <e p="Assets\Resources" t="Include">
         <e p="Data" t="Include">
-          <e p="1001101talk.txt" t="Include" />
-          <e p="1001102talk.txt" t="Include" />
-          <e p="chapter.txt" t="Include" />
           <e p="item.txt" t="Include" />
-          <e p="Language" t="Include">
-            <e p="LangData_Afrikaans.txt" t="Include" />
-            <e p="LangData_Arabic.txt" t="Include" />
-            <e p="LangData_ChineseSimplified.txt" t="Include" />
-          </e>
-          <e p="player.txt" t="Include" />
         </e>
       </e>
       <e p="Assets\Script" t="Include">
@@ -264,10 +158,6 @@
                 <e p="UGUIJoyStick_BgMove.cs" t="Include" />
                 <e p="UGUIJoyStick_Ro.cs" t="Include" />
                 <e p="UGUIJoyStickBase.cs" t="Include" />
-              </e>
-              <e p="LanguageComponent" t="Include">
-                <e p="FontChooserComponent.cs" t="Include" />
-                <e p="LanguageComponent.cs" t="Include" />
               </e>
               <e p="LongPressAcceptor" t="Include">
                 <e p="LongPressAcceptor.cs" t="Include" />

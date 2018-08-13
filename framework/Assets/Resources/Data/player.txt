@@ -1,5 +1,0 @@
-player_id	player_name	start_talk_id
-type	String	String
-1001	aslan	10001
-1002	dajun	20001
-1003		
