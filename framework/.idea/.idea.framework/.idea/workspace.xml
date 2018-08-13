@@ -15,7 +15,7 @@
         <entry file="file://$PROJECT_DIR$/Assets/Script/Core/Input/InputEventProxy/InputUIEventProxy.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
-              <caret line="225" column="33" lean-forward="true" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
+              <caret line="225" column="33" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
               <folding>
                 <marker date="1512056493000" expanded="false" signature="6:124" ph="..." />
                 <marker date="1512056493000" expanded="true" signature="174:7288" ph="{...}" />
@@ -78,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataGenerateManager.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataGenerateManager.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Script/Core/Data/DataGenerateManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+            <state relative-caret-position="375">
+              <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
               <folding>
                 <marker date="1512056493000" expanded="false" signature="6:92" ph="..." />
                 <marker date="1512056493000" expanded="true" signature="163:1718" ph="{...}" />
@@ -100,6 +100,22 @@
                 <marker date="1512056493000" expanded="true" signature="1680:1716" ph="{...}" />
                 <marker date="1512056493000" expanded="true" signature="1759:1821" ph="{...}" />
                 <marker date="1512056493000" expanded="true" signature="1806:1819" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FirstStatus.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Script/GameStatus/FirstStatus.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="19" selection-start-line="19" selection-end-line="19" selection-end-column="45" />
+              <folding>
+                <marker date="1533971944660" expanded="false" signature="6:44" ph="..." />
+                <marker date="1533971944660" expanded="true" signature="92:1015" ph="{...}" />
+                <marker date="1533971944660" expanded="true" signature="136:814" ph="{...}" />
+                <marker date="1533971944660" expanded="true" signature="820:919" ph="/* public void CallBackTest(InputNetworkEvent e) ... */" />
+                <marker date="1533971944660" expanded="true" signature="967:1013" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -293,8 +309,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/84242394-C340-4C36-9D35-588E053CCD27/e8/925083b6/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Core/Utils/PathTool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E1E93E3D-1D8A-43F3-8039-C7C26FC3A447/00/8af186cb/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Script/UI/testWindow/testWindow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Script/UI/testWindow/ItemTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/UI/ShopWindow/ShopWindow.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -405,9 +419,9 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="856">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="856" />
+      <option name="pid" />
     </configuration>
   </component>
   <component name="TodoView">
@@ -452,9 +466,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Script/Core/UI/Control/UILayerManager.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Script/Logic/ConfigMgr/PlayerConfigMgr.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -573,13 +584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="30" column="74" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Script/GameStatus/FirstStatus.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1304,7 +1308,7 @@
     <entry file="file://$PROJECT_DIR$/Assets/Script/Core/Input/InputEventProxy/InputUIEventProxy.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="225" column="33" lean-forward="true" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
+          <caret line="225" column="33" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
           <folding>
             <marker date="1512056493000" expanded="false" signature="6:124" ph="..." />
             <marker date="1512056493000" expanded="true" signature="174:7288" ph="{...}" />
@@ -1519,8 +1523,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Script/Core/Data/DataGenerateManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="375">
+          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
           <folding>
             <marker date="1512056493000" expanded="false" signature="6:92" ph="..." />
             <marker date="1512056493000" expanded="true" signature="163:1718" ph="{...}" />
@@ -1538,6 +1542,27 @@
             <marker date="1512056493000" expanded="true" signature="1680:1716" ph="{...}" />
             <marker date="1512056493000" expanded="true" signature="1759:1821" ph="{...}" />
             <marker date="1512056493000" expanded="true" signature="1806:1819" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/test.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Script/GameStatus/FirstStatus.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="19" selection-start-line="19" selection-end-line="19" selection-end-column="45" />
+          <folding>
+            <marker date="1533971944660" expanded="false" signature="6:44" ph="..." />
+            <marker date="1533971944660" expanded="true" signature="92:1015" ph="{...}" />
+            <marker date="1533971944660" expanded="true" signature="136:814" ph="{...}" />
+            <marker date="1533971944660" expanded="true" signature="820:919" ph="/* public void CallBackTest(InputNetworkEvent e) ... */" />
+            <marker date="1533971944660" expanded="true" signature="967:1013" ph="{...}" />
           </folding>
         </state>
       </provider>

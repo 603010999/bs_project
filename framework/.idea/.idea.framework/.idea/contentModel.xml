@@ -3,7 +3,9 @@
   <component name="ContentModelStore">
     <e p="C:\Users\Administrator\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_framework.-1443980779.00" t="ExcludeRecursive" />
     <e p="F:\git\bs_project\framework" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets\Editor" t="Include">
         <e p="BlackSheepEditor" t="Include">
@@ -31,6 +33,86 @@
           <e p="EditorUtil.cs" t="Include" />
           <e p="EditorUtilGUI.cs" t="Include" />
           <e p="ImportTool.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Assets\Plugins" t="Include">
+        <e p="Ink" t="Include">
+          <e p="Editor" t="Include">
+            <e p="Compiler" t="Include">
+              <e p="Auto Compiler" t="Include">
+                <e p="InkPostProcessor.cs" t="Include" />
+              </e>
+              <e p="InkCompiler.cs" t="Include" />
+            </e>
+            <e p="Ink Inspector" t="Include">
+              <e p="File Icons" t="Include">
+                <e p="InkBrowserIcons.cs" t="Include" />
+              </e>
+              <e p="Ink Inspector" t="Include">
+                <e p="DefaultAssetEditor.cs" t="Include" />
+                <e p="DefaultAssetInspector.cs" t="Include" />
+                <e p="InkInspector.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Ink Library" t="Include">
+              <e p="InkFile.cs" t="Include" />
+              <e p="InkLibrary.cs" t="Include" />
+              <e p="InkLibraryEditor.cs" t="Include" />
+              <e p="InkMetaFile.cs" t="Include" />
+              <e p="InkMetaLibrary.cs" t="Include" />
+            </e>
+            <e p="Ink Settings" t="Include">
+              <e p="InkSettings.cs" t="Include" />
+              <e p="InkSettingsEditor.cs" t="Include" />
+            </e>
+            <e p="Player Window" t="Include">
+              <e p="InkPlayerWindow.cs" t="Include" />
+            </e>
+            <e p="Resources" t="Include">
+              <e p="InkDefaultTemplate.txt" t="Include" />
+            </e>
+            <e p="Tools" t="Include">
+              <e p="InkEditorUtils.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Example" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="BasicInkExample.cs" t="Include" />
+            </e>
+          </e>
+          <e p="InkRuntime" t="Include">
+            <e p="CallStack.cs" t="Include" />
+            <e p="Choice.cs" t="Include" />
+            <e p="ChoicePoint.cs" t="Include" />
+            <e p="Container.cs" t="Include" />
+            <e p="ControlCommand.cs" t="Include" />
+            <e p="DebugMetadata.cs" t="Include" />
+            <e p="Divert.cs" t="Include" />
+            <e p="Glue.cs" t="Include" />
+            <e p="INamedContent.cs" t="Include" />
+            <e p="InkList.cs" t="Include" />
+            <e p="JsonSerialisation.cs" t="Include" />
+            <e p="ListDefinition.cs" t="Include" />
+            <e p="ListDefinitionsOrigin.cs" t="Include" />
+            <e p="NativeFunctionCall.cs" t="Include" />
+            <e p="Object.cs" t="Include" />
+            <e p="Path.cs" t="Include" />
+            <e p="Pointer.cs" t="Include" />
+            <e p="Profiler.cs" t="Include" />
+            <e p="PushPop.cs" t="Include" />
+            <e p="SearchResult.cs" t="Include" />
+            <e p="SimpleJson.cs" t="Include" />
+            <e p="Story.cs" t="Include" />
+            <e p="StoryException.cs" t="Include" />
+            <e p="StoryState.cs" t="Include" />
+            <e p="StringJoinExtension.cs" t="Include" />
+            <e p="Tag.cs" t="Include" />
+            <e p="Value.cs" t="Include" />
+            <e p="VariableAssignment.cs" t="Include" />
+            <e p="VariableReference.cs" t="Include" />
+            <e p="VariablesState.cs" t="Include" />
+            <e p="Void.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Assets\Resources" t="Include">
@@ -214,10 +296,7 @@
         </e>
         <e p="GameStatus" t="Include">
           <e p="DemoStatus.cs" t="Include" />
-          <e p="FirstStatus.cs" t="Include" />
           <e p="GameStatus.cs" t="Include" />
-          <e p="GameStatus_two.cs" t="Include" />
-          <e p="UItest.cs" t="Include" />
         </e>
         <e p="InputEvent" t="Include">
           <e p="CustomEvent.cs" t="Include" />
@@ -240,12 +319,6 @@
           <e p="RuntimeTest.cs" t="Include" />
         </e>
         <e p="UI" t="Include">
-          <e p="AAAWindow" t="Include">
-            <e p="AAAWindow.cs" t="Include" />
-          </e>
-          <e p="ChatInfoWindow" t="Include">
-            <e p="ChatInfoWindow.cs" t="Include" />
-          </e>
           <e p="Common" t="Include">
             <e p="DataGrid" t="Include">
               <e p="DataGrid.cs" t="Include" />
@@ -257,9 +330,6 @@
           <e p="GameWindow" t="Include">
             <e p="GameWindow.cs" t="Include" />
           </e>
-          <e p="heiheiheiWindow" t="Include">
-            <e p="heiheiheiWindow.cs" t="Include" />
-          </e>
           <e p="MainWindow" t="Include">
             <e p="MainWindow.cs" t="Include" />
           </e>
@@ -267,19 +337,8 @@
             <e p="ShopWindow.cs" t="Include" />
             <e p="ShopWindowItem.cs" t="Include" />
           </e>
-          <e p="test01Window" t="Include">
-            <e p="test01Window.cs" t="Include" />
-          </e>
-          <e p="test02Window" t="Include">
-            <e p="test02Window.cs" t="Include" />
-          </e>
-          <e p="testWindow" t="Include">
-            <e p="ItemTest.cs" t="Include" />
-            <e p="testWindow.cs" t="Include" />
-          </e>
         </e>
       </e>
-      <e p="Assets\test.cs" t="Include" />
       <e p="framework.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
