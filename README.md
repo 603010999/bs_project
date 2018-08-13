@@ -1,2 +1,2 @@
 # bs_project
-no thing here
+nothing here
