@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911b03a7bc761324294e14b9a972a77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AppMode: 0
+  _appMode: 0
   m_useAssetsBundle: 0
   m_quickLunch: 1
   m_globalLogic: []

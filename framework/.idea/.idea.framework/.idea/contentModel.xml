@@ -32,6 +32,13 @@
         <e p="Record" t="Include">
           <e p="RecordEditorWindow.cs" t="Include" />
         </e>
+        <e p="res" t="Include">
+          <e p="UIWindowClassTemplate.txt" t="Include" />
+        </e>
+        <e p="UI" t="Include">
+          <e p="UICreateService.cs" t="Include" />
+          <e p="UIEditorWindow.cs" t="Include" />
+        </e>
         <e p="Utils" t="Include">
           <e p="AppyPrefabs.cs" t="Include" />
           <e p="BatchReplaceNameTool.cs" t="Include" />
@@ -316,8 +323,7 @@
             <e p="TalkConfig.cs" t="Include" />
           </e>
           <e p="ConfigMgr" t="Include">
-            <e p="PlayerConfigMgr.cs" t="Include" />
-            <e p="TalkConfigMgr.cs" t="Include" />
+            <e p="InkConfigMgr.cs" t="Include" />
           </e>
         </e>
         <e p="Test" t="Include">

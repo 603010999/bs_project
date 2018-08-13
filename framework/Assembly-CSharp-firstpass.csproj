@@ -85,6 +85,7 @@
     <Compile Include="Assets\Plugins\Ink\InkRuntime\VariableReference.cs" />
     <Compile Include="Assets\Plugins\Ink\InkRuntime\VariablesState.cs" />
     <Compile Include="Assets\Plugins\Ink\InkRuntime\Void.cs" />
+    <None Include="Assets\Editor\res\UIWindowClassTemplate.txt" />
     <None Include="Assets\Resources\Data\item.txt" />
     <None Include="Assets\Plugins\Ink\Editor\Resources\InkDefaultTemplate.txt" />
     <Reference Include="UnityEngine.UI">

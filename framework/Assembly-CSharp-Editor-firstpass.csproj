@@ -68,6 +68,7 @@
     <Compile Include="Assets\Plugins\Ink\Editor\Ink Settings\InkSettingsEditor.cs" />
     <Compile Include="Assets\Plugins\Ink\Editor\Player Window\InkPlayerWindow.cs" />
     <Compile Include="Assets\Plugins\Ink\Editor\Tools\InkEditorUtils.cs" />
+    <None Include="Assets\Editor\res\UIWindowClassTemplate.txt" />
     <None Include="Assets\Resources\Data\item.txt" />
     <None Include="Assets\Plugins\Ink\Editor\Resources\InkDefaultTemplate.txt" />
     <Reference Include="UnityEngine.UI">
