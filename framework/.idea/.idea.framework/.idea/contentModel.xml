@@ -22,6 +22,13 @@
             <e p="ProtocolHelper.cs" t="Include" />
           </e>
         </e>
+        <e p="Package" t="Include">
+          <e p="PackageConfigEditorWindow.cs" t="Include" />
+          <e p="PackageEditorConfigService.cs" t="Include" />
+          <e p="PackageService.cs" t="Include" />
+          <e p="ProjectBuildService.cs" t="Include" />
+          <e p="VersionService.cs" t="Include" />
+        </e>
         <e p="Record" t="Include">
           <e p="RecordEditorWindow.cs" t="Include" />
         </e>
@@ -30,6 +37,7 @@
           <e p="BatchReplaceNameTool.cs" t="Include" />
           <e p="EditorCoroutineRunner.cs" t="Include" />
           <e p="EditorExpand.cs" t="Include" />
+          <e p="EditorGUIStyleData.cs" t="Include" />
           <e p="EditorUtil.cs" t="Include" />
           <e p="EditorUtilGUI.cs" t="Include" />
           <e p="ImportTool.cs" t="Include" />
