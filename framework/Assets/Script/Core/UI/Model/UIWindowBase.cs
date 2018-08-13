@@ -36,10 +36,10 @@ public class UIWindowBase : UIBase
     {
     }
 
-    public virtual IEnumerator EnterAnim(UIAnimCallBack l_animComplete, UICallBack l_callBack,params object[] objs)
+    public virtual IEnumerator EnterAnim(UIAnimCallBack animComplete, UICallBack callBack,params object[] objs)
     {
         //默认无动画
-        l_animComplete(this, l_callBack, objs);
+        animComplete(this, callBack, objs);
 
         yield break;
     }
@@ -48,10 +48,10 @@ public class UIWindowBase : UIBase
     {
     }
 
-    public virtual IEnumerator ExitAnim(UIAnimCallBack l_animComplete, UICallBack l_callBack, params object[] objs)
+    public virtual IEnumerator ExitAnim(UIAnimCallBack animComplete, UICallBack callBack, params object[] objs)
     {
         //默认无动画
-        l_animComplete(this, l_callBack, objs);
+        animComplete(this, callBack, objs);
 
         yield break;
     }

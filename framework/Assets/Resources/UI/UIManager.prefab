@@ -208,7 +208,8 @@ MonoBehaviour:
   m_NormalLayerParent: {fileID: 224105098476479168}
   m_TopbarLayerParent: {fileID: 224083166201306134}
   m_PopUpLayerParent: {fileID: 224931389070289304}
-  normalUIList: []
+  normalUIList:
+  - {fileID: 0}
 --- !u!114 &114471597124652138
 MonoBehaviour:
   m_ObjectHideFlags: 1

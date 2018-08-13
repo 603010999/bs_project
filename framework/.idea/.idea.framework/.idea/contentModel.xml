@@ -325,6 +325,9 @@
           <e p="ConfigMgr" t="Include">
             <e p="InkConfigMgr.cs" t="Include" />
           </e>
+          <e p="DataMgr" t="Include">
+            <e p="InkDataMgr.cs" t="Include" />
+          </e>
         </e>
         <e p="Test" t="Include">
           <e p="Editor" t="Include">
@@ -343,6 +346,10 @@
           </e>
           <e p="GameWindow" t="Include">
             <e p="GameWindow.cs" t="Include" />
+          </e>
+          <e p="InkTalkWindow" t="Include">
+            <e p="InkTalkWindow.cs" t="Include" />
+            <e p="InkTalkWindowItem.cs" t="Include" />
           </e>
           <e p="MainWindow" t="Include">
             <e p="MainWindow.cs" t="Include" />

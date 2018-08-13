@@ -21,13 +21,13 @@ public class GameWindow : UIWindowBase
     }
 
     //UI的进入动画
-    public override IEnumerator EnterAnim(UIAnimCallBack l_animComplete, UICallBack l_callBack, params object[] objs)
+    public override IEnumerator EnterAnim(UIAnimCallBack animComplete, UICallBack callBack, params object[] objs)
     {
         yield return new WaitForSeconds(0.2f);
 
         AnimSystem.UguiAlpha(gameObject, 0, 1, callBack:(object[] obj)=>
         {
-            StartCoroutine(base.EnterAnim(l_animComplete, l_callBack, objs));
+            StartCoroutine(base.EnterAnim(animComplete, callBack, objs));
         });
 
         AnimSystem.UguiMove(m_goTextTitle, new Vector3(0, 50, 0), new Vector3(0, -50, 0));
@@ -37,11 +37,11 @@ public class GameWindow : UIWindowBase
     }
 
     //UI的退出动画
-    public override IEnumerator ExitAnim(UIAnimCallBack l_animComplete, UICallBack l_callBack, params object[] objs)
+    public override IEnumerator ExitAnim(UIAnimCallBack animComplete, UICallBack callBack, params object[] objs)
     {
         AnimSystem.UguiAlpha(gameObject , null, 0, callBack:(object[] obj) =>
         {
-            StartCoroutine(base.ExitAnim(l_animComplete, l_callBack, objs));
+            StartCoroutine(base.ExitAnim(animComplete, callBack, objs));
         });
 
         AnimSystem.UguiMove(m_goTextTitle, new Vector3(0, -50, 0), new Vector3(0, 50, 0));
