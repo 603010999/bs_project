@@ -253,13 +253,12 @@ class ProjectBuildService : Editor
         //打包
         string path = ExportPath + "/" + GetPackageName() + ".apk";
 
-        BuildOptions option = BuildOptions.None;
         if (ApplicationMode == AppMode.Release)
         {
-            option = BuildOptions.Il2CPP;
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
         }
 
-        BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.Android, option);
+        BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.Android, BuildOptions.None);
     }
 
     #endregion
@@ -289,14 +288,12 @@ class ProjectBuildService : Editor
         ApplyScriptDefine();
 
         //打包
-
-        BuildOptions option = BuildOptions.None;
         if (ApplicationMode == AppMode.Release)
         {
-            option = BuildOptions.Il2CPP;
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
         }
 
-        BuildPipeline.BuildPlayer(GetBuildScenes(), ExportPath, BuildTarget.iOS, option);
+        BuildPipeline.BuildPlayer(GetBuildScenes(), ExportPath, BuildTarget.iOS, BuildOptions.None);
     }
 
     #endregion

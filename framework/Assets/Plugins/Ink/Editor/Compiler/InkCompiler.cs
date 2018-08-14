@@ -50,7 +50,7 @@ namespace Ink.UnityIntegration {
 			#if UNITY_2017
 			EditorApplication.playModeStateChanged += OnPlayModeChange;
 			#else
-			EditorApplication.playmodeStateChanged += LegacyOnPlayModeChange;
+			EditorApplication.playModeStateChanged += LegacyOnPlayModeChange;
 			#endif
 			EditorApplication.update += Update;
 		}
@@ -142,7 +142,7 @@ namespace Ink.UnityIntegration {
 		
 		#else
 		
-		static void LegacyOnPlayModeChange () {
+		static void LegacyOnPlayModeChange (PlayModeStateChange mode) {
 			if(!EditorApplication.isPlayingOrWillChangePlaymode && EditorApplication.isPlaying && InkLibrary.Instance.pendingCompilationStack.Count > 0) 
 				CompilePendingFiles();
 			if(EditorApplication.isPlayingOrWillChangePlaymode && !EditorApplication.isPlaying && compiling)

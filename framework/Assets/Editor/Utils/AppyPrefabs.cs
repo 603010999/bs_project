@@ -11,7 +11,7 @@ public class AppyPrefabs : Editor
         foreach (GameObject item in objs)
         {
             //if (PrefabUtility.GetPrefabType(item) == PrefabType.PrefabInstance){}
-            Object parentObject = PrefabUtility.GetPrefabParent(item);
+            Object parentObject = PrefabUtility.GetCorrespondingObjectFromSource(item);
             PrefabUtility.ReplacePrefab(item, parentObject);
             PrefabUtility.RevertPrefabInstance(item);
         }

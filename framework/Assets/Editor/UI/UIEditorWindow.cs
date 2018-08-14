@@ -86,10 +86,9 @@ public class UIEditorWindow : EditorWindow
 
     #region createUI
 
-    bool isAutoCreatePrefab = true;
-    bool isAutoCreateLuaFile = true;
-    bool isFoldCreateUI = false;
-    string m_UIname = "";
+    private bool isAutoCreatePrefab = true;
+    private bool isFoldCreateUI = false;
+    private string m_uiName = string.Empty;
     UIType m_UIType = UIType.Normal;
 
     void CreateUIGUI()
@@ -101,13 +100,13 @@ public class UIEditorWindow : EditorWindow
         {
             EditorGUI.indentLevel = 1;
             EditorGUILayout.LabelField("提示： 脚本和 UI 名称会自动添加Window后缀");
-            m_UIname = EditorGUILayout.TextField("UI Name:", m_UIname);
+            m_uiName = EditorGUILayout.TextField("UI Name:", m_uiName);
             m_UIType = (UIType)EditorGUILayout.EnumPopup("UI Type:", m_UIType);
 
             isAutoCreatePrefab = EditorGUILayout.Toggle("自动生成 Prefab", isAutoCreatePrefab);
 
-            var l_nameTmp = m_UIname + "Window";
-            if (!string.IsNullOrEmpty(m_UIname))
+            var l_nameTmp = m_uiName + "Window";
+            if (!string.IsNullOrEmpty(m_uiName))
             {
                 var l_typeTmp = EditorTool.GetType(l_nameTmp);
                 if (l_typeTmp != null)
@@ -117,7 +116,7 @@ public class UIEditorWindow : EditorWindow
                         if (GUILayout.Button("创建UI"))
                         {
                             UICreateService.CreatUI(l_nameTmp, m_UIType, m_UILayerManager, isAutoCreatePrefab);
-                            m_UIname = "";
+                            m_uiName = "";
                         }
                     }
                     else
