@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//ink文件读取
+//静态数据
 public class InkConfigMgr : Singleton<InkConfigMgr> 
 {
     
