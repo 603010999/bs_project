@@ -17,7 +17,7 @@ public class FileTool
     /// <param name="filepath"></param>
     public static void CreatFilePath(string filepath)
     {
-        string newPathDir = Path.GetDirectoryName(filepath);
+        var newPathDir = Path.GetDirectoryName(filepath);
 
         CreatPath(newPathDir);
     }
@@ -29,7 +29,9 @@ public class FileTool
     public static void CreatPath(string path)
     {
         if (!Directory.Exists(path))
+        {
             Directory.CreateDirectory(path);
+        }
     }
 
     /// <summary>
@@ -38,7 +40,7 @@ public class FileTool
     /// <param name="path"></param>
     public static void DeleteDirectory(string path)
     {
-        string[] directorys = Directory.GetDirectories(path);
+        var directorys = Directory.GetDirectories(path);
 
         //删掉所有子目录
         for (int i = 0; i < directorys.Length; i++)
@@ -135,35 +137,6 @@ public class FileTool
                 {
                     //Debug.LogError(e.ToString());
                 }
-            }
-        }
-    }
-
-    /// <summary>
-    /// 复制所有可以复制的文件夹（及文件夹下所有子文件夹和文件）
-    /// </summary>
-    /// <param name="sourcePath">待复制的文件夹路径</param>
-    /// <param name="destinationPath">目标路径</param>
-    public static void SafeCopyDirectory(string sourcePath, string destinationPath)
-    {
-        DirectoryInfo info = new DirectoryInfo(sourcePath);
-        Directory.CreateDirectory(destinationPath);
-
-        foreach (FileSystemInfo fsi in info.GetFileSystemInfos())
-        {
-            string destName = Path.Combine(destinationPath, fsi.Name);
-            //Debug.Log(destName);
-
-            if (fsi is FileInfo)          //如果是文件，复制文件
-                try
-                {
-                    File.Copy(fsi.FullName, destName);
-                }
-                catch{}
-            else                                    //如果是文件夹，新建文件夹，递归
-            {
-                Directory.CreateDirectory(destName);
-                SafeCopyDirectory(fsi.FullName, destName);
             }
         }
     }
