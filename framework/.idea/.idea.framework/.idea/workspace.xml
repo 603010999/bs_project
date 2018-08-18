@@ -17,28 +17,60 @@
       <file leaf-file-name="StorySaveDataMgr.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Script/Logic/ConfigMgr/StorySaveDataMgr.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="512">
+              <caret line="172" column="36" lean-forward="true" selection-start-line="172" selection-start-column="36" selection-end-line="172" selection-end-column="36" />
               <folding>
-                <marker date="1534499944692" expanded="false" signature="6:128" ph="..." />
-                <marker date="1534499944692" expanded="true" signature="167:551" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="528:549" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="583:918" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="771:916" ph="{...}" />
-                <marker date="1534499944692" expanded="false" signature="974:1087" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="1160:3240" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="1723:1950" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="1829:1922" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="2034:2491" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="2142:2203" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="2452:2485" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="2537:2584" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="2552:2578" ph="/* 对话内容 ... */" />
-                <marker date="1534499944692" expanded="true" signature="2591:3238" ph="工具函数" />
-                <marker date="1534499944692" expanded="true" signature="2670:3155" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="2917:3037" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="3065:3149" ph="{...}" />
-                <marker date="1534499944692" expanded="true" signature="3197:3218" ph="{...}" />
+                <marker date="1534581724223" expanded="false" signature="6:159" ph="..." />
+                <marker date="1534581724223" expanded="false" signature="198:605" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="582:603" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="637:972" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="825:970" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="1028:1569" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="1282:1352" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="1404:1567" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="1452:1508" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="1642:4949" ph="{...}" />
+                <marker date="1534581724223" expanded="false" signature="2266:2493" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="2372:2465" ph="{...}" />
+                <marker date="1534581724223" expanded="false" signature="2581:3317" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="2689:2750" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="3012:3094" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="3190:3268" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="3416:3766" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="3524:3590" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="3663:3708" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="3842:3900" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="4005:4186" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="4130:4170" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="4237:4284" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="4252:4278" ph="/* 对话内容 ... */" />
+                <marker date="1534581724223" expanded="true" signature="4300:4947" ph="工具函数" />
+                <marker date="1534581724223" expanded="true" signature="4379:4864" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="4626:4746" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="4774:4858" ph="{...}" />
+                <marker date="1534581724223" expanded="true" signature="4906:4927" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PathTool.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Script/Core/Utils/PathTool.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+              <folding>
+                <marker date="1534149819373" expanded="false" signature="6:63" ph="..." />
+                <marker date="1534149819373" expanded="true" signature="86:3089" ph="{...}" />
+                <marker date="1534149819373" expanded="true" signature="148:1248" ph="{...}" />
+                <marker date="1534149819373" expanded="true" signature="230:1210" ph="{...}" />
+                <marker date="1534149819373" expanded="true" signature="1255:1430" ph="/// 组合绝对路径 ... " />
+                <marker date="1534149819373" expanded="true" signature="1520:1583" ph="{...}" />
+                <marker date="1534149819373" expanded="true" signature="1689:1948" ph="{...}" />
+                <marker date="1534149819373" expanded="true" signature="1954:2100" ph="/// 获取某个目录下的相对路径 ... " />
+                <marker date="1534149819373" expanded="true" signature="2188:2386" ph="{...}" />
+                <marker date="1534149819373" expanded="true" signature="2415:2629" ph="/// 获取编辑器下的路径 ... " />
+                <marker date="1534149819373" expanded="true" signature="2726:3075" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -52,28 +84,6 @@
               <folding>
                 <marker date="1534498249397" expanded="false" signature="6:78" ph="..." />
                 <marker date="1534498249397" expanded="true" signature="134:153" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PathTool.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Script/Core/Utils/PathTool.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
-              <folding>
-                <marker date="1534149819373" expanded="false" signature="6:63" ph="..." />
-                <marker date="1534149819373" expanded="true" signature="86:3089" ph="{...}" />
-                <marker date="1534149819373" expanded="true" signature="148:1248" ph="{...}" />
-                <marker date="1534149819373" expanded="true" signature="230:1210" ph="{...}" />
-                <marker date="1534149819373" expanded="true" signature="1255:1430" ph="/// 组合绝对路径 ... " />
-                <marker date="1534149819373" expanded="true" signature="1520:1583" ph="{...}" />
-                <marker date="1534149819373" expanded="true" signature="1689:1948" ph="{...}" />
-                <marker date="1534149819373" expanded="true" signature="1954:2100" ph="/// 获取某个目录下的相对路径 ... " />
-                <marker date="1534149819373" expanded="true" signature="2188:2386" ph="{...}" />
-                <marker date="1534149819373" expanded="true" signature="2415:2629" ph="/// 获取编辑器下的路径 ... " />
-                <marker date="1534149819373" expanded="true" signature="2726:3075" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -588,11 +598,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="SolutionExplorer">
-        <option name="show-file-system" value="false" />
-        <option name="show-all-items" value="false" />
-      </pane>
       <pane id="UnityExplorer">
         <subPane>
           <expand>
@@ -605,11 +610,16 @@
         </subPane>
         <option name="show-hidden-items" value="false" />
       </pane>
+      <pane id="Scratches" />
+      <pane id="SolutionExplorer">
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="storydat&#9;null&#9;null&#10;app&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Application/ApplicationManager.cs&#10;json&#9;null&#9;null&#10;Pathtoo&#9;null&#9;null&#10;story&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Editor/BlackSheepEditor/StoryLineEditor.cs&#10;Timer&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Timer/Timer.cs&#10;blacksh&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Editor/BlackSheepEditor&#10;ConfigManager&#9;null&#9;null&#10;DataManager&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Data/DataManager.cs&#10;ResourceManager&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/ResourceLoad/ResourceManager.cs&#10;confi&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/ResourceLoad/ResourcesConfigManager.cs&#10;storys&#9;null&#9;null&#10;inkconf&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Logic/ConfigMgr/InkConfigMgr.cs&#10;inkdata&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Logic/DataMgr/InkDataMgr.cs&#10;vertical&#9;null&#9;null&#10;s&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/ShopWindow/ShopWindowItem.cs&#10;sho&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/ShopWindow/ShopWindow.cs&#10;shopp&#9;null&#9;null&#10;shop&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/ShopWindow/ShopWindow.cs&#10;InkPlayerWindow&#9;null&#9;null&#10;DataEditorWindow&#9;null&#9;null&#10;datam&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Data/DataGenerateManager.cs&#10;ApplicationLunchTest&#9;null&#9;null&#10;ProtocolHelper&#9;null&#9;null&#10;BFImporter&#9;null&#9;null&#10;Runtest&#9;null&#9;null&#10;LanguageComponent&#9;null&#9;null&#10;DispatchEvent&#9;null&#9;null&#10;GlobalEvent&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/GlobalEvent/GlobalEvent.cs&#10;GameDataMonitorMonitor&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/GameDataBase/GameDataMonitorMonitor.cs&#10;EditorStyleViewer&#9;null&#9;null&#10;UnityInternalIconWindow&#9;null&#9;null&#10;uiman&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/UI/Control/UIManager.cs&#10;RecordManager&#9;null&#9;null&#10;RecordTable&#9;null&#9;null&#10;RenderManager&#9;null&#9;null&#10;ConfigTable&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Config/ConfigTable.cs&#10;sing&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Base/BehaviourSingleton.cs&#10;AudioManager&#9;null&#9;null&#10;ApplicationManager&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Application/ApplicationManager.cs&#10;UIBaseWindowEditor&#9;null&#9;null&#10;LanguageComponmentEditor&#9;null&#9;null&#10;ApplicationManagerComponentEditor&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Editor/Application/ApplicationManagerComponentEditor.cs&#10;UIStyleComponent&#9;null&#9;null&#10;ui&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/UI/Control/UIManager.cs&#10;main&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/MainWindow/MainWindow.cs&#10;ApplicationStatusManager&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Application/ApplicationStatusManager.cs&#10;hotup&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/HotUpdate/HotUpdateManager.cs&#10;mainw&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/MainWindow/MainWindow.cs&#10;DataGenerateManager&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Logic/ConfigMgr/StorySaveDataMgr.cs&#10;storydat&#9;null&#9;null&#10;app&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Application/ApplicationManager.cs&#10;json&#9;null&#9;null&#10;Pathtoo&#9;null&#9;null&#10;story&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Editor/BlackSheepEditor/StoryLineEditor.cs&#10;Timer&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Timer/Timer.cs&#10;blacksh&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Editor/BlackSheepEditor&#10;ConfigManager&#9;null&#9;null&#10;DataManager&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Data/DataManager.cs&#10;ResourceManager&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/ResourceLoad/ResourceManager.cs&#10;confi&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/ResourceLoad/ResourcesConfigManager.cs&#10;storys&#9;null&#9;null&#10;inkconf&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Logic/ConfigMgr/InkConfigMgr.cs&#10;inkdata&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Logic/DataMgr/InkDataMgr.cs&#10;vertical&#9;null&#9;null&#10;s&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/ShopWindow/ShopWindowItem.cs&#10;sho&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/ShopWindow/ShopWindow.cs&#10;shopp&#9;null&#9;null&#10;shop&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/ShopWindow/ShopWindow.cs&#10;InkPlayerWindow&#9;null&#9;null&#10;DataEditorWindow&#9;null&#9;null&#10;datam&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Data/DataGenerateManager.cs&#10;ApplicationLunchTest&#9;null&#9;null&#10;ProtocolHelper&#9;null&#9;null&#10;BFImporter&#9;null&#9;null&#10;Runtest&#9;null&#9;null&#10;LanguageComponent&#9;null&#9;null&#10;DispatchEvent&#9;null&#9;null&#10;GlobalEvent&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/GlobalEvent/GlobalEvent.cs&#10;GameDataMonitorMonitor&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/GameDataBase/GameDataMonitorMonitor.cs&#10;EditorStyleViewer&#9;null&#9;null&#10;UnityInternalIconWindow&#9;null&#9;null&#10;uiman&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/UI/Control/UIManager.cs&#10;RecordManager&#9;null&#9;null&#10;RecordTable&#9;null&#9;null&#10;RenderManager&#9;null&#9;null&#10;ConfigTable&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Config/ConfigTable.cs&#10;sing&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Base/BehaviourSingleton.cs&#10;AudioManager&#9;null&#9;null&#10;ApplicationManager&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Application/ApplicationManager.cs&#10;UIBaseWindowEditor&#9;null&#9;null&#10;LanguageComponmentEditor&#9;null&#9;null&#10;ApplicationManagerComponentEditor&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Editor/Application/ApplicationManagerComponentEditor.cs&#10;UIStyleComponent&#9;null&#9;null&#10;ui&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/UI/Control/UIManager.cs&#10;main&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/MainWindow/MainWindow.cs&#10;ApplicationStatusManager&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/Application/ApplicationStatusManager.cs&#10;hotup&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/Core/HotUpdate/HotUpdateManager.cs&#10;mainw&#9;FILE&#9;file://F:/git/bs_project/framework/Assets/Script/UI/MainWindow/MainWindow.cs" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
@@ -929,88 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
           <caret line="63" column="37" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
-          <folding>
-            <marker date="1534421550192" expanded="false" signature="6:128" ph="..." />
-            <marker date="1534421550192" expanded="true" signature="153:10280" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="160:3636" ph="文件与路径的增加删除创建" />
-            <marker date="1534421550192" expanded="true" signature="186:2400" ph="不忽视出错" />
-            <marker date="1534421550192" expanded="true" signature="205:316" ph="/// 判断有没有这个文件路径，如果没有则创建它(路径会去掉文件名) ... " />
-            <marker date="1534421550192" expanded="true" signature="370:472" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="478:577" ph="/// 判断有没有这个路径，如果没有则创建它 ... " />
-            <marker date="1534421550192" expanded="true" signature="623:737" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="666:731" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="743:846" ph="/// 删掉某个目录下的所有子目录和子文件，但是保留这个目录 ... " />
-            <marker date="1534421550192" expanded="true" signature="898:1504" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="1032:1217" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="1130:1207" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="1335:1498" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="1422:1488" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="1510:1674" ph="/// 复制文件夹（及文件夹下所有子文件夹和文件） ... " />
-            <marker date="1534421550192" expanded="true" signature="1754:2384" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="1939:2378" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="2232:2368" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="2406:3620" ph="忽视出错 (会跳过所有出错的操作,一般是用来无视权限)" />
-            <marker date="1534421550192" expanded="true" signature="2446:2534" ph="/// 删除所有可以删除的文件 ... " />
-            <marker date="1534421550192" expanded="true" signature="2590:3604" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="2729:3130" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="2827:3120" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="2907:2996" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3035:3106" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3248:3598" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3335:3588" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3369:3447" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3503:3574" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3642:4447" ph="文件名" />
-            <marker date="1534421550192" expanded="true" signature="3721:3928" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3802:3864" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3877:3922" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="3981:4094" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="4169:4259" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="4337:4431" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="4453:7803" ph="文件编码" />
-            <marker date="1534421550192" expanded="true" signature="4471:4669" ph="/// 文件编码转换 ... " />
-            <marker date="1534421550192" expanded="true" signature="4785:5051" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="5057:5211" ph="/// 给定文件的路径，读取文件的二进制数据，判断文件的编码类型  ... " />
-            <marker date="1534421550192" expanded="true" signature="5272:5447" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="5453:5589" ph="/// 通过给定的文件流，判断文件的编码类型  ... " />
-            <marker date="1534421550192" expanded="true" signature="5647:6506" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="5662:5841" ph="/* byte[] Unicode = new byte[] { 0xFF, 0xFE, 0x41 }; ... */" />
-            <marker date="1534421550192" expanded="true" signature="6146:6201" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="6267:6334" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="6400:6458" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="6512:6643" ph="/// 判断是否是不带 BOM 的 UTF8 格式  ... " />
-            <marker date="1534421550192" expanded="true" signature="6692:7788" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="6840:7661" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="6919:7418" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="6970:7404" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="7074:7161" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="7304:7386" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="7435:7651" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="7532:7602" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="7694:7761" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="7809:8971" ph="文件工具" />
-            <marker date="1534421550192" expanded="true" signature="7826:8014" ph="/// 递归处理某路径及其他的子目录 ... " />
-            <marker date="1534421550192" expanded="true" signature="8116:8956" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="8229:8761" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="8255:8589" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="8309:8484" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="8384:8466" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="8505:8575" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="8621:8751" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="8866:8950" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="8977:10278" ph="获取一个路径下的所有文件" />
-            <marker date="1534421550192" expanded="true" signature="9092:9221" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="9306:9735" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="9419:9548" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="9478:9538" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="9653:9729" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="9799:10262" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="9837:9882" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="9925:9985" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="9999:10256" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="10066:10219" ph="{...}" />
-            <marker date="1534421550192" expanded="true" signature="10136:10205" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1168,26 +1096,6 @@
             <marker date="1512056493000" expanded="true" signature="17452:17538" ph="{...}" />
             <marker date="1512056493000" expanded="true" signature="17826:17888" ph="{...}" />
             <marker date="1512056493000" expanded="true" signature="17955:18049" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Script/Core/Utils/PathTool.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
-          <folding>
-            <marker date="1534149819373" expanded="false" signature="6:63" ph="..." />
-            <marker date="1534149819373" expanded="true" signature="86:3089" ph="{...}" />
-            <marker date="1534149819373" expanded="true" signature="148:1248" ph="{...}" />
-            <marker date="1534149819373" expanded="true" signature="230:1210" ph="{...}" />
-            <marker date="1534149819373" expanded="true" signature="1255:1430" ph="/// 组合绝对路径 ... " />
-            <marker date="1534149819373" expanded="true" signature="1520:1583" ph="{...}" />
-            <marker date="1534149819373" expanded="true" signature="1689:1948" ph="{...}" />
-            <marker date="1534149819373" expanded="true" signature="1954:2100" ph="/// 获取某个目录下的相对路径 ... " />
-            <marker date="1534149819373" expanded="true" signature="2188:2386" ph="{...}" />
-            <marker date="1534149819373" expanded="true" signature="2415:2629" ph="/// 获取编辑器下的路径 ... " />
-            <marker date="1534149819373" expanded="true" signature="2726:3075" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1359,29 +1267,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/af/beea9911/DateTime.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="394" column="15" selection-start-line="394" selection-start-column="15" selection-end-line="394" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Script/Core/Utils/PathTool.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
-            <marker date="1512056493000" expanded="false" signature="6:95" ph="..." />
-            <marker date="1512056493000" expanded="true" signature="118:2465" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="125:660" ph="Util" />
-            <marker date="1512056493000" expanded="true" signature="186:244" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="294:644" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="332:411" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="462:561" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="574:638" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="666:728" ph="/* 目前unity的json不支持List 和 Dictionary 在此用MINIjson做了封装 ... */" />
-            <marker date="1512056493000" expanded="false" signature="734:1515" ph="List" />
-            <marker date="1512056493000" expanded="true" signature="803:1234" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="893:1206" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="1101:1196" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="1288:1499" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="1389:1454" ph="{...}" />
-            <marker date="1512056493000" expanded="false" signature="1521:2462" ph="Dictionary" />
-            <marker date="1512056493000" expanded="true" signature="1615:2132" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="1731:2104" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="1883:1941" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="1992:2094" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="2206:2446" ph="{...}" />
-            <marker date="1512056493000" expanded="true" signature="2330:2402" ph="{...}" />
+            <marker date="1534149819373" expanded="false" signature="6:63" ph="..." />
+            <marker date="1534149819373" expanded="true" signature="86:3089" ph="{...}" />
+            <marker date="1534149819373" expanded="true" signature="148:1248" ph="{...}" />
+            <marker date="1534149819373" expanded="true" signature="230:1210" ph="{...}" />
+            <marker date="1534149819373" expanded="true" signature="1255:1430" ph="/// 组合绝对路径 ... " />
+            <marker date="1534149819373" expanded="true" signature="1520:1583" ph="{...}" />
+            <marker date="1534149819373" expanded="true" signature="1689:1948" ph="{...}" />
+            <marker date="1534149819373" expanded="true" signature="1954:2100" ph="/// 获取某个目录下的相对路径 ... " />
+            <marker date="1534149819373" expanded="true" signature="2188:2386" ph="{...}" />
+            <marker date="1534149819373" expanded="true" signature="2415:2629" ph="/// 获取编辑器下的路径 ... " />
+            <marker date="1534149819373" expanded="true" signature="2726:3075" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1397,278 +1308,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/af/beea9911/DateTime.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="394" column="15" selection-start-line="394" selection-start-column="15" selection-end-line="394" selection-end-column="15" />
-          <folding>
-            <marker date="1534499113570" expanded="true" signature="0:301" ph="/* Decompiled with JetBrains decompiler ... */" />
-            <marker date="1534499113570" expanded="false" signature="309:407" ph="..." />
-            <marker date="1534499113570" expanded="true" signature="425:84487" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="430:572" ph="///Represents an instant in time, typically expressed as a date and time of day. ... " />
-            <marker date="1534499113570" expanded="true" signature="735:84485" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="1346:1511" ph="///Represents the largest possible value of &lt;see cref=&quot;T:System.DateTime&quot; /&gt;. This field is read-only. ... " />
-            <marker date="1534499113570" expanded="true" signature="1562:1728" ph="///Represents the smallest possible value of &lt;see cref=&quot;T:System.DateTime&quot; /&gt;. This field is read-only. ... " />
-            <marker date="1534499113570" expanded="true" signature="2386:2930" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to a specified number of ticks. ... " />
-            <marker date="1534499113570" expanded="true" signature="2962:2974" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="2980:3668" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, and ... " />
-            <marker date="1534499113570" expanded="true" signature="3718:3730" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="3736:4840" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, day ... " />
-            <marker date="1534499113570" expanded="true" signature="4924:4936" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="4942:6204" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, day ... " />
-            <marker date="1534499113570" expanded="true" signature="6305:6317" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="6323:7488" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, and ... " />
-            <marker date="1534499113570" expanded="true" signature="7557:7569" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="7575:9154" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, day ... " />
-            <marker date="1534499113570" expanded="true" signature="9257:9269" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="9275:11014" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, day ... " />
-            <marker date="1534499113570" expanded="true" signature="11134:11146" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="11197:11209" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="11215:12159" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to a specified number of ticks an ... " />
-            <marker date="1534499113570" expanded="true" signature="12210:12222" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="12228:13860" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, day ... " />
-            <marker date="1534499113570" expanded="true" signature="13963:13975" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="13981:15805" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, day ... " />
-            <marker date="1534499113570" expanded="true" signature="15925:15937" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="15943:18244" ph="///Initializes a new instance of the &lt;see cref=&quot;T:System.DateTime&quot; /&gt; structure to the specified year, month, day ... " />
-            <marker date="1534499113570" expanded="true" signature="18383:18395" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="18454:18512" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="18568:18626" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="18682:18740" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="18804:18862" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="18924:18982" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19042:19100" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19158:19216" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19272:19330" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19387:19445" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19503:19561" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19620:19678" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19753:19811" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19871:19929" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="19987:20045" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="20104:20162" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="20229:20287" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="20335:20393" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="20399:20639" ph="///Gets the date component of this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="20664:20750" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="20680:20744" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="20756:20975" ph="///Gets the month component of the date represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="20996:21082" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="21012:21076" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="21088:21294" ph="///Gets the day of the month represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="21313:21399" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="21329:21393" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="21405:21659" ph="///Gets the day of the week represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="21690:21776" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="21706:21770" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="21782:21990" ph="///Gets the day of the year represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="22015:22101" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="22031:22095" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="22107:22328" ph="///Gets the time of day for this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="22358:22444" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="22374:22438" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="22450:22667" ph="///Gets the hour component of the date represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="22687:22773" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="22703:22767" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="22779:23000" ph="///Gets the minute component of the date represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="23022:23108" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="23038:23102" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="23114:23337" ph="///Gets the seconds component of the date represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="23359:23445" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="23375:23439" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="23451:23685" ph="///Gets the milliseconds component of the date represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="23712:23798" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="23728:23792" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="23998:24283" ph="///Gets a &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object that is set to the current date and time on this computer, expr ... " />
-            <marker date="1534499113570" expanded="true" signature="24314:24400" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="24330:24394" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="24406:24719" ph="///Gets the number of ticks that represent the date and time of this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="24741:24827" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="24757:24821" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="24833:25028" ph="///Gets the current date. ... " />
-            <marker date="1534499113570" expanded="true" signature="25061:25147" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="25077:25141" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="25153:25458" ph="///Gets a &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object that is set to the current date and time on this computer, expr ... " />
-            <marker date="1534499113570" expanded="true" signature="25492:25578" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="25508:25572" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="25584:25772" ph="///Gets the year component of the date represented by this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="25792:25878" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="25808:25872" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="25884:26264" ph="///Gets a value that indicates whether the time represented by this instance is based on local time, Coordinated  ... " />
-            <marker date="1534499113570" expanded="true" signature="26293:26379" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="26309:26373" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="26385:27084" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the value of the specified &lt;see cref=&quot;T:System.TimeSp ... " />
-            <marker date="1534499113570" expanded="true" signature="27124:27182" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="27188:27927" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the specified number of days to the value of this ins ... " />
-            <marker date="1534499113570" expanded="true" signature="27969:28027" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="28033:28758" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the specified number of ticks to the value of this in ... " />
-            <marker date="1534499113570" expanded="true" signature="28799:28857" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="28863:29605" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the specified number of hours to the value of this in ... " />
-            <marker date="1534499113570" expanded="true" signature="29648:29706" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="29712:30530" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the specified number of milliseconds to the value of  ... " />
-            <marker date="1534499113570" expanded="true" signature="30580:30638" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="30694:30752" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="30758:31506" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the specified number of minutes to the value of this  ... " />
-            <marker date="1534499113570" expanded="true" signature="31551:31609" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="31615:32384" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the specified number of months to the value of this i ... " />
-            <marker date="1534499113570" expanded="true" signature="32426:32484" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="32490:33238" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the specified number of seconds to the value of this  ... " />
-            <marker date="1534499113570" expanded="true" signature="33283:33341" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="33347:34106" ph="///Returns a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; that adds the specified number of years to the value of this in ... " />
-            <marker date="1534499113570" expanded="true" signature="34146:34204" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="34210:34964" ph="///Compares two instances of &lt;see cref=&quot;T:System.DateTime&quot; /&gt; and returns an integer that indicates whether the f ... " />
-            <marker date="1534499113570" expanded="true" signature="35020:35078" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="35084:36032" ph="///Compares the value of this instance to a specified object that contains a specified &lt;see cref=&quot;T:System.DateTi ... " />
-            <marker date="1534499113570" expanded="true" signature="36071:36129" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="36135:36758" ph="///Indicates whether this instance of &lt;see cref=&quot;T:System.DateTime&quot; /&gt; is within the daylight saving time range f ... " />
-            <marker date="1534499113570" expanded="true" signature="36797:36855" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="36861:37618" ph="///Compares the value of this instance to a specified &lt;see cref=&quot;T:System.DateTime&quot; /&gt; value and returns an integ ... " />
-            <marker date="1534499113570" expanded="true" signature="37659:37717" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="37723:38137" ph="///Returns a value indicating whether the value of this instance is equal to the value of the specified &lt;see cref ... " />
-            <marker date="1534499113570" expanded="true" signature="38176:38234" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="38240:38642" ph="///Serializes the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to a 64-bit binary value that subsequently can  ... " />
-            <marker date="1534499113570" expanded="true" signature="38669:38727" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="38733:39529" ph="///Deserializes a 64-bit binary value and recreates an original serialized &lt;see cref=&quot;T:System.DateTime&quot; /&gt; objec ... " />
-            <marker date="1534499113570" expanded="true" signature="39582:39640" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="39646:40455" ph="///Creates a new &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object that has the same number of ticks as the specified &lt;see  ... " />
-            <marker date="1534499113570" expanded="true" signature="40529:40587" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="40593:41330" ph="///Returns the number of days in the specified month and year. ... " />
-            <marker date="1534499113570" expanded="true" signature="41385:41443" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="41449:41841" ph="///Returns a value indicating whether this instance is equal to a specified object. ... " />
-            <marker date="1534499113570" expanded="true" signature="41887:41945" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="41951:42340" ph="///Returns a value indicating whether two &lt;see cref=&quot;T:System.DateTime&quot; /&gt; instances  have the same date and time ... " />
-            <marker date="1534499113570" expanded="true" signature="42396:42454" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="42460:43040" ph="///Converts the specified Windows file time to an equivalent local time. ... " />
-            <marker date="1534499113570" expanded="true" signature="43095:43153" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="43159:43735" ph="///Converts the specified Windows file time to an equivalent UTC time. ... " />
-            <marker date="1534499113570" expanded="true" signature="43793:43851" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="43857:44296" ph="///Returns a &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equivalent to the specified OLE Automation Date. ... " />
-            <marker date="1534499113570" expanded="true" signature="44344:44402" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="44408:44783" ph="///Converts the value of this instance to all the string representations supported by the standard date and time  ... " />
-            <marker date="1534499113570" expanded="true" signature="44824:44882" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="44888:45548" ph="///Converts the value of this instance to all the string representations supported by the specified standard date ... " />
-            <marker date="1534499113570" expanded="true" signature="45600:45658" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="45664:46222" ph="///Converts the value of this instance to all the string representations supported by the standard date and time  ... " />
-            <marker date="1534499113570" expanded="true" signature="46287:46345" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="46351:47152" ph="///Converts the value of this instance to all the string representations supported by the specified standard date ... " />
-            <marker date="1534499113570" expanded="true" signature="47230:47288" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="47388:47446" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="47501:47513" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="47519:47687" ph="///Returns the hash code for this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="47725:47783" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="47789:48043" ph="///Returns the &lt;see cref=&quot;T:System.TypeCode&quot; /&gt; for value type &lt;see cref=&quot;T:System.DateTime&quot; /&gt;. ... " />
-            <marker date="1534499113570" expanded="true" signature="48077:48135" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="48141:48563" ph="///Returns an indication whether the specified year is a leap year. ... " />
-            <marker date="1534499113570" expanded="true" signature="48607:48665" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="48671:49311" ph="///Converts the string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equivalent. ... " />
-            <marker date="1534499113570" expanded="true" signature="49354:49412" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="49418:50277" ph="///Converts the string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equivalent by us ... " />
-            <marker date="1534499113570" expanded="true" signature="50346:50404" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="50410:52077" ph="///Converts the string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equivalent by us ... " />
-            <marker date="1534499113570" expanded="true" signature="52169:52227" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="52418:52476" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="52482:53881" ph="///Converts the specified string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equiva ... " />
-            <marker date="1534499113570" expanded="true" signature="53970:54028" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="54146:54204" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="54352:54410" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="54534:54592" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="54699:54757" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="54896:54954" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="55075:55133" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="55254:55312" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="55365:55423" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="55675:55733" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="55739:57956" ph="///Converts the specified string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equiva ... " />
-            <marker date="1534499113570" expanded="true" signature="58067:58125" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="58131:60212" ph="///Converts the specified string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equiva ... " />
-            <marker date="1534499113570" expanded="true" signature="60326:60384" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="60442:60454" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="60460:61395" ph="///Converts the specified string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equiva ... " />
-            <marker date="1534499113570" expanded="true" signature="61458:61516" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="61522:63573" ph="///Converts the specified string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equiva ... " />
-            <marker date="1534499113570" expanded="true" signature="63685:63743" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="63749:65781" ph="///Converts the specified string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equiva ... " />
-            <marker date="1534499113570" expanded="true" signature="65912:65970" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="65976:68213" ph="///Converts the specified string representation of a date and time to its &lt;see cref=&quot;T:System.DateTime&quot; /&gt; equiva ... " />
-            <marker date="1534499113570" expanded="true" signature="68347:68405" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="68615:68673" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="68679:69250" ph="///Subtracts the specified date and time from this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="69295:69353" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="69359:69913" ph="///Subtracts the specified duration from this instance. ... " />
-            <marker date="1534499113570" expanded="true" signature="69958:70016" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="70022:70491" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to a Windows file time. ... " />
-            <marker date="1534499113570" expanded="true" signature="70520:70578" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="70584:71053" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to a Windows file time. ... " />
-            <marker date="1534499113570" expanded="true" signature="71085:71143" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="71149:71481" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to its equivalent long date string r ... " />
-            <marker date="1534499113570" expanded="true" signature="71518:71576" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="71582:71914" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to its equivalent long time string r ... " />
-            <marker date="1534499113570" expanded="true" signature="71951:72009" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="72015:72444" ph="///Converts the value of this instance to the equivalent OLE Automation date. ... " />
-            <marker date="1534499113570" expanded="true" signature="72473:72531" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="72537:72871" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to its equivalent short date string  ... " />
-            <marker date="1534499113570" expanded="true" signature="72909:72967" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="72973:73307" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to its equivalent short time string  ... " />
-            <marker date="1534499113570" expanded="true" signature="73345:73403" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="73409:73888" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to its equivalent string representat ... " />
-            <marker date="1534499113570" expanded="true" signature="73926:73984" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="73990:74680" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to its equivalent string representat ... " />
-            <marker date="1534499113570" expanded="true" signature="74733:74791" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="74797:75756" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to its equivalent string representat ... " />
-            <marker date="1534499113570" expanded="true" signature="75798:75856" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="75862:76995" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to its equivalent string representat ... " />
-            <marker date="1534499113570" expanded="true" signature="77063:77121" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="77127:77822" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to local time. ... " />
-            <marker date="1534499113570" expanded="true" signature="77856:77914" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="77920:78628" ph="///Converts the value of the current &lt;see cref=&quot;T:System.DateTime&quot; /&gt; object to Coordinated Universal Time (UTC). ... " />
-            <marker date="1534499113570" expanded="true" signature="78666:78724" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="78730:79366" ph="///Adds a specified time interval to a specified date and time, yielding a new date and time. ... " />
-            <marker date="1534499113570" expanded="true" signature="79428:79486" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="79492:79911" ph="///Determines whether two specified instances of &lt;see cref=&quot;T:System.DateTime&quot; /&gt; are equal. ... " />
-            <marker date="1534499113570" expanded="true" signature="79972:80030" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="80036:80476" ph="///Determines whether one specified &lt;see cref=&quot;T:System.DateTime&quot; /&gt; is later than another specified &lt;see cref=&quot;T ... " />
-            <marker date="1534499113570" expanded="true" signature="80536:80594" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="80600:81099" ph="///Determines whether one specified &lt;see cref=&quot;T:System.DateTime&quot; /&gt; represents a date and time that is the same  ... " />
-            <marker date="1534499113570" expanded="true" signature="81160:81218" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="81224:81654" ph="///Determines whether two specified instances of &lt;see cref=&quot;T:System.DateTime&quot; /&gt; are not equal. ... " />
-            <marker date="1534499113570" expanded="true" signature="81715:81773" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="81779:82218" ph="///Determines whether one specified &lt;see cref=&quot;T:System.DateTime&quot; /&gt; is earlier than another specified &lt;see cref= ... " />
-            <marker date="1534499113570" expanded="true" signature="82278:82336" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="82342:82840" ph="///Determines whether one specified &lt;see cref=&quot;T:System.DateTime&quot; /&gt; represents a date and time that is the same  ... " />
-            <marker date="1534499113570" expanded="true" signature="82901:82959" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="82965:83476" ph="///Subtracts a specified date and time from another specified date and time and returns a time interval. ... " />
-            <marker date="1534499113570" expanded="true" signature="83540:83598" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="83604:84274" ph="///Subtracts a specified time interval from a specified date and time and returns a new date and time. ... " />
-            <marker date="1534499113570" expanded="true" signature="84336:84394" ph="{...}" />
-            <marker date="1534499113570" expanded="true" signature="84418:84481" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Script/Logic/ConfigMgr/StorySaveDataMgr.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+        <state relative-caret-position="512">
+          <caret line="172" column="36" lean-forward="true" selection-start-line="172" selection-start-column="36" selection-end-line="172" selection-end-column="36" />
           <folding>
-            <marker date="1534499944692" expanded="false" signature="6:128" ph="..." />
-            <marker date="1534499944692" expanded="true" signature="167:551" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="528:549" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="583:918" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="771:916" ph="{...}" />
-            <marker date="1534499944692" expanded="false" signature="974:1087" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="1160:3240" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="1723:1950" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="1829:1922" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="2034:2491" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="2142:2203" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="2452:2485" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="2537:2584" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="2552:2578" ph="/* 对话内容 ... */" />
-            <marker date="1534499944692" expanded="true" signature="2591:3238" ph="工具函数" />
-            <marker date="1534499944692" expanded="true" signature="2670:3155" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="2917:3037" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="3065:3149" ph="{...}" />
-            <marker date="1534499944692" expanded="true" signature="3197:3218" ph="{...}" />
+            <marker date="1534581724223" expanded="false" signature="6:159" ph="..." />
+            <marker date="1534581724223" expanded="false" signature="198:605" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="582:603" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="637:972" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="825:970" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="1028:1569" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="1282:1352" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="1404:1567" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="1452:1508" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="1642:4949" ph="{...}" />
+            <marker date="1534581724223" expanded="false" signature="2266:2493" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="2372:2465" ph="{...}" />
+            <marker date="1534581724223" expanded="false" signature="2581:3317" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="2689:2750" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="3012:3094" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="3190:3268" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="3416:3766" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="3524:3590" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="3663:3708" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="3842:3900" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="4005:4186" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="4130:4170" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="4237:4284" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="4252:4278" ph="/* 对话内容 ... */" />
+            <marker date="1534581724223" expanded="true" signature="4300:4947" ph="工具函数" />
+            <marker date="1534581724223" expanded="true" signature="4379:4864" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="4626:4746" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="4774:4858" ph="{...}" />
+            <marker date="1534581724223" expanded="true" signature="4906:4927" ph="{...}" />
           </folding>
         </state>
       </provider>

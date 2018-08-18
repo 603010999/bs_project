@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq.Expressions;
 using System.Text;
 
 //角色进度数据
@@ -23,6 +24,7 @@ public class PlayerStateData
     //参数值(好感度)
     public int m_paramValue;
 
+    //按照配置，生成一个初始的玩家数据
     public PlayerStateData(string playerId)
     {
         
@@ -54,10 +56,33 @@ public class TalkData
 public class TalkFileData
 {
     //文件所属故事
-    public int m_storyId;
+    public string m_storyId;
     
     //文件中对话列表
     public List<int> m_talkList = new List<int>();
+    
+    //起始ID
+    public int m_startId = 0;
+
+    //终止ID
+    public int m_endId = 0;
+
+    public TalkFileData(string storyId, int startId)
+    {
+        m_storyId = storyId;
+        m_startId = startId;
+    }
+
+    //添加聊天信息
+    public void AddTalkId(int talkId)
+    {
+        if (!m_talkList.Contains(talkId))
+        {
+            m_talkList.Add(talkId);
+        }
+
+        m_endId = m_startId + m_talkList.Count - 1;
+    }
 }
 
 
@@ -67,11 +92,12 @@ public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
     //角色当前故事，故事进度
     private Dictionary<string, PlayerStateData> m_playerSaveData = new Dictionary<string, PlayerStateData>();
 
-    //角色对话记录
+    //角色对话记录 key:playerID  value:对话数据
     private Dictionary<string, List<TalkData>> m_playerTalkContent = new Dictionary<string, List<TalkData>>();
 
     //角色对话文件数据 启动时直接全部读取
-    private Dictionary<string, List<TalkFileData>> m_playerTalkFileData = new Dictionary<string, List<TalkFileData>>();
+    private Dictionary<string, Dictionary<string, TalkFileData>> m_playerTalkFileData =
+        new Dictionary<string, Dictionary<string, TalkFileData>>();
 
     //角色数据文件名
     private readonly string m_playerDataFileName = "player_data.txt";
@@ -88,7 +114,7 @@ public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
 
         return data;
     }
-
+    
     //增加对话
     public void AddTalkData(string playerId,string text,string storyId)
     {
@@ -105,15 +131,63 @@ public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
         list.Add(data);
         
         //文件保存内容增加
-        List<TalkFileData> fileList = null;
-        if (m_playerTalkFileData.TryGetValue(playerId, out fileList))
+        Dictionary<string, TalkFileData> fileDic = null;
+        if (!m_playerTalkFileData.TryGetValue(playerId, out fileDic))
         {
-            
+            fileDic = new Dictionary<string, TalkFileData>();
         }
+
+        TalkFileData fileData = null;
+        if (!fileDic.TryGetValue(storyId, out fileData))
+        {
+            fileData = new TalkFileData(storyId, talkId);
+        }
+
+        fileData.AddTalkId(talkId);      
+    }
+
+    //获取聊天记录内容  minID是当前最老的消息的ID
+    public List<TalkData> GetTalkData(string playerId,int minId)
+    {
+        List<TalkData> list = null;
+        if (!m_playerTalkContent.TryGetValue(playerId, out list))
+        {
+            list = CreateDefaultTalkRecord();
+        }
+
+        //，直接返回
+        if (list.Count > 0 && list[0].m_talkId < minId)
+        {
+            return list;
+        }
+        
+        //数量不足，加载后返回
+
+        return list;
+    }
+    
+    //创建初始的对话记录列表
+    private List<TalkData> CreateDefaultTalkRecord()
+    {
+        
+        return new List<TalkData>();
+    }
+    
+    //加载聊天记录内容
+    private void LoadRecordFile(string playerId, int maxId, ref List<TalkData> list)
+    {
+        Dictionary<string, TalkFileData> dic = null;
+        if (!m_playerTalkFileData.TryGetValue(playerId, out dic))
+        {
+            return;
+        }
+
+        
     }
 
 
-//检测和保存数据
+
+    //检测和保存数据
     private void SavePlayerData()
     {
         //
@@ -121,7 +195,8 @@ public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
         //对话内容
     }
 
-
+    
+    
     #region 工具函数
 
     //保存
