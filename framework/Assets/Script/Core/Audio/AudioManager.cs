@@ -253,7 +253,7 @@ public class AudioManager : BehaviourSingleton<AudioManager>
     {
         AudioClip clipTmp = null;
 
-        clipTmp = ResourceManager.Load<AudioClip>(l_soundName);
+        clipTmp = ResourceManager.LoadAudioPrefab<AudioClip>(l_soundName);
 
         if (clipTmp == null)
         {

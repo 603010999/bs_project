@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Text;
 using System;
+using Object = UnityEngine.Object;
 
 public enum ResLoadLocation
 {
@@ -26,10 +27,13 @@ public static class ResourceManager
     /// </summary>
     public static ResLoadLocation m_gameLoadType = ResLoadLocation.Resource; 
 
+    //UI预设存储位置
+    private static readonly string m_uiPrefabPath = "UI/{0}/{1}";
+    
     //读取一个文本
     public static string ReadTextFile(string textName)
     {
-        var text = Load<TextAsset>(textName);
+        var text = new TextAsset();
 
         if (text == null)
         {
@@ -40,75 +44,35 @@ public static class ResourceManager
             return text.text;
         }
     }
-
-    public static object Load(string name)
+    
+    //加载一个UI预设
+    public static T LoadUiPrefab<T>() where T :UIWindowBase
     {
-        var packData  = ResourcesConfigManager.Instance.GetBundleConfig(name);
+        var filePath = string.Format(m_uiPrefabPath, typeof(T), typeof(T));
 
-        if(packData == null)
-        {
-            throw new Exception("Load Exception not find " + name);
-        }
-
-        if (m_gameLoadType == ResLoadLocation.Resource)
-        {
-            return Resources.Load(packData.path);
-        }
-        else
-        {
-            return AssetsBundleManager.Load(name);
-        }
+        return Resources.Load<T>(filePath);
     }
 
-    //按照某个类型加载数据
-    public static T Load<T>(string name) where T: UnityEngine.Object
+    //按照名字加载UI预设
+    public static GameObject LoadUiPrefab(string uiName,bool isItem = false)
     {
-        var packData = ResourcesConfigManager.Instance.GetBundleConfig(name);
-
-        if (packData == null)
-        {
-            throw new Exception("Load Exception not find " + name);
-        }
-
-        if (m_gameLoadType == ResLoadLocation.Resource)
-        {
-            return Resources.Load<T>(packData.path);
-        }
-        else
-        {
-            return AssetsBundleManager.Load<T>(name);
-        }
+        var fileName = isItem ? uiName + "Item" : uiName;
+        var filePath = string.Format(m_uiPrefabPath, uiName, fileName);
+        
+        return Resources.Load<GameObject>(filePath);
     }
-
-    public static void LoadAsync(string name,LoadCallBack callBack)
+    
+    //加载声音文件
+    public static T LoadAudioPrefab<T>(string fileName) where T:Object
     {
-        var packData  = ResourcesConfigManager.Instance.GetBundleConfig(name);
-
-        if (packData == null)
-        {
-            return ;
-        }
-
-        if (m_gameLoadType == ResLoadLocation.Resource)
-        {
-            ResourceIOTool.ResourceLoadAsync(packData.path, callBack);
-        }
-        else
-        {
-            AssetsBundleManager.LoadAsync(name,callBack);
-        }
+        return null;
     }
+    
 
-    public static void UnLoad(string name)
+    public static void LoadAsync(string name)
     {
-        if (m_gameLoadType == ResLoadLocation.Resource)
-        {
-
-        }
-        else
-        {
-            AssetsBundleManager.UnLoadBundle(name);
-        }
+        var filePath = string.Empty;
+        ResourceIOTool.ResourceLoadAsync(filePath);
     }
 }
 

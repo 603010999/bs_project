@@ -6,6 +6,6 @@ public class DemoStatus : IApplicationStatus
 {
     public override void OnEnterStatus()
     {
-        OpenUI<MainWindow>();
+        OpenUI<InkTalkWindow>();
     }
 }

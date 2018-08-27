@@ -17,11 +17,6 @@ public class DataManager
     /// </summary>
     static Dictionary<string, DataTable> s_dataCache = new Dictionary<string, DataTable>();
 
-    public static bool GetIsExistData(string dataName)
-    {
-        return ResourcesConfigManager.Instance.GetIsExitRes(dataName);
-    }
-
     //文件是否存在
     public static bool IsDataFileExist(string dataName)
     {

@@ -33,8 +33,8 @@ public class InkTalkWindow : UIWindowBase
     //UI的初始化请放在这里
     public override void OnOpen()
     {
-        m_talkItems.Init(UIEventKey, "");
-        //m_talkItems.SetData();
+	    m_talkItems.Init(UIEventKey, typeof(InkTalkWindow).ToString());
+	    //m_talkItems.SetData();
     }
 
     //请在这里写UI的更新逻辑，当该UI监听的事件触发时，该函数会被调用

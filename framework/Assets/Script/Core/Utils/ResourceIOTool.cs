@@ -78,161 +78,16 @@ public class ResourceIOTool :MonoBehaviour
         }
     }
 
-    ///// <summary>
-    ///// WWW同步加载一个对象
-    ///// </summary>
-    ///// <param name="url"></param>
-    ///// <returns></returns>
-    //public static AssetBundle AssetsBundleLoadByWWW(string url)
-    //{
-    //    AssetBundle result = null;
-
-    //    foreach (AssetBundle obj in LoadWWW(url))
-    //    {
-    //        result = obj;
-    //    }
-
-    //    if(result == null)
-    //    {
-    //        throw new Exception("AssetsBundleLoadByWWW Exception: URL: ->" + url + "<- ");
-    //    }
-
-    //    return result;
-    //}
-
-    //public static IEnumerable<AssetBundle> LoadWWW(string url)
-    //{
-    //    WWW www = new WWW(url);
-
-    //    yield return www.assetBundle;
-
-    //    if (www.isDone == false || www.error != null)
-    //    {
-    //        Debug.LogError("LoadWWW Error URL: ->" + url + "<- error: " + www.error);
-    //    }
-    //}
-
-    public static void ResourceLoadAsync(string path,LoadCallBack callback)
+    public static void ResourceLoadAsync(string path)
     {
-        GetInstance().MonoLoadMethod(path, callback);
-    }
-
-    public void MonoLoadMethod(string path, LoadCallBack callback)
-    {
-        StartCoroutine(MonoLoadByResourcesAsync(path, callback));
-    }
-
-    LoadState m_loadState = new LoadState(); 
-    public IEnumerator MonoLoadByResourcesAsync(string path, LoadCallBack callback)
-    {
-        ResourceRequest status = Resources.LoadAsync(path);
         
-        while (!status.isDone)
-        {
-            m_loadState.UpdateProgress(status);
-            callback(m_loadState,null);
-
-            yield return 0;
-        }
-
-        m_loadState.UpdateProgress(status);
-        callback(m_loadState, status.asset);
     }
 
-    /// <summary>
-    /// 异步加载单个assetsbundle
-    /// </summary>
-    /// <param name="path"></param>
-    /// <param name="callback"></param>
-    public static void AssetsBundleLoadAsync(string path, AssetBundleLoadCallBack callback)
-    {
-        GetInstance().MonoLoadAssetsBundleMethod(path, callback);
-    }
-
-    public void MonoLoadAssetsBundleMethod(string path, AssetBundleLoadCallBack callback)
-    {
-        StartCoroutine(MonoLoadByAssetsBundleAsync(path, callback));
-    }
-
-    public IEnumerator MonoLoadByAssetsBundleAsync(string path, AssetBundleLoadCallBack callback)
-    {
-#if !UNITY_WEBGL
-        AssetBundleCreateRequest status = AssetBundle.LoadFromFileAsync(path);
-        LoadState loadState = new LoadState();
-
-        while (!status.isDone)
-        {
-            loadState.UpdateProgress(status);
-            callback(loadState, null);
-
-            yield return 0;
-        }
-        if (status.assetBundle != null)
-        {
-            status.assetBundle.name = path;
-        }
-
-        loadState.UpdateProgress(status);
-        callback(loadState, status.assetBundle);
-#else
-        WWW www = new WWW(path);
-        LoadState loadState = new LoadState();
-
-        while (!www.isDone)
-        {
-            loadState.UpdateProgress(www);
-            callback(loadState, null);
-
-            yield return 0;
-        }
-        if (www.assetBundle != null)
-        {
-            www.assetBundle.name = path;
-        }
-
-        loadState.UpdateProgress(www);
-        callback(loadState, www.assetBundle);
-#endif
-    }
-
-    /// <summary>
-    /// 异步加载WWW
-    /// </summary>
-    /// <param name="path"></param>
-    /// <param name="callback"></param>
-    public static void WWWLoadAsync(string url, WWWLoadCallBack callback)
-    {
-        GetInstance().MonoLoadWWWethod(url, callback);
-    }
-
-    public void MonoLoadWWWethod(string url, WWWLoadCallBack callback)
-    {
-        StartCoroutine(MonoLoadByWWWAsync(url, callback));
-    }
-
-    public IEnumerator MonoLoadByWWWAsync(string url, WWWLoadCallBack callback)
-    {
-        WWW www = new WWW(url);
-        LoadState loadState = new LoadState();
-
-        while (!www.isDone)
-        {
-                     
-            loadState.UpdateProgress(www);
-            callback(loadState, www);
-
-            yield return 0;
-        }
-
-        loadState.UpdateProgress(www);
-        callback(loadState, www);
-    }
 
     #endregion
 
     #region 写操作
-#if !UNITY_WEBGL || UNITY_EDITOR
-    //web Player 不支持写操作
+    
     public static void WriteStringByFile(string path, string content)
     {
         byte[] dataByte = Encoding.GetEncoding("UTF-8").GetBytes(content);
@@ -266,55 +121,6 @@ public class ResourceIOTool :MonoBehaviour
         }
     }
 
-#endif
-
     #endregion
 
 }
-
-#region 回调声明
-public delegate void AssetBundleLoadCallBack(LoadState state, AssetBundle bundlle);
-public delegate void WWWLoadCallBack(LoadState loadState, WWW www);
-public delegate void LoadCallBack(LoadState loadState, object resObject);
-public class LoadState
-{
-    private static LoadState completeState;
-
-    public static LoadState CompleteState
-    {
-        get {
-            if (completeState == null)
-            {
-                completeState = new LoadState();
-                completeState.isDone = true;
-                completeState.progress = 1;
-            }
-            return completeState; 
-        }
-    }
-
-    //public object asset;
-    public bool isDone;
-    public float progress;
-
-    public void UpdateProgress(ResourceRequest resourceRequest)
-    {
-        isDone = resourceRequest.isDone;
-        progress = resourceRequest.progress;
-    }
-
-    public void UpdateProgress(AssetBundleCreateRequest assetBundleCreateRequest)
-    {
-        isDone = assetBundleCreateRequest.isDone;
-        progress = assetBundleCreateRequest.progress;
-    }
-
-    public void UpdateProgress(WWW www)
-    {
-        isDone = www.isDone;
-        progress = www.progress;
-    }
-
-}
-
-#endregion

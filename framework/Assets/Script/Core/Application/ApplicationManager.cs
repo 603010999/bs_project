@@ -29,16 +29,6 @@ public class ApplicationManager : MonoBehaviour
         get { return _appMode; }
     }
 
-    //是否是ab模式
-    public bool m_useAssetsBundle = false;
-    public bool UseAssetsBundle
-    {
-        get
-        {
-            return m_useAssetsBundle;
-        }
-    }
-
     //快速启动
     public bool m_quickLunch = true;
 
@@ -62,10 +52,7 @@ public class ApplicationManager : MonoBehaviour
     private void AppLaunch()
     {
         //处理常驻
-        DontDestroyOnLoad(gameObject);
-        
-        //设置资源加载类型
-        SetResourceLoadType();        
+        DontDestroyOnLoad(gameObject);     
         
         //计时器启动
         Timer.Init();           
@@ -222,20 +209,6 @@ public class ApplicationManager : MonoBehaviour
     #endregion
 
     #region 程序启动细节
-    /// <summary>
-    /// 设置资源加载方式
-    /// </summary>
-    void SetResourceLoadType()
-    {
-        if (UseAssetsBundle)
-        {
-            ResourceManager.m_gameLoadType = ResLoadLocation.Streaming;
-        }
-        else
-        {
-            ResourceManager.m_gameLoadType = ResLoadLocation.Resource;
-        }
-    }
 
     /// <summary>
     /// 初始化全局逻辑

@@ -100,7 +100,7 @@ public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
         new Dictionary<string, Dictionary<string, TalkFileData>>();
 
     //角色数据文件名
-    private readonly string m_playerDataFileName = "player_data.txt";
+    //private readonly string m_playerDataFileName = "player_data.txt";
 
     //获取玩家数据
     public PlayerStateData GetPlayerStateData(string playerId)
