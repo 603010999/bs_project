@@ -21,7 +21,6 @@ public class DataGenerateManager<T> where T : DataGenerateBase, new()
         if (!s_isInit)
         {
             s_isInit = true;
-            GlobalEvent.AddEvent(MemoryEvent.FreeHeapMemory, CleanCache);
         }
 
         if (s_dict.ContainsKey(key))
@@ -46,7 +45,6 @@ public class DataGenerateManager<T> where T : DataGenerateBase, new()
         if (!s_isInit)
         {
             s_isInit = true;
-            GlobalEvent.AddEvent(MemoryEvent.FreeHeapMemory, CleanCache);
         }
 
        

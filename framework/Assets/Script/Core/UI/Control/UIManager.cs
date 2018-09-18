@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
 
     public static void Init()
     {
-        GameObject instance = GameObject.Find("UIManager");
+        var instance = GameObject.Find("UIManager");
 
         if (instance == null)
         {
@@ -106,32 +106,6 @@ public class UIManager : MonoBehaviour
         m_uiLayerManager = instance.GetComponent<UILayerManager>();
         m_uiAnimManager  = instance.GetComponent<UIAnimManager>();
         m_uiCamera       = instance.GetComponentInChildren<Camera>();
-
-        DontDestroyOnLoad(instance);
-    }
-
-    ///异步加载UIMnager
-    public static void InitAsync()
-    {
-        GameObject instance = GameObject.Find("UIManager");
-
-        if (instance == null)
-        {
-            GameObjectManager.Instance.CreatePoolObjectAsync("UIManager", SetUIManager);
-        }
-        else
-        {
-            SetUIManager(instance);
-        }
-    }
-
-    static void SetUIManager(GameObject instance)
-    {
-        m_instance = instance;
-
-        m_uiLayerManager = instance.GetComponent<UILayerManager>();
-        m_uiAnimManager = instance.GetComponent<UIAnimManager>();
-        m_uiCamera = instance.GetComponentInChildren<Camera>();
 
         DontDestroyOnLoad(instance);
     }
@@ -440,13 +414,14 @@ public class UIManager : MonoBehaviour
 
     public static void OpenUIAsync(string UIName , UICallBack callback, params object[] objs)
     {
-        ResourceManager.LoadAsync(UIName, (loadState,resObject) =>
+     /*   ResourceManager.LoadAsync(UIName, (loadState,resObject) =>
          {
              if(loadState.isDone)
              {
                  OpenUIWindow(UIName, callback, objs);
              }
          });
+      */   
     }
 
 #endregion

@@ -30,7 +30,7 @@ public class ReusingScrollRect : ScrollRectInput
 
     #region 公共方法
 
-    public  void Init(string uiEventKey,string itemName)
+    public void Init(string uiEventKey, string uiName)
     {
         if (content == null)
         {
@@ -39,7 +39,7 @@ public class ReusingScrollRect : ScrollRectInput
 
         base.Init(uiEventKey);
 
-        m_ItemName = itemName;
+        m_ItemName = uiName;
         m_rectTransform = GetComponent<RectTransform>();
 
         Rebuild(CanvasUpdate.Layout);
@@ -47,7 +47,7 @@ public class ReusingScrollRect : ScrollRectInput
         UpdateBound();
         SetLayout();
 
-        var prefab = ResourceManager.Load<GameObject>(m_ItemName);
+        var prefab = ResourceManager.LoadUiPrefab(uiName, true);
         m_itemSize = prefab.GetComponent<RectTransform>().sizeDelta;
     }
 

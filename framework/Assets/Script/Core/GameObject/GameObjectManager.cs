@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-//对象池 用于缓存动态创建的对象  大多用于由预设实例话的对象
+//对象池 用于缓存动态创建的对象  大多用于由预设实例话的对象   主要用于UI
 public class GameObjectManager :BehaviourSingleton<GameObjectManager>
 {
     //屏幕外座标
@@ -41,7 +41,7 @@ public class GameObjectManager :BehaviourSingleton<GameObjectManager>
     /// <returns></returns>
     public GameObject CreatePoolObject(string gameObjectName, GameObject parent = null)
     {
-        var go = ResourceManager.Load<GameObject>(gameObjectName);
+        var go = ResourceManager.LoadUiPrefab(gameObjectName);
 
         if (go == null)
         {
@@ -188,23 +188,4 @@ public class GameObjectManager :BehaviourSingleton<GameObjectManager>
             m_objectPool.Remove(name);
         }
     }
-
-    #region 异步方法
-
-    public void CreatePoolObjectAsync(string name, CallBack<GameObject> callback, GameObject parent = null)
-    {
-        ResourceManager.LoadAsync(name, (status,res) =>
-        {
-            try
-            {
-                callback(CreatePoolObject(name, parent));
-            }
-            catch(Exception e)
-            {
-                Debug.LogError("CreatePoolObjectAsync Exception: " + e.ToString());
-            }
-        });
-    }
-
-    #endregion
 }
