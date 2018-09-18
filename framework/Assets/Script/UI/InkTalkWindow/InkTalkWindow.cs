@@ -5,12 +5,16 @@ using UnityEngine.Experimental.UIElements;
 
 public class InkTalkWindow : UIWindowBase
 {
+	//内容列表
     public ReusingScrollRect m_talkItems;
     
+	//可选按钮列表
+	public GameObject[] m_btnList;
+	
     [SerializeField]
     private TextAsset inkJSONAsset;
     private Story story;
-
+	
     void Awake()
     {
         if (inkJSONAsset == null)
@@ -88,4 +92,33 @@ public class InkTalkWindow : UIWindowBase
 
         yield return new WaitForEndOfFrame();
     }
+
+	#region click
+
+	//点击返回
+	public void OnClickBack()
+	{
+		
+	}
+	
+	//点击选项1
+	public void OnClickChoice1()
+	{
+		
+	}
+
+	//选项2
+	public void OnClickChoice2()
+	{
+		
+	}
+
+	//选项3
+	public void OnClickChoice3()
+	{
+		
+	}
+	
+	
+	#endregion
 }

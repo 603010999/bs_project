@@ -6,26 +6,29 @@ using UnityEngine.UI;
 
 public class InkTalkWindowItem : ReusingScrollItemBase
 {
-    public Text m_name;
+    //对方内容
+    public Text m_leftContent;
 
-    public Text m_content;
+    //我方内容
+    public Text m_rightContent;
 
+    //对方底图
+    public Image m_leftBg;
+    
+    //我方底图
+    public Image m_rightBg;
+    
     public override void SetContent(int index, Dictionary<string, object> data)
     {
         var playerName = (string) data["Name"];
 
-        m_name.text = playerName;
-        m_content.text = (string) data["text"];
+        
+        m_leftContent.text = (string) data["text"];
+        m_rightContent.text = (string) data["text"];
 
-        if (playerName == "我")
-        {
-            m_name.alignment = TextAnchor.UpperRight;
-            m_content.alignment = TextAnchor.UpperRight;
-        }
-        else
-        {
-            m_name.alignment = TextAnchor.UpperLeft;
-            m_content.alignment = TextAnchor.UpperRight;
-        }
+        var isSelf = playerName == "我";
+
+        m_leftBg.gameObject.SetActive(!isSelf);
+        m_rightBg.gameObject.SetActive(isSelf);
     }   
 }
