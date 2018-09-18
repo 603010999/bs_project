@@ -40,6 +40,19 @@ public class InkDataMgr : Singleton<InkDataMgr>
 
         return m_curStory.canContinue;
     }
+    
+    //继续进行
+    public string ContinueStory()
+    {
+        if (m_curStory == null)
+        {
+            return string.Empty;
+        }
+
+        //todo 记录数据
+        
+        return m_curStory.Continue();
+    }
  
     //获取选择列表
     public List<Choice> GetChoiceList()
@@ -66,6 +79,8 @@ public class InkDataMgr : Singleton<InkDataMgr>
         }
         
         m_curStory.ChooseChoiceIndex(index);
+        
+        //记录内容  做选择的一定是主角
         
         //todo 发送界面刷新消息
     }
