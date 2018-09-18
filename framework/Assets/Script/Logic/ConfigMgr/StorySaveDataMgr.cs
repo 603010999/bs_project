@@ -51,71 +51,14 @@ public class TalkData
     }
 }
 
-//对话文件数据  文件名称 角色ID字符+故事ID字符
-public class TalkFileData
-{
-    //文件所属角色
-    public string m_playerId;
-    
-    //文件所属故事
-    public string m_storyId;
-    
-    //文件编号
-    public int m_fileNo = 0;
-    
-    //文件中对话列表
-    public List<int> m_talkList = new List<int>();
-    
-    //起始ID
-    public int m_startId = 0;
-    
-    //是否加载
-    public bool m_isLoad = false;
-
-    //初始化
-    public TalkFileData(string playerId, string storyId, int startId, int fileNo)
-    {
-        m_playerId = playerId;
-        m_storyId = storyId;
-        m_startId = startId;
-        m_fileNo = fileNo;
-    }
-
-    //能否添加 每个文件限定放100句话
-    public bool CanAdd()
-    {
-        return m_talkList.Count <= 100;
-    }
-
-    //添加聊天信息
-    public void AddTalkId(int talkId)
-    {
-        if (!m_talkList.Contains(talkId))
-        {
-            m_talkList.Add(talkId);
-        }
-    }
-
-    //保存文件名
-    public string GetFileName()
-    {
-        return m_playerId + "_" + m_storyId + "_" + m_fileNo + ".txt";
-    }
-}
-
-
 //游戏运行存储数据
 public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
 {
     //角色当前故事，故事进度
     private Dictionary<string, PlayerStateData> m_playerStateData = new Dictionary<string, PlayerStateData>();
 
-    //角色对话记录 key:playerID  value:对话数据
-    private Dictionary<string, List<TalkData>> m_playerTalkContent = new Dictionary<string, List<TalkData>>();
-
-    //角色对话文件数据 启动时直接全部读取 key:playerId value:
-    private Dictionary<string, Dictionary<string, TalkFileData>> m_playerTalkFileData =
-        new Dictionary<string, Dictionary<string, TalkFileData>>();
+    //角色对话记录 key:playerID  value:对话数据(key:对话ID  value:对话列表)
+    private Dictionary<string, Dictionary<string,List<TalkData>>> m_playerTalkContent = new Dictionary<string, Dictionary<string, List<TalkData>>>();
 
     //角色数据文件名
     private readonly string m_playerDataFileName = "player_data.txt";
@@ -143,54 +86,46 @@ public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
     }
     
     //增加对话 角色，对话内容，所处的故事
-    public void AddTalkData(string playerId,string text,string storyId)
+    public void AddTalkData(string playerId,string storyId,string text)
     {
-        //添加到总的聊天列表
+        //获取角色对话字典
+        Dictionary<string, List<TalkData>> playerTalkDic = null;
+        if (!m_playerTalkContent.TryGetValue(playerId, out playerTalkDic))
+        {
+            playerTalkDic = new Dictionary<string, List<TalkData>>();
+
+            m_playerTalkContent.Add(playerId, playerTalkDic);
+        }
+        
+        //获取聊天列表
         List<TalkData> list = null;
-        if (!m_playerTalkContent.TryGetValue(playerId, out list))
+        if (!playerTalkDic.TryGetValue(storyId, out list))
         {
             list = new List<TalkData>();
+            playerTalkDic.Add(storyId, list);
         }
 
-        var talkId = list.Count;
+        var talkId = GetTalkId(playerId);
 
         var data = new TalkData(talkId, text);
 
-        list.Add(data);
-        
-        //文件保存内容增加
-        Dictionary<string, TalkFileData> fileDic = null;
-        if (!m_playerTalkFileData.TryGetValue(playerId, out fileDic))
-        {
-            fileDic = new Dictionary<string, TalkFileData>();
-        }
-
-        TalkFileData fileData = null;
-        if (!fileDic.TryGetValue(storyId, out fileData))
-        {
-            fileData = new TalkFileData(playerId, storyId, talkId, fileDic.Count);
-        }
-
-        fileData.AddTalkId(talkId);      
+        list.Add(data);  
     }
     
-    //获取聊天记录内容  minID是当前最老的消息的ID，如果minID>0时，需要读取一个更早期的聊天记录文件
-    public List<TalkData> GetTalkData(string playerId,bool needLoad)
+    //获取聊天记录内容
+    public List<TalkData> GetTalkData(string playerId,string storyId)
     {
-        List<TalkData> list = null;
-        if (!m_playerTalkContent.TryGetValue(playerId, out list))
+        Dictionary<string, List<TalkData>> playerTalkDic = null;
+        if (!m_playerTalkContent.TryGetValue(playerId, out playerTalkDic))
         {
-            LoadTalkFile(playerId);
+            return null;
         }
 
-        //默认状态下，读取默认的即可
-        if (!needLoad)
+        List<TalkData> list;
+        if (!playerTalkDic.TryGetValue(storyId, out list))
         {
-            return list;
+            return null;
         }
-
-        //加载一个文件
-        LoadTalkFile(playerId);
         
         return list;
     }
@@ -210,49 +145,43 @@ public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
 
         m_playerStateData = dic;
     }
-
-    //加载对话文件
-    private void LoadTalkFile(string playerId)
+    
+    //获取对话ID 就是当前数据数量
+    private int GetTalkId(string playerId)
     {
-        List<TalkData> list = null;
-        if (!m_playerTalkContent.TryGetValue(playerId, out list))
+        Dictionary<string, List<TalkData>> playerTalkDic = null;
+        if (!m_playerTalkContent.TryGetValue(playerId, out playerTalkDic))
         {
-            list = new List<TalkData>();
-            m_playerTalkContent.Add(playerId, list);
+            return 0;
         }
 
-        //没有数据
-        Dictionary<string, TalkFileData> fileDataDic;
-        if (!m_playerTalkFileData.TryGetValue(playerId, out fileDataDic))
-        {
-            return;
-        }
+        var count = 0;
 
-        var enu = fileDataDic.GetEnumerator();
+        var enu = playerTalkDic.GetEnumerator();
         while (enu.MoveNext())
         {
-            if (enu.Current.Value.m_isLoad)
-            {
-                continue;
-            }
-
-            enu.Current.Value.m_isLoad = true;
-
-            var talkDic = ReadSaveData<TalkData>(enu.Current.Value.GetFileName());
-            if (talkDic == null)
-            {
-                continue;
-            }
-            
-            var talkEnu = talkDic.GetEnumerator();
-            while (talkEnu.MoveNext())
-            {
-                list.Add(talkEnu.Current.Value);
-            }
+            count += enu.Current.Value.Count;
         }
+
+        return count;
+    }
+
+    //加载对话文件
+    private void LoadTalkFile(string playerId,string storyId)
+    {
+        Dictionary<string, List<TalkData>> playerTalkDic = null;
+        if (!m_playerTalkContent.TryGetValue(playerId, out playerTalkDic))
+        {
+            playerTalkDic = new Dictionary<string, List<TalkData>>();
+            m_playerTalkContent.Add(playerId, playerTalkDic);
+        }
+
+
+        var list = ReadListData<TalkData>(playerId + "_" + storyId + "_talk.txt");
+
+        playerTalkDic[storyId] = list;
     }
     
-
     //检测和保存数据
     private void SavePlayerData()
     {
@@ -305,6 +234,15 @@ public class StorySaveDataMgr : Singleton<StorySaveDataMgr>
         var text = ResourceIOTool.ReadStringByFile(filePath);
 
         return JsonTool.Json2Dictionary<T>(text);
+    }
+    
+    //读取列表
+    private List<T> ReadListData<T>(string fileName)
+    {
+        var filePath = PathTool.GetAbsolutePath(ResLoadLocation.Persistent, fileName);
+        var text = ResourceIOTool.ReadStringByFile(filePath);
+
+        return JsonTool.Json2List<T>(text);
     }
 
     #endregion

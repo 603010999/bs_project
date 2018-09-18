@@ -14,21 +14,59 @@ public class InkStoryData
 public class InkDataMgr : Singleton<InkDataMgr> 
 {
     //当前运行故事
-    public Story m_curStory { private set; get; }
+    private Story m_curStory;
     
     //设置当前故事
-    public void SetCurStory(string story)
-    {
-        m_curStory = new Story(story);
+    public void SetCurStory(string playerId,string storyId)
+    {        
+        var text = InkConfigMgr.Instance.GetInkText(playerId, storyId);
+
+        if (string.IsNullOrEmpty(text))
+        {
+            return;
+        }
         
         
+        m_curStory = new Story(text);  
     }
-    
-    
-    //解析故事内容
-    public void PraseStory(string storyText)
+
+    //能否继续
+    public bool CanContinue()
     {
-        
+        if (m_curStory == null)
+        {
+            return false;
+        }
+
+        return m_curStory.canContinue;
     }
+ 
+    //获取选择列表
+    public List<Choice> GetChoiceList()
+    {
+        if (m_curStory == null)
+        {
+            return null;
+        }
+
+        if (m_curStory.currentChoices.Count == 0)
+        {
+            return null;
+        }
+        
+        return m_curStory.currentChoices;
+    }    
     
+    //选择选项
+    public void Choose(int index)
+    {
+        if (m_curStory == null)
+        {
+            return;
+        }
+        
+        m_curStory.ChooseChoiceIndex(index);
+        
+        //todo 发送界面刷新消息
+    }
 }
